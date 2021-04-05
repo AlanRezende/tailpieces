@@ -1,7 +1,7 @@
 {
   "name": "tailpieces",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Vue 3 + TypeScript + TailwindCss Components Library UI",
 
   "main": "dist/tailpieces.ssr.js",
   "browser": "dist/tailpieces.esm.js",
