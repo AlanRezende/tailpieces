@@ -52,8 +52,8 @@ function _arrayLikeToArray(arr, len) {
 
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}var script = /*#__PURE__*/vue.defineComponent({
-  name: 'TailpiecesSample',
+}var script$1 = /*#__PURE__*/vue.defineComponent({
+  name: "TailpiecesSample",
   // vue component name
   data: function data() {
     return {
@@ -70,43 +70,43 @@ function _nonIterableRest() {
       var _ref = this,
           message = _ref.message;
 
-      if (!message.action) return 'initialized';
-      return "".concat(message.action, " ").concat(message.amount || '').trim();
+      if (!message.action) return "initialized";
+      return "".concat(message.action, " ").concat(message.amount || "").trim();
     }
   },
   methods: {
     increment: function increment(arg) {
-      var amount = typeof arg !== 'number' ? 1 : arg;
+      var amount = typeof arg !== "number" ? 1 : arg;
       this.counter += amount;
-      this.message.action = 'incremented by';
+      this.message.action = "incremented by";
       this.message.amount = amount;
     },
     decrement: function decrement(arg) {
-      var amount = typeof arg !== 'number' ? 1 : arg;
+      var amount = typeof arg !== "number" ? 1 : arg;
       this.counter -= amount;
-      this.message.action = 'decremented by';
+      this.message.action = "decremented by";
       this.message.amount = amount;
     },
     reset: function reset() {
       this.counter = this.initCounter;
-      this.message.action = 'reset';
+      this.message.action = "reset";
       this.message.amount = null;
     }
   }
-});var _withId = /*#__PURE__*/vue.withScopeId("data-v-df344068");
+});var _withId = /*#__PURE__*/vue.withScopeId("data-v-4285bdec");
 
-vue.pushScopeId("data-v-df344068");
+vue.pushScopeId("data-v-4285bdec");
 
 var _hoisted_1 = {
   class: "tailpieces-sample"
 };
 
-var _hoisted_2 = /*#__PURE__*/vue.createTextVNode(".");
+var _hoisted_2 = /*#__PURE__*/vue.createTextVNode(". ");
 
 vue.popScopeId();
 
-var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1, [vue.createVNode("p", null, [vue.createTextVNode("The counter was " + vue.toDisplayString(_ctx.changedBy) + " to ", 1), vue.createVNode("b", null, vue.toDisplayString(_ctx.counter), 1), _hoisted_2]), vue.createVNode("button", {
+var render$1 = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1, [vue.createVNode("p", null, [vue.createTextVNode(" The counter was " + vue.toDisplayString(_ctx.changedBy) + " to ", 1), vue.createVNode("b", null, vue.toDisplayString(_ctx.counter), 1), _hoisted_2]), vue.createVNode("button", {
     onClick: _cache[1] || (_cache[1] = function () {
       return _ctx.increment && _ctx.increment.apply(_ctx, arguments);
     })
@@ -152,9 +152,56 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   } else {
     style.appendChild(document.createTextNode(css));
   }
-}var css_248z = "\n.tailpieces-sample[data-v-df344068] {\n    display: block;\n    width: 400px;\n    margin: 25px auto;\n    border: 1px solid #ccc;\n    background: #eaeaea;\n    text-align: center;\n    padding: 25px;\n}\n.tailpieces-sample p[data-v-df344068] {\n    margin: 0 0 1em;\n}\n";
-styleInject(css_248z);script.render = render;
-script.__scopeId = "data-v-df344068";/* eslint-disable import/prefer-default-export */var components$1=/*#__PURE__*/Object.freeze({__proto__:null,TailpiecesSample: script});var install = function installTailpieces(app) {
+}var css_248z = "\n.tailpieces-sample[data-v-4285bdec] {\n  display: block;\n  width: 400px;\n  margin: 25px auto;\n  border: 1px solid #ccc;\n  background: #eaeaea;\n  text-align: center;\n  padding: 25px;\n}\n.tailpieces-sample p[data-v-4285bdec] {\n  margin: 0 0 1em;\n}\n";
+styleInject(css_248z);script$1.render = render$1;
+script$1.__scopeId = "data-v-4285bdec";var script = vue.defineComponent({
+  props: {
+    size: {
+      type: String,
+      default: "base"
+    },
+    color: {
+      type: String,
+      default: "blue"
+    }
+  },
+  setup: function setup(props) {
+    var sizeClass = vue.computed(function () {
+      var options = {
+        sm: "text-sm px-2",
+        base: "text-base px-4 py-1",
+        lg: "text-lg px-8 py-2"
+      };
+      return options[props.size];
+    });
+    var colorClass = vue.computed(function () {
+      // 5 cores blue, green, yellow, red, gray
+      // ou bg-indigo-400
+      var options = {
+        blue: "bg-blue-900",
+        yellow: "bg-yellow-500",
+        green: "bg-green-700",
+        red: "bg-yellow-700",
+        gray: "bg-gray-500"
+      };
+
+      if (props.color.split("-").length > 1) {
+        return props.color;
+      }
+
+      return options[props.color];
+    });
+    return {
+      sizeClass: sizeClass,
+      colorClass: colorClass
+    };
+  }
+});function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("button", {
+    class: ["mr-2 inline-block rounded text-white", [_ctx.sizeClass, _ctx.colorClass]],
+    type: "button"
+  }, [vue.renderSlot(_ctx.$slots, "default")], 2);
+}script.render = render;var components$1=/*#__PURE__*/Object.freeze({__proto__:null,TailpiecesSample: script$1,TButton: script});var install = function installTailpieces(app) {
   Object.entries(components$1).forEach(function (_ref) {
     var _ref2 = _slicedToArray(_ref, 2),
         componentName = _ref2[0],
@@ -163,7 +210,7 @@ script.__scopeId = "data-v-df344068";/* eslint-disable import/prefer-default-exp
     app.component(componentName, component);
   });
 }; // Create module definition for Vue.use()
-var components=/*#__PURE__*/Object.freeze({__proto__:null,'default': install,TailpiecesSample: script});// only expose one global var, with component exports exposed as properties of
+var components=/*#__PURE__*/Object.freeze({__proto__:null,'default': install,TailpiecesSample: script$1,TButton: script});// only expose one global var, with component exports exposed as properties of
 // that global var (eg. plugin.component)
 
 Object.entries(components).forEach(function (_ref) {
