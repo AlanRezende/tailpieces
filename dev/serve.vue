@@ -12,6 +12,17 @@
         ]"
         v-model="user.active"
       ></t-select>
+      <t-accordion label="Test accordion">
+        Pellentesque scelerisque augue eget dui lobortis auctor. Aenean sit amet
+        nisi urna. Pellentesque eu massa leo. Ut sit amet urna non nisi volutpat
+        interdum. Nam euismod nec lacus quis accumsan. Proin malesuada, urna a
+        commodo gravida, dolor tortor aliquet ante, a maximus tortor diam quis
+        sapien. Praesent porta faucibus congue. Vestibulum ante ipsum primis in
+        faucibus orci luctus et ultrices posuere cubilia curae; Cras tempor ex
+        vitae fermentum bibendum. Mauris suscipit eros ante, ac luctus odio
+        gravida in. Nunc in urna varius, elementum massa eu, rutrum urna. Nulla
+        non imperdiet arcu.
+      </t-accordion>
     </t-form-section>
   </div>
 </template>

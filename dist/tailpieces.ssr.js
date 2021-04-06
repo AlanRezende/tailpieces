@@ -74,7 +74,7 @@ function _arrayLikeToArray(arr, len) {
 
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}var script$3 = vue.defineComponent({
+}var script$4 = vue.defineComponent({
   name: "TButton",
   props: {
     size: {
@@ -117,12 +117,12 @@ function _nonIterableRest() {
       colorClass: colorClass
     };
   }
-});function render$3(_ctx, _cache, $props, $setup, $data, $options) {
+});function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock("button", {
     class: ["mr-2 inline-block rounded text-white", [_ctx.sizeClass, _ctx.colorClass]],
     type: "button"
   }, [vue.renderSlot(_ctx.$slots, "default")], 2);
-}script$3.render = render$3;var Validator = /*#__PURE__*/function () {
+}script$4.render = render$4;var Validator = /*#__PURE__*/function () {
   function Validator() {
     _classCallCheck(this, Validator);
   }
@@ -199,7 +199,7 @@ function _nonIterableRest() {
   }]);
 
   return Validator;
-}();var script$2 = vue.defineComponent({
+}();var script$3 = vue.defineComponent({
   name: "BaseInput",
   props: {
     label: {
@@ -313,18 +313,18 @@ function _nonIterableRest() {
       maxlengthLeft: maxlengthLeft
     };
   }
-});var _hoisted_1$2 = {
+});var _hoisted_1$3 = {
   class: "flex flex-col mb-4 relative w-full"
 };
-var _hoisted_2$1 = {
+var _hoisted_2$2 = {
   key: 2,
   class: "absolute right-0 text-xs top-2 text-gray-500"
 };
-var _hoisted_3 = {
+var _hoisted_3$1 = {
   class: "text-red-800 text-sm ml-0.5"
 };
-function render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1$2, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? vue.withDirectives((vue.openBlock(), vue.createBlock("textarea", {
+function render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1$3, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? vue.withDirectives((vue.openBlock(), vue.createBlock("textarea", {
     key: 0,
     class: ["p-2 border rounded", {
       'border-red-800': _ctx.formItem.validationError
@@ -359,8 +359,8 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return _ctx.formItem.value = $event;
     })
-  }, null, 42, ["type", "maxlength", "placeholder"])), [[vue.vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (vue.openBlock(), vue.createBlock("span", _hoisted_2$1, " Restam " + vue.toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : vue.createCommentVNode("", true), vue.createVNode("span", _hoisted_3, vue.toDisplayString(_ctx.formItem.validationError), 1)]);
-}script$2.render = render$2;var script$1 = vue.defineComponent({
+  }, null, 42, ["type", "maxlength", "placeholder"])), [[vue.vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (vue.openBlock(), vue.createBlock("span", _hoisted_2$2, " Restam " + vue.toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : vue.createCommentVNode("", true), vue.createVNode("span", _hoisted_3$1, vue.toDisplayString(_ctx.formItem.validationError), 1)]);
+}script$3.render = render$3;var script$2 = vue.defineComponent({
   name: "FormSection",
   props: {
     label: {
@@ -368,15 +368,15 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
       required: true
     }
   }
-});var _hoisted_1$1 = {
+});var _hoisted_1$2 = {
   class: "text-lg text-blue-900 mb-2"
 };
-var _hoisted_2 = {
+var _hoisted_2$1 = {
   class: "bg-white shadow-sm p-3 rounded mb-4 flex flex-wrap"
 };
-function render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock(vue.Fragment, null, [vue.createVNode("div", _hoisted_1$1, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_2, [vue.renderSlot(_ctx.$slots, "default")])], 64);
-}script$1.render = render$1;var script = vue.defineComponent({
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock(vue.Fragment, null, [vue.createVNode("div", _hoisted_1$2, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_2$1, [vue.renderSlot(_ctx.$slots, "default")])], 64);
+}script$2.render = render$2;var script$1 = vue.defineComponent({
   name: "BaseSelect",
   props: {
     label: {
@@ -453,11 +453,11 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
       formItem: formItem
     };
   }
-});var _hoisted_1 = {
+});var _hoisted_1$1 = {
   class: "flex flex-col mb-4 w-full"
 };
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.withDirectives(vue.createVNode("select", {
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1$1, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.withDirectives(vue.createVNode("select", {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return _ctx.formItem.value = $event;
     }),
@@ -470,7 +470,82 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: item.value
     }, vue.toDisplayString(item.name), 9, ["value"]);
   }), 128))], 512), [[vue.vModelSelect, _ctx.formItem.value]])]);
-}script.render = render;var components$1=/*#__PURE__*/Object.freeze({__proto__:null,TButton: script$3,TInput: script$2,TFormSection: script$1,TSelect: script});var install = function installTailpieces(app) {
+}script$1.render = render$1;var script = vue.defineComponent({
+  name: "TAccordion",
+  props: {
+    label: {
+      type: String,
+      required: true
+    }
+  },
+  setup: function setup() {
+    var open = vue.ref(false);
+    return {
+      open: open
+    };
+  }
+});var _withId = /*#__PURE__*/vue.withScopeId("data-v-9f667f02");
+
+vue.pushScopeId("data-v-9f667f02");
+
+var _hoisted_1 = {
+  class: "rounded border"
+};
+var _hoisted_2 = {
+  class: "overflow-hidden"
+};
+var _hoisted_3 = {
+  key: 0,
+  class: "transition-all rounded-b ease-in-out overflow-hidden origin-top"
+};
+var _hoisted_4 = {
+  class: "p-2"
+};
+
+vue.popScopeId();
+
+var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1, [vue.createVNode("div", {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.open = !_ctx.open;
+    }),
+    class: "cursor-pointer rounded-t bg-gray-100 p-1 px-2"
+  }, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_2, [vue.createVNode(vue.Transition, {
+    name: "fade"
+  }, {
+    default: _withId(function () {
+      return [_ctx.open ? (vue.openBlock(), vue.createBlock("div", _hoisted_3, [vue.createVNode("div", _hoisted_4, [vue.renderSlot(_ctx.$slots, "default")])])) : vue.createCommentVNode("", true)];
+    }),
+    _: 3
+  })])]);
+});function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}var css_248z = "\n.fade-enter-active[data-v-9f667f02],\n.fade-leave-active[data-v-9f667f02] {\n  opacity: 1;\n  transform: translate3d(0, 0, 0);\n}\n.fade-enter-from[data-v-9f667f02],\n.fade-leave-to[data-v-9f667f02] {\n  opacity: 0;\n  transform: translate3d(0, -100%, 0);\n}\n";
+styleInject(css_248z);script.render = render;
+script.__scopeId = "data-v-9f667f02";var components$1=/*#__PURE__*/Object.freeze({__proto__:null,TButton: script$4,TInput: script$3,TFormSection: script$2,TSelect: script$1,TAccordion: script});var install = function installTailpieces(app) {
   Object.entries(components$1).forEach(function (_ref) {
     var _ref2 = _slicedToArray(_ref, 2),
         componentName = _ref2[0],
@@ -479,7 +554,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     app.component(componentName, component);
   });
 }; // Create module definition for Vue.use()
-var components=/*#__PURE__*/Object.freeze({__proto__:null,'default': install,TButton: script$3,TInput: script$2,TFormSection: script$1,TSelect: script});// only expose one global var, with component exports exposed as properties of
+var components=/*#__PURE__*/Object.freeze({__proto__:null,'default': install,TButton: script$4,TInput: script$3,TFormSection: script$2,TSelect: script$1,TAccordion: script});// only expose one global var, with component exports exposed as properties of
 // that global var (eg. plugin.component)
 
 Object.entries(components).forEach(function (_ref) {
