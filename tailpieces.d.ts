@@ -4,3 +4,4 @@ declare const Tailpieces: Exclude<Plugin["install"], undefined>;
 export default Tailpieces;
 
 export const TButton: DefineComponent<{}, {}, any>;
+export const TInput: DefineComponent<{}, {}, any>;
