@@ -12,6 +12,11 @@
         ]"
         v-model="user.active"
       ></t-select>
+      <t-toggle
+        v-model="user.new"
+        label="Status"
+        :title="['Ativo', 'Inativo']"
+      />
       <t-accordion label="Test accordion">
         Pellentesque scelerisque augue eget dui lobortis auctor. Aenean sit amet
         nisi urna. Pellentesque eu massa leo. Ut sit amet urna non nisi volutpat
@@ -32,7 +37,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent({
   name: "ServeDev",
   setup() {
-    let user = ref({ name: "Alan Rezende", active: true });
+    let user = ref({ name: "Alan Rezende", active: true, new: false });
     return {
       user
     };
