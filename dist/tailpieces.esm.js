@@ -1,6 +1,6 @@
-import { defineComponent, computed, openBlock, createBlock, renderSlot, ref, watch, onMounted, createVNode, toDisplayString, withDirectives, vModelText, vModelDynamic, createCommentVNode } from 'vue';
+import { defineComponent, computed, openBlock, createBlock, renderSlot, ref, watch, onMounted, createVNode, toDisplayString, withDirectives, vModelText, vModelDynamic, createCommentVNode, Fragment } from 'vue';
 
-var script$1 = defineComponent({
+var script$2 = defineComponent({
   name: "TButton",
   props: {
     size: {
@@ -47,14 +47,14 @@ var script$1 = defineComponent({
 
 });
 
-function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("button", {
     class: ["mr-2 inline-block rounded text-white", [_ctx.sizeClass, _ctx.colorClass]],
     type: "button"
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
 
-script$1.render = render$1;
+script$2.render = render$2;
 
 class Validator {
   validate(value, rules) {
@@ -126,7 +126,7 @@ class Validator {
 
 }
 
-var script = defineComponent({
+var script$1 = defineComponent({
   name: "BaseInput",
   props: {
     label: {
@@ -242,18 +242,18 @@ var script = defineComponent({
 
 });
 
-const _hoisted_1 = {
+const _hoisted_1$1 = {
   class: "flex flex-col mb-4 relative w-full"
 };
-const _hoisted_2 = {
+const _hoisted_2$1 = {
   key: 2,
   class: "absolute right-0 text-xs top-2 text-gray-500"
 };
 const _hoisted_3 = {
   class: "text-red-800 text-sm ml-0.5"
 };
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1, [createVNode("label", null, toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? withDirectives((openBlock(), createBlock("textarea", {
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1$1, [createVNode("label", null, toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? withDirectives((openBlock(), createBlock("textarea", {
     key: 0,
     class: ["p-2 border rounded", {
       'border-red-800': _ctx.formItem.validationError
@@ -276,15 +276,38 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[4] || (_cache[4] = (...args) => _ctx.validate && _ctx.validate(...args)),
     onKeydown: _cache[5] || (_cache[5] = $event => _ctx.formItem.validationError = ''),
     "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => _ctx.formItem.value = $event)
-  }, null, 42, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true), createVNode("span", _hoisted_3, toDisplayString(_ctx.formItem.validationError), 1)]);
+  }, null, 42, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2$1, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true), createVNode("span", _hoisted_3, toDisplayString(_ctx.formItem.validationError), 1)]);
+}
+
+script$1.render = render$1;
+
+var script = defineComponent({
+  name: "FormSection",
+  props: {
+    label: {
+      type: String,
+      required: true
+    }
+  }
+});
+
+const _hoisted_1 = {
+  class: "text-lg text-blue-900 mb-2"
+};
+const _hoisted_2 = {
+  class: "bg-white shadow-sm p-3 rounded mb-4 flex flex-wrap"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock(Fragment, null, [createVNode("div", _hoisted_1, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2, [renderSlot(_ctx.$slots, "default")])], 64);
 }
 
 script.render = render;
 
 var components = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  TButton: script$1,
-  TInput: script
+  TButton: script$2,
+  TInput: script$1,
+  TFormSection: script
 });
 
 // Import vue components
@@ -296,4 +319,4 @@ const install = function installTailpieces(app) {
 }; // Create module definition for Vue.use()
 
 export default install;
-export { script$1 as TButton, script as TInput };
+export { script$2 as TButton, script as TFormSection, script$1 as TInput };

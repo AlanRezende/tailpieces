@@ -5,3 +5,4 @@ export default Tailpieces;
 
 export const TButton: DefineComponent<{}, {}, any>;
 export const TInput: DefineComponent<{}, {}, any>;
+export const TFormSection: DefineComponent<{}, {}, any>;
