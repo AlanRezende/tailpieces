@@ -1,4 +1,26 @@
-'use strict';var vue=require('vue');function _slicedToArray(arr, i) {
+'use strict';var vue=require('vue');function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
@@ -52,109 +74,8 @@ function _arrayLikeToArray(arr, len) {
 
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}var script$1 = /*#__PURE__*/vue.defineComponent({
-  name: "TailpiecesSample",
-  // vue component name
-  data: function data() {
-    return {
-      counter: 5,
-      initCounter: 5,
-      message: {
-        action: null,
-        amount: null
-      }
-    };
-  },
-  computed: {
-    changedBy: function changedBy() {
-      var _ref = this,
-          message = _ref.message;
-
-      if (!message.action) return "initialized";
-      return "".concat(message.action, " ").concat(message.amount || "").trim();
-    }
-  },
-  methods: {
-    increment: function increment(arg) {
-      var amount = typeof arg !== "number" ? 1 : arg;
-      this.counter += amount;
-      this.message.action = "incremented by";
-      this.message.amount = amount;
-    },
-    decrement: function decrement(arg) {
-      var amount = typeof arg !== "number" ? 1 : arg;
-      this.counter -= amount;
-      this.message.action = "decremented by";
-      this.message.amount = amount;
-    },
-    reset: function reset() {
-      this.counter = this.initCounter;
-      this.message.action = "reset";
-      this.message.amount = null;
-    }
-  }
-});var _withId = /*#__PURE__*/vue.withScopeId("data-v-4285bdec");
-
-vue.pushScopeId("data-v-4285bdec");
-
-var _hoisted_1 = {
-  class: "tailpieces-sample"
-};
-
-var _hoisted_2 = /*#__PURE__*/vue.createTextVNode(". ");
-
-vue.popScopeId();
-
-var render$1 = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1, [vue.createVNode("p", null, [vue.createTextVNode(" The counter was " + vue.toDisplayString(_ctx.changedBy) + " to ", 1), vue.createVNode("b", null, vue.toDisplayString(_ctx.counter), 1), _hoisted_2]), vue.createVNode("button", {
-    onClick: _cache[1] || (_cache[1] = function () {
-      return _ctx.increment && _ctx.increment.apply(_ctx, arguments);
-    })
-  }, " Click +1 "), vue.createVNode("button", {
-    onClick: _cache[2] || (_cache[2] = function () {
-      return _ctx.decrement && _ctx.decrement.apply(_ctx, arguments);
-    })
-  }, " Click -1 "), vue.createVNode("button", {
-    onClick: _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.increment(5);
-    })
-  }, " Click +5 "), vue.createVNode("button", {
-    onClick: _cache[4] || (_cache[4] = function ($event) {
-      return _ctx.decrement(5);
-    })
-  }, " Click -5 "), vue.createVNode("button", {
-    onClick: _cache[5] || (_cache[5] = function () {
-      return _ctx.reset && _ctx.reset.apply(_ctx, arguments);
-    })
-  }, " Reset ")]);
-});function styleInject(css, ref) {
-  if ( ref === void 0 ) ref = {};
-  var insertAt = ref.insertAt;
-
-  if (!css || typeof document === 'undefined') { return; }
-
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var style = document.createElement('style');
-  style.type = 'text/css';
-
-  if (insertAt === 'top') {
-    if (head.firstChild) {
-      head.insertBefore(style, head.firstChild);
-    } else {
-      head.appendChild(style);
-    }
-  } else {
-    head.appendChild(style);
-  }
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-}var css_248z = "\n.tailpieces-sample[data-v-4285bdec] {\n  display: block;\n  width: 400px;\n  margin: 25px auto;\n  border: 1px solid #ccc;\n  background: #eaeaea;\n  text-align: center;\n  padding: 25px;\n}\n.tailpieces-sample p[data-v-4285bdec] {\n  margin: 0 0 1em;\n}\n";
-styleInject(css_248z);script$1.render = render$1;
-script$1.__scopeId = "data-v-4285bdec";var script = vue.defineComponent({
+}var script$1 = vue.defineComponent({
+  name: "TButton",
   props: {
     size: {
       type: String,
@@ -196,12 +117,250 @@ script$1.__scopeId = "data-v-4285bdec";var script = vue.defineComponent({
       colorClass: colorClass
     };
   }
-});function render(_ctx, _cache, $props, $setup, $data, $options) {
+});function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock("button", {
     class: ["mr-2 inline-block rounded text-white", [_ctx.sizeClass, _ctx.colorClass]],
     type: "button"
   }, [vue.renderSlot(_ctx.$slots, "default")], 2);
-}script.render = render;var components$1=/*#__PURE__*/Object.freeze({__proto__:null,TailpiecesSample: script$1,TButton: script});var install = function installTailpieces(app) {
+}script$1.render = render$1;var Validator = /*#__PURE__*/function () {
+  function Validator() {
+    _classCallCheck(this, Validator);
+  }
+
+  _createClass(Validator, [{
+    key: "validate",
+    value: function validate(value, rules) {
+      if (typeof value == "string") {
+        return this.validateString(value, rules);
+      }
+
+      return "";
+    }
+  }, {
+    key: "validateString",
+    value: function validateString(value, rules) {
+      var rulesArray = rules.split("|");
+      var message = "";
+      rulesArray.some(function (rule) {
+        /**
+         * Required
+         */
+        if (rule == "required") {
+          if (value == "") {
+            message = "Campo Obrigatório";
+            return true;
+          }
+        }
+        /**
+         * size
+         * size:3
+         */
+
+
+        if (rule.split(":")[0] == "size") {
+          if (typeof value == "string") {
+            if (value.length != parseInt(rule.split(":")[1])) {
+              message = "Este campo precisa ter ".concat(rule.split(":")[1], " caracteres");
+              return true;
+            }
+          }
+        }
+        /**
+         * min
+         * ex: min:3
+         */
+
+
+        if (rule.split(":")[0] == "min") {
+          if (typeof value == "string") {
+            if (value.length < parseInt(rule.split(":")[1])) {
+              message = "Este campo precisa ter ao menos ".concat(rule.split(":")[1], " caracteres");
+              return true;
+            }
+          }
+        }
+        /**
+         * max
+         * ex: max:3
+         */
+
+
+        if (rule.split(":")[0] == "max") {
+          if (typeof value == "string") {
+            if (value.length > parseInt(rule.split(":")[1])) {
+              message = "Este campo precisa ter no m\xE1ximo ".concat(rule.split(":")[1], " caracteres");
+              return true;
+            }
+          }
+        }
+      });
+      return message;
+    }
+  }]);
+
+  return Validator;
+}();var script = vue.defineComponent({
+  name: "BaseInput",
+  props: {
+    label: {
+      type: String,
+      required: true
+    },
+    modelValue: {
+      // type: [Object, String, Number, Boolean, undefined],
+      required: true
+    },
+    type: {
+      type: String,
+      default: "text"
+    },
+    rows: {
+      type: Number,
+      default: 3
+    },
+    validationRules: {
+      type: String,
+      default: ""
+    },
+    maxlength: {
+      type: Number
+    }
+  },
+  setup: function setup(props, _ref) {
+    var emit = _ref.emit;
+
+    /**
+     * Construção de um formItem vazio
+     */
+    var formItem = vue.ref({
+      value: "",
+      validationRules: "",
+      validationError: "",
+      status: "pristine"
+    });
+    var maxlengthLeft = vue.computed(function () {
+      if (typeof formItem.value.value == "string" && props.maxlength && props.maxlength > 0) {
+        return props.maxlength - formItem.value.value.length;
+      }
+
+      return null;
+    });
+    /**
+     * Valida os dados baseados nas regras de validationRules
+     */
+
+    var validate = function validate() {
+      var validator = new Validator();
+      formItem.value.validationError = validator.validate(formItem.value.value, formItem.value.validationRules);
+    };
+    /**
+     * Verifica de forma profunda o formItem
+     * e emite o event para atualização no pai
+     */
+
+
+    vue.watch(formItem, function (newVal) {
+      if (typeof props.modelValue == "string" || typeof props.modelValue == "number") {
+        emit("update:modelValue", newVal.value);
+      } else {
+        emit("update:modelValue", newVal);
+      }
+    }, {
+      deep: true
+    });
+    /**
+     * Ajusta a prop modelValue ao receber mudanças
+     */
+
+    vue.watch(function () {
+      return props.modelValue;
+    }, function (newVal) {
+      adjustProps(newVal);
+    }, {
+      deep: true
+    });
+    /**
+     * Ajusta as props nos casos de string / number / object
+     */
+
+    var adjustProps = function adjustProps(value) {
+      if (typeof value == "string" || typeof value == "number" || typeof value == "boolean" || typeof value == "undefined") {
+        formItem.value.value = value;
+        formItem.value.validationRules = props.validationRules;
+      } else {
+        formItem.value = value;
+
+        if (props.validationRules != "") {
+          formItem.value.validationRules = props.validationRules;
+        }
+      }
+    };
+    /**
+     * Ajusta as props ao inicializar o componente
+     */
+
+
+    vue.onMounted(function () {
+      adjustProps(props.modelValue);
+    });
+    /**
+     * Retorna os dados para o template
+     */
+
+    return {
+      formItem: formItem,
+      validate: validate,
+      maxlengthLeft: maxlengthLeft
+    };
+  }
+});var _hoisted_1 = {
+  class: "flex flex-col mb-4 relative w-full"
+};
+var _hoisted_2 = {
+  key: 2,
+  class: "absolute right-0 text-xs top-2 text-gray-500"
+};
+var _hoisted_3 = {
+  class: "text-red-800 text-sm ml-0.5"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? vue.withDirectives((vue.openBlock(), vue.createBlock("textarea", {
+    key: 0,
+    class: ["p-2 border rounded", {
+      'border-red-800': _ctx.formItem.validationError
+    }],
+    type: _ctx.type,
+    rows: _ctx.rows,
+    maxlength: _ctx.maxlength,
+    placeholder: _ctx.label,
+    onBlur: _cache[1] || (_cache[1] = function () {
+      return _ctx.validate && _ctx.validate.apply(_ctx, arguments);
+    }),
+    onKeydown: _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.formItem.validationError = '';
+    }),
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return _ctx.formItem.value = $event;
+    })
+  }, null, 42, ["type", "rows", "maxlength", "placeholder"])), [[vue.vModelText, _ctx.formItem.value]]) : vue.withDirectives((vue.openBlock(), vue.createBlock("input", {
+    key: 1,
+    class: ["p-2 border rounded", {
+      'border-red-800': _ctx.formItem.validationError
+    }],
+    type: _ctx.type,
+    maxlength: _ctx.maxlength,
+    placeholder: _ctx.label,
+    onBlur: _cache[4] || (_cache[4] = function () {
+      return _ctx.validate && _ctx.validate.apply(_ctx, arguments);
+    }),
+    onKeydown: _cache[5] || (_cache[5] = function ($event) {
+      return _ctx.formItem.validationError = '';
+    }),
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+      return _ctx.formItem.value = $event;
+    })
+  }, null, 42, ["type", "maxlength", "placeholder"])), [[vue.vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (vue.openBlock(), vue.createBlock("span", _hoisted_2, " Restam " + vue.toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : vue.createCommentVNode("", true), vue.createVNode("span", _hoisted_3, vue.toDisplayString(_ctx.formItem.validationError), 1)]);
+}script.render = render;var components$1=/*#__PURE__*/Object.freeze({__proto__:null,TButton: script$1,TInput: script});var install = function installTailpieces(app) {
   Object.entries(components$1).forEach(function (_ref) {
     var _ref2 = _slicedToArray(_ref, 2),
         componentName = _ref2[0],
@@ -210,7 +369,7 @@ script$1.__scopeId = "data-v-4285bdec";var script = vue.defineComponent({
     app.component(componentName, component);
   });
 }; // Create module definition for Vue.use()
-var components=/*#__PURE__*/Object.freeze({__proto__:null,'default': install,TailpiecesSample: script$1,TButton: script});// only expose one global var, with component exports exposed as properties of
+var components=/*#__PURE__*/Object.freeze({__proto__:null,'default': install,TButton: script$1,TInput: script});// only expose one global var, with component exports exposed as properties of
 // that global var (eg. plugin.component)
 
 Object.entries(components).forEach(function (_ref) {

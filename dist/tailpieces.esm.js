@@ -1,114 +1,7 @@
-import { defineComponent, pushScopeId, popScopeId, openBlock, createBlock, createVNode, createTextVNode, toDisplayString, withScopeId, computed, renderSlot } from 'vue';
+import { defineComponent, computed, openBlock, createBlock, renderSlot, ref, watch, onMounted, createVNode, toDisplayString, withDirectives, vModelText, vModelDynamic, createCommentVNode } from 'vue';
 
-var script$1 = /*#__PURE__*/defineComponent({
-  name: "TailpiecesSample",
-
-  // vue component name
-  data() {
-    return {
-      counter: 5,
-      initCounter: 5,
-      message: {
-        action: null,
-        amount: null
-      }
-    };
-  },
-
-  computed: {
-    changedBy() {
-      const {
-        message
-      } = this;
-      if (!message.action) return "initialized";
-      return `${message.action} ${message.amount || ""}`.trim();
-    }
-
-  },
-  methods: {
-    increment(arg) {
-      const amount = typeof arg !== "number" ? 1 : arg;
-      this.counter += amount;
-      this.message.action = "incremented by";
-      this.message.amount = amount;
-    },
-
-    decrement(arg) {
-      const amount = typeof arg !== "number" ? 1 : arg;
-      this.counter -= amount;
-      this.message.action = "decremented by";
-      this.message.amount = amount;
-    },
-
-    reset() {
-      this.counter = this.initCounter;
-      this.message.action = "reset";
-      this.message.amount = null;
-    }
-
-  }
-});
-
-const _withId = /*#__PURE__*/withScopeId("data-v-4285bdec");
-
-pushScopeId("data-v-4285bdec");
-
-const _hoisted_1 = {
-  class: "tailpieces-sample"
-};
-
-const _hoisted_2 = /*#__PURE__*/createTextVNode(". ");
-
-popScopeId();
-
-const render$1 = /*#__PURE__*/_withId((_ctx, _cache, $props, $setup, $data, $options) => {
-  return openBlock(), createBlock("div", _hoisted_1, [createVNode("p", null, [createTextVNode(" The counter was " + toDisplayString(_ctx.changedBy) + " to ", 1), createVNode("b", null, toDisplayString(_ctx.counter), 1), _hoisted_2]), createVNode("button", {
-    onClick: _cache[1] || (_cache[1] = (...args) => _ctx.increment && _ctx.increment(...args))
-  }, " Click +1 "), createVNode("button", {
-    onClick: _cache[2] || (_cache[2] = (...args) => _ctx.decrement && _ctx.decrement(...args))
-  }, " Click -1 "), createVNode("button", {
-    onClick: _cache[3] || (_cache[3] = $event => _ctx.increment(5))
-  }, " Click +5 "), createVNode("button", {
-    onClick: _cache[4] || (_cache[4] = $event => _ctx.decrement(5))
-  }, " Click -5 "), createVNode("button", {
-    onClick: _cache[5] || (_cache[5] = (...args) => _ctx.reset && _ctx.reset(...args))
-  }, " Reset ")]);
-});
-
-function styleInject(css, ref) {
-  if ( ref === void 0 ) ref = {};
-  var insertAt = ref.insertAt;
-
-  if (!css || typeof document === 'undefined') { return; }
-
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var style = document.createElement('style');
-  style.type = 'text/css';
-
-  if (insertAt === 'top') {
-    if (head.firstChild) {
-      head.insertBefore(style, head.firstChild);
-    } else {
-      head.appendChild(style);
-    }
-  } else {
-    head.appendChild(style);
-  }
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-}
-
-var css_248z = "\n.tailpieces-sample[data-v-4285bdec] {\n  display: block;\n  width: 400px;\n  margin: 25px auto;\n  border: 1px solid #ccc;\n  background: #eaeaea;\n  text-align: center;\n  padding: 25px;\n}\n.tailpieces-sample p[data-v-4285bdec] {\n  margin: 0 0 1em;\n}\n";
-styleInject(css_248z);
-
-script$1.render = render$1;
-script$1.__scopeId = "data-v-4285bdec";
-
-var script = defineComponent({
+var script$1 = defineComponent({
+  name: "TButton",
   props: {
     size: {
       type: String,
@@ -154,19 +47,244 @@ var script = defineComponent({
 
 });
 
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("button", {
     class: ["mr-2 inline-block rounded text-white", [_ctx.sizeClass, _ctx.colorClass]],
     type: "button"
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
 
+script$1.render = render$1;
+
+class Validator {
+  validate(value, rules) {
+    if (typeof value == "string") {
+      return this.validateString(value, rules);
+    }
+
+    return "";
+  }
+
+  validateString(value, rules) {
+    const rulesArray = rules.split("|");
+    let message = "";
+    rulesArray.some(rule => {
+      /**
+       * Required
+       */
+      if (rule == "required") {
+        if (value == "") {
+          message = "Campo Obrigatório";
+          return true;
+        }
+      }
+      /**
+       * size
+       * size:3
+       */
+
+
+      if (rule.split(":")[0] == "size") {
+        if (typeof value == "string") {
+          if (value.length != parseInt(rule.split(":")[1])) {
+            message = `Este campo precisa ter ${rule.split(":")[1]} caracteres`;
+            return true;
+          }
+        }
+      }
+      /**
+       * min
+       * ex: min:3
+       */
+
+
+      if (rule.split(":")[0] == "min") {
+        if (typeof value == "string") {
+          if (value.length < parseInt(rule.split(":")[1])) {
+            message = `Este campo precisa ter ao menos ${rule.split(":")[1]} caracteres`;
+            return true;
+          }
+        }
+      }
+      /**
+       * max
+       * ex: max:3
+       */
+
+
+      if (rule.split(":")[0] == "max") {
+        if (typeof value == "string") {
+          if (value.length > parseInt(rule.split(":")[1])) {
+            message = `Este campo precisa ter no máximo ${rule.split(":")[1]} caracteres`;
+            return true;
+          }
+        }
+      }
+    });
+    return message;
+  }
+
+}
+
+var script = defineComponent({
+  name: "BaseInput",
+  props: {
+    label: {
+      type: String,
+      required: true
+    },
+    modelValue: {
+      // type: [Object, String, Number, Boolean, undefined],
+      required: true
+    },
+    type: {
+      type: String,
+      default: "text"
+    },
+    rows: {
+      type: Number,
+      default: 3
+    },
+    validationRules: {
+      type: String,
+      default: ""
+    },
+    maxlength: {
+      type: Number
+    }
+  },
+
+  setup(props, {
+    emit
+  }) {
+    /**
+     * Construção de um formItem vazio
+     */
+    let formItem = ref({
+      value: "",
+      validationRules: "",
+      validationError: "",
+      status: "pristine"
+    });
+    let maxlengthLeft = computed(() => {
+      if (typeof formItem.value.value == "string" && props.maxlength && props.maxlength > 0) {
+        return props.maxlength - formItem.value.value.length;
+      }
+
+      return null;
+    });
+    /**
+     * Valida os dados baseados nas regras de validationRules
+     */
+
+    const validate = () => {
+      let validator = new Validator();
+      formItem.value.validationError = validator.validate(formItem.value.value, formItem.value.validationRules);
+    };
+    /**
+     * Verifica de forma profunda o formItem
+     * e emite o event para atualização no pai
+     */
+
+
+    watch(formItem, newVal => {
+      if (typeof props.modelValue == "string" || typeof props.modelValue == "number") {
+        emit("update:modelValue", newVal.value);
+      } else {
+        emit("update:modelValue", newVal);
+      }
+    }, {
+      deep: true
+    });
+    /**
+     * Ajusta a prop modelValue ao receber mudanças
+     */
+
+    watch(() => props.modelValue, newVal => {
+      adjustProps(newVal);
+    }, {
+      deep: true
+    });
+    /**
+     * Ajusta as props nos casos de string / number / object
+     */
+
+    const adjustProps = value => {
+      if (typeof value == "string" || typeof value == "number" || typeof value == "boolean" || typeof value == "undefined") {
+        formItem.value.value = value;
+        formItem.value.validationRules = props.validationRules;
+      } else {
+        formItem.value = value;
+
+        if (props.validationRules != "") {
+          formItem.value.validationRules = props.validationRules;
+        }
+      }
+    };
+    /**
+     * Ajusta as props ao inicializar o componente
+     */
+
+
+    onMounted(() => {
+      adjustProps(props.modelValue);
+    });
+    /**
+     * Retorna os dados para o template
+     */
+
+    return {
+      formItem,
+      validate,
+      maxlengthLeft
+    };
+  }
+
+});
+
+const _hoisted_1 = {
+  class: "flex flex-col mb-4 relative w-full"
+};
+const _hoisted_2 = {
+  key: 2,
+  class: "absolute right-0 text-xs top-2 text-gray-500"
+};
+const _hoisted_3 = {
+  class: "text-red-800 text-sm ml-0.5"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1, [createVNode("label", null, toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? withDirectives((openBlock(), createBlock("textarea", {
+    key: 0,
+    class: ["p-2 border rounded", {
+      'border-red-800': _ctx.formItem.validationError
+    }],
+    type: _ctx.type,
+    rows: _ctx.rows,
+    maxlength: _ctx.maxlength,
+    placeholder: _ctx.label,
+    onBlur: _cache[1] || (_cache[1] = (...args) => _ctx.validate && _ctx.validate(...args)),
+    onKeydown: _cache[2] || (_cache[2] = $event => _ctx.formItem.validationError = ''),
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = $event => _ctx.formItem.value = $event)
+  }, null, 42, ["type", "rows", "maxlength", "placeholder"])), [[vModelText, _ctx.formItem.value]]) : withDirectives((openBlock(), createBlock("input", {
+    key: 1,
+    class: ["p-2 border rounded", {
+      'border-red-800': _ctx.formItem.validationError
+    }],
+    type: _ctx.type,
+    maxlength: _ctx.maxlength,
+    placeholder: _ctx.label,
+    onBlur: _cache[4] || (_cache[4] = (...args) => _ctx.validate && _ctx.validate(...args)),
+    onKeydown: _cache[5] || (_cache[5] = $event => _ctx.formItem.validationError = ''),
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => _ctx.formItem.value = $event)
+  }, null, 42, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true), createVNode("span", _hoisted_3, toDisplayString(_ctx.formItem.validationError), 1)]);
+}
+
 script.render = render;
 
 var components = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  TailpiecesSample: script$1,
-  TButton: script
+  TButton: script$1,
+  TInput: script
 });
 
 // Import vue components
@@ -178,4 +296,4 @@ const install = function installTailpieces(app) {
 }; // Create module definition for Vue.use()
 
 export default install;
-export { script as TButton, script$1 as TailpiecesSample };
+export { script$1 as TButton, script as TInput };
