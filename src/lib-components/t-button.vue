@@ -11,6 +11,7 @@
 import { defineComponent, computed } from "vue";
 
 export default defineComponent({
+  name: "TButton",
   props: {
     size: {
       type: String,
