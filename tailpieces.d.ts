@@ -9,3 +9,4 @@ export const TFormSection: DefineComponent<{}, {}, any>;
 export const TSelect: DefineComponent<{}, {}, any>;
 export const TAccordion: DefineComponent<{}, {}, any>;
 export const TToggle: DefineComponent<{}, {}, any>;
+export const TAlert: DefineComponent<{}, {}, any>;

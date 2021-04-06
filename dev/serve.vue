@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <t-alert :info="success" color="red" />
+    <t-alert :info="success" color="green" />
+    <t-alert :info="success" />
     <t-form-section label="Seção Teste">
       <t-input label="Nome" :maxlength="100" v-model="user.name" />
       <t-button>Teste</t-button>
@@ -38,8 +41,13 @@ export default defineComponent({
   name: "ServeDev",
   setup() {
     let user = ref({ name: "Alan Rezende", active: true, new: false });
+    const success = {
+      title: "Sucesso!",
+      messages: ["Salvo com sucesso no banco de dados"]
+    };
     return {
-      user
+      user,
+      success
     };
   }
 });
