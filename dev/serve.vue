@@ -72,12 +72,20 @@
         </t-dropdown>
       </div>
     </t-form-section>
+    <t-form-section label="Loop">
+      <t-loop :data="items" v-slot="{ item: name }"
+        >{{ name.name.value }}
+      </t-loop>
+    </t-form-section>
   </div>
 </template>
 <script lang="ts">
+import tFormSection from "@/lib-components/t-form-section.vue";
+import { FormItemInterface } from "tailpieces";
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
+  components: { tFormSection },
   name: "ServeDev",
   setup() {
     let user = ref({ name: "Alan Rezende", active: true, new: false });
@@ -85,9 +93,33 @@ export default defineComponent({
       title: "Sucesso!",
       messages: ["Salvo com sucesso no banco de dados"]
     };
+    const items: FormItemInterface = {
+      value: [
+        {
+          name: {
+            value: "Alan",
+            status: "",
+            validationRules: "",
+            validationError: ""
+          }
+        },
+        {
+          name: {
+            value: "Mari",
+            status: "",
+            validationRules: "",
+            validationError: ""
+          }
+        }
+      ],
+      status: "",
+      validationError: "",
+      validationRules: ""
+    };
     return {
       user,
-      success
+      success,
+      items
     };
   }
 });

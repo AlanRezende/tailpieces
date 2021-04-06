@@ -1,6 +1,6 @@
 import { defineComponent, computed, openBlock, createBlock, renderSlot, ref, watch, onMounted, createVNode, toDisplayString, withDirectives, vModelText, vModelDynamic, createCommentVNode, Fragment, renderList, vModelSelect, pushScopeId, popScopeId, Transition, withScopeId, createTextVNode, vShow } from 'vue';
 
-var script$8 = defineComponent({
+var script$9 = defineComponent({
   name: "TButton",
   props: {
     size: {
@@ -47,14 +47,14 @@ var script$8 = defineComponent({
 
 });
 
-function render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("button", {
     class: ["mr-2 inline-block rounded text-white", [_ctx.sizeClass, _ctx.colorClass]],
     type: "button"
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
 
-script$8.render = render$8;
+script$9.render = render$9;
 
 class Validator {
   validate(value, rules) {
@@ -126,7 +126,7 @@ class Validator {
 
 }
 
-var script$7 = defineComponent({
+var script$8 = defineComponent({
   name: "BaseInput",
   props: {
     label: {
@@ -242,7 +242,7 @@ var script$7 = defineComponent({
 
 });
 
-const _hoisted_1$7 = {
+const _hoisted_1$8 = {
   class: "flex flex-col mb-4 relative w-full"
 };
 const _hoisted_2$5 = {
@@ -252,8 +252,8 @@ const _hoisted_2$5 = {
 const _hoisted_3$3 = {
   class: "text-red-800 text-sm ml-0.5"
 };
-function render$7(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$7, [createVNode("label", null, toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? withDirectives((openBlock(), createBlock("textarea", {
+function render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1$8, [createVNode("label", null, toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? withDirectives((openBlock(), createBlock("textarea", {
     key: 0,
     class: ["p-2 border rounded", {
       'border-red-800': _ctx.formItem.validationError
@@ -279,9 +279,9 @@ function render$7(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 42, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2$5, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true), createVNode("span", _hoisted_3$3, toDisplayString(_ctx.formItem.validationError), 1)]);
 }
 
-script$7.render = render$7;
+script$8.render = render$8;
 
-var script$6 = defineComponent({
+var script$7 = defineComponent({
   name: "FormSection",
   props: {
     label: {
@@ -291,19 +291,19 @@ var script$6 = defineComponent({
   }
 });
 
-const _hoisted_1$6 = {
+const _hoisted_1$7 = {
   class: "text-lg text-blue-900 mb-2"
 };
 const _hoisted_2$4 = {
   class: "bg-white shadow-sm p-3 rounded mb-4 flex flex-wrap"
 };
-function render$6(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(Fragment, null, [createVNode("div", _hoisted_1$6, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$4, [renderSlot(_ctx.$slots, "default")])], 64);
+function render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock(Fragment, null, [createVNode("div", _hoisted_1$7, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$4, [renderSlot(_ctx.$slots, "default")])], 64);
 }
 
-script$6.render = render$6;
+script$7.render = render$7;
 
-var script$5 = defineComponent({
+var script$6 = defineComponent({
   name: "BaseSelect",
   props: {
     label: {
@@ -382,11 +382,11 @@ var script$5 = defineComponent({
 
 });
 
-const _hoisted_1$5 = {
+const _hoisted_1$6 = {
   class: "flex flex-col mb-4 w-full"
 };
-function render$5(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$5, [createVNode("label", null, toDisplayString(_ctx.label), 1), withDirectives(createVNode("select", {
+function render$6(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1$6, [createVNode("label", null, toDisplayString(_ctx.label), 1), withDirectives(createVNode("select", {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => _ctx.formItem.value = $event),
     class: "p-2 border rounded",
     name: "",
@@ -399,9 +399,9 @@ function render$5(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128))], 512), [[vModelSelect, _ctx.formItem.value]])]);
 }
 
-script$5.render = render$5;
+script$6.render = render$6;
 
-var script$4 = defineComponent({
+var script$5 = defineComponent({
   name: "TAccordion",
   props: {
     label: {
@@ -423,7 +423,7 @@ const _withId = /*#__PURE__*/withScopeId("data-v-9f667f02");
 
 pushScopeId("data-v-9f667f02");
 
-const _hoisted_1$4 = {
+const _hoisted_1$5 = {
   class: "rounded border"
 };
 const _hoisted_2$3 = {
@@ -439,8 +439,8 @@ const _hoisted_4$1 = {
 
 popScopeId();
 
-const render$4 = /*#__PURE__*/_withId((_ctx, _cache, $props, $setup, $data, $options) => {
-  return openBlock(), createBlock("div", _hoisted_1$4, [createVNode("div", {
+const render$5 = /*#__PURE__*/_withId((_ctx, _cache, $props, $setup, $data, $options) => {
+  return openBlock(), createBlock("div", _hoisted_1$5, [createVNode("div", {
     onClick: _cache[1] || (_cache[1] = $event => _ctx.open = !_ctx.open),
     class: "cursor-pointer rounded-t bg-gray-100 p-1 px-2"
   }, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$3, [createVNode(Transition, {
@@ -481,10 +481,10 @@ function styleInject(css, ref) {
 var css_248z = "\n.fade-enter-active[data-v-9f667f02],\n.fade-leave-active[data-v-9f667f02] {\n  opacity: 1;\n  transform: translate3d(0, 0, 0);\n}\n.fade-enter-from[data-v-9f667f02],\n.fade-leave-to[data-v-9f667f02] {\n  opacity: 0;\n  transform: translate3d(0, -100%, 0);\n}\n";
 styleInject(css_248z);
 
-script$4.render = render$4;
-script$4.__scopeId = "data-v-9f667f02";
+script$5.render = render$5;
+script$5.__scopeId = "data-v-9f667f02";
 
-var script$3 = defineComponent({
+var script$4 = defineComponent({
   props: {
     modelValue: {
       type: Boolean,
@@ -530,7 +530,7 @@ var script$3 = defineComponent({
 
 });
 
-const _hoisted_1$3 = {
+const _hoisted_1$4 = {
   class: "cursor-pointer flex flex-col"
 };
 const _hoisted_2$2 = {
@@ -539,8 +539,8 @@ const _hoisted_2$2 = {
 const _hoisted_3$1 = {
   class: "flex items-center"
 };
-function render$3(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$3, [_ctx.label ? (openBlock(), createBlock("label", _hoisted_2$2, toDisplayString(_ctx.label), 1)) : createCommentVNode("", true), createVNode("div", _hoisted_3$1, [createVNode("button", {
+function render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1$4, [_ctx.label ? (openBlock(), createBlock("label", _hoisted_2$2, toDisplayString(_ctx.label), 1)) : createCommentVNode("", true), createVNode("div", _hoisted_3$1, [createVNode("button", {
     class: ["rounded-full border-2 focus:outline-none mr-2", [{
       'border-green-500': _ctx.modelValue,
       'border-gray-400': !_ctx.modelValue
@@ -560,9 +560,9 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   }, toDisplayString(_ctx.modelValue ? _ctx.title[0] : _ctx.title[1]), 3)) : createCommentVNode("", true)])]);
 }
 
-script$3.render = render$3;
+script$4.render = render$4;
 
-var script$2 = defineComponent({
+var script$3 = defineComponent({
   props: {
     info: {
       type: Object,
@@ -599,21 +599,21 @@ var script$2 = defineComponent({
 
 });
 
-const _hoisted_1$2 = {
+const _hoisted_1$3 = {
   key: 0,
   class: "text-lg font-bold"
 };
 const _hoisted_2$1 = {
   class: "list-inside"
 };
-function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.show ? (openBlock(), createBlock("div", {
     key: 0,
     class: ["relative border mb-4 p-3 rounded", _ctx.colorClass]
   }, [createVNode("span", {
     class: "absolute cursor-pointer right-2 top-1",
     onClick: _cache[1] || (_cache[1] = $event => _ctx.show = false)
-  }, "X"), _ctx.info.title ? (openBlock(), createBlock("p", _hoisted_1$2, toDisplayString(_ctx.info.title), 1)) : createCommentVNode("", true), createVNode("ul", _hoisted_2$1, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.info.messages, (item, index) => {
+  }, "X"), _ctx.info.title ? (openBlock(), createBlock("p", _hoisted_1$3, toDisplayString(_ctx.info.title), 1)) : createCommentVNode("", true), createVNode("ul", _hoisted_2$1, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.info.messages, (item, index) => {
     return openBlock(), createBlock("li", {
       class: {
         'list-disc': _ctx.info.title
@@ -623,9 +623,9 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128))])], 2)) : createCommentVNode("", true);
 }
 
-script$2.render = render$2;
+script$3.render = render$3;
 
-var script$1 = defineComponent({
+var script$2 = defineComponent({
   props: {
     label: {
       type: String,
@@ -662,7 +662,7 @@ var script$1 = defineComponent({
 
 });
 
-const _hoisted_1$1 = {
+const _hoisted_1$2 = {
   ref: "root",
   class: "relative inline-block"
 };
@@ -677,8 +677,8 @@ const _hoisted_3 = /*#__PURE__*/createVNode("path", {
 const _hoisted_4 = {
   class: "shadow rounded z-30 border bg-white absolute"
 };
-function render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$1, [createVNode("div", {
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1$2, [createVNode("div", {
     onClick: _cache[1] || (_cache[1] = (...args) => _ctx.toggleDropdown && _ctx.toggleDropdown(...args)),
     class: "inline-block"
   }, [renderSlot(_ctx.$slots, "trigger", {}, () => [createVNode("button", _hoisted_2, [createTextVNode(toDisplayString(_ctx.label) + " ", 1), (openBlock(), createBlock("svg", {
@@ -694,9 +694,9 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   }, [_hoisted_3], 2))])])]), withDirectives(createVNode("ul", _hoisted_4, [renderSlot(_ctx.$slots, "default")], 512), [[vShow, _ctx.open]])], 512);
 }
 
-script$1.render = render$1;
+script$2.render = render$2;
 
-var script = defineComponent({
+var script$1 = defineComponent({
   props: {
     type: {
       type: String,
@@ -709,31 +709,56 @@ var script = defineComponent({
   }
 });
 
-const _hoisted_1 = {
+const _hoisted_1$1 = {
   key: 1,
   class: "border-t mt-1 pt-1"
 };
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("li", null, [_ctx.type == 'link' ? (openBlock(), createBlock("a", {
     key: 0,
     class: "hover:bg-gray-100 px-4 py-1 block whitespace-nowrap",
     href: _ctx.href
-  }, [renderSlot(_ctx.$slots, "default")], 8, ["href"])) : (openBlock(), createBlock("hr", _hoisted_1))]);
+  }, [renderSlot(_ctx.$slots, "default")], 8, ["href"])) : (openBlock(), createBlock("hr", _hoisted_1$1))]);
+}
+
+script$1.render = render$1;
+
+var script = defineComponent({
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  }
+});
+
+const _hoisted_1 = {
+  key: 0
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return typeof _ctx.data.value == 'object' ? (openBlock(), createBlock("div", _hoisted_1, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.data.value, (item, index) => {
+    return renderSlot(_ctx.$slots, "default", {
+      item: item,
+      index: index,
+      key: index
+    });
+  }), 128))])) : createCommentVNode("", true);
 }
 
 script.render = render;
 
 var components = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  TButton: script$8,
-  TInput: script$7,
-  TFormSection: script$6,
-  TSelect: script$5,
-  TAccordion: script$4,
-  TToggle: script$3,
-  TAlert: script$2,
-  TDropdown: script$1,
-  TDropdownItem: script
+  TButton: script$9,
+  TInput: script$8,
+  TFormSection: script$7,
+  TSelect: script$6,
+  TAccordion: script$5,
+  TToggle: script$4,
+  TAlert: script$3,
+  TDropdown: script$2,
+  TDropdownItem: script$1,
+  TLoop: script
 });
 
 // Import vue components
@@ -745,4 +770,4 @@ const install = function installTailpieces(app) {
 }; // Create module definition for Vue.use()
 
 export default install;
-export { script$4 as TAccordion, script$2 as TAlert, script$8 as TButton, script$1 as TDropdown, script as TDropdownItem, script$6 as TFormSection, script$7 as TInput, script$5 as TSelect, script$3 as TToggle };
+export { script$5 as TAccordion, script$3 as TAlert, script$9 as TButton, script$2 as TDropdown, script$1 as TDropdownItem, script$7 as TFormSection, script$8 as TInput, script as TLoop, script$6 as TSelect, script$4 as TToggle };

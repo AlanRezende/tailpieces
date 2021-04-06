@@ -12,3 +12,14 @@ export const TToggle: DefineComponent<{}, {}, any>;
 export const TAlert: DefineComponent<{}, {}, any>;
 export const TDropdown: DefineComponent<{}, {}, any>;
 export const TDropdownItem: DefineComponent<{}, {}, any>;
+export const TLoop: DefineComponent<{}, {}, any>;
+
+export interface FormInterface {
+  [index: string]: FormItemInterface;
+}
+export interface FormItemInterface {
+  value: string | number | boolean | undefined | null | FormInterface[];
+  validationRules: string;
+  validationError: string;
+  status: string;
+}
