@@ -32,6 +32,46 @@
         non imperdiet arcu.
       </t-accordion>
     </t-form-section>
+
+    <t-form-section label="DropDown">
+      <div class="flex items-center">
+        <t-dropdown>
+          <template v-slot:trigger>
+            <t-button size="sm" color="gray">Mais Opções</t-button>
+          </template>
+          <template v-slot:default>
+            <t-dropdown-item href="#verImagens">Ver Imagens</t-dropdown-item>
+            <t-dropdown-item href="#editar">Editar</t-dropdown-item>
+            <t-dropdown-item type="separator" />
+            <t-dropdown-item href="#download">Download PDF</t-dropdown-item>
+          </template>
+        </t-dropdown>
+
+        <t-dropdown>
+          <template v-slot:trigger>
+            <img
+              class="border mx-2 rounded-full w-8 h-8 cursor-pointer"
+              src="https://cdn1.iconfinder.com/data/icons/female-avatars-vol-1/256/female-portrait-avatar-profile-woman-sexy-afro-2-512.png"
+            />
+          </template>
+          <template v-slot:default>
+            <t-dropdown-item href="#verImagens">Ver Imagens</t-dropdown-item>
+            <t-dropdown-item href="#editar">Editar</t-dropdown-item>
+            <t-dropdown-item type="separator" />
+            <t-dropdown-item href="#download">Download PDF</t-dropdown-item>
+          </template>
+        </t-dropdown>
+
+        <t-dropdown label="Mais ações">
+          <template v-slot:default>
+            <t-dropdown-item href="#verImagens">Ver Imagens</t-dropdown-item>
+            <t-dropdown-item href="#editar">Editar</t-dropdown-item>
+            <t-dropdown-item type="separator" />
+            <t-dropdown-item href="#download">Download PDF</t-dropdown-item>
+          </template>
+        </t-dropdown>
+      </div>
+    </t-form-section>
   </div>
 </template>
 <script lang="ts">

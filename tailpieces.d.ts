@@ -10,3 +10,5 @@ export const TSelect: DefineComponent<{}, {}, any>;
 export const TAccordion: DefineComponent<{}, {}, any>;
 export const TToggle: DefineComponent<{}, {}, any>;
 export const TAlert: DefineComponent<{}, {}, any>;
+export const TDropdown: DefineComponent<{}, {}, any>;
+export const TDropdownItem: DefineComponent<{}, {}, any>;
