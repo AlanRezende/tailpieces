@@ -50,27 +50,27 @@ export default defineComponent({
   props: {
     label: {
       type: String,
-      required: true
+      required: true,
     },
     modelValue: {
       // type: [Object, String, Number, Boolean, undefined],
-      required: true
+      required: true,
     },
     type: {
       type: String,
-      default: "text"
+      default: "text",
     },
     rows: {
       type: Number,
-      default: 3
+      default: 3,
     },
     validationRules: {
       type: String,
-      default: ""
+      default: "",
     },
     maxlength: {
-      type: Number
-    }
+      type: Number,
+    },
   },
   setup(props, { emit }) {
     /**
@@ -80,7 +80,7 @@ export default defineComponent({
       value: "",
       validationRules: "",
       validationError: "",
-      status: "pristine"
+      status: "pristine",
     } as formItem);
 
     let maxlengthLeft = computed(() => {
@@ -101,7 +101,7 @@ export default defineComponent({
       let validator = new Validator();
       formItem.value.validationError = validator.validate(
         formItem.value.value,
-        formItem.value.validationRules
+        formItem.value.validationRules,
       );
     };
 
@@ -121,7 +121,7 @@ export default defineComponent({
           emit("update:modelValue", newVal);
         }
       },
-      { deep: true }
+      { deep: true },
     );
 
     /**
@@ -133,15 +133,15 @@ export default defineComponent({
         adjustProps(newVal as string | formItem);
       },
       {
-        deep: true
-      }
+        deep: true,
+      },
     );
 
     /**
      * Ajusta as props nos casos de string / number / object
      */
     const adjustProps = (
-      value: string | formItem | number | boolean | undefined
+      value: string | formItem | number | boolean | undefined,
     ) => {
       if (
         typeof value == "string" ||
@@ -171,8 +171,8 @@ export default defineComponent({
     return {
       formItem,
       validate,
-      maxlengthLeft
+      maxlengthLeft,
     };
-  }
+  },
 });
 </script>

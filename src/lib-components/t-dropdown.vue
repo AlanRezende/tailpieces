@@ -30,8 +30,8 @@ export default defineComponent({
   props: {
     label: {
       type: String,
-      default: "Opções"
-    }
+      default: "Opções",
+    },
   },
 
   setup() {
@@ -54,8 +54,8 @@ export default defineComponent({
     return {
       open,
       toggleDropdown,
-      root
+      root,
     };
-  }
+  },
 });
 </script>

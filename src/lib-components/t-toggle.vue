@@ -8,9 +8,9 @@
         :class="[
           {
             'border-green-500': modelValue,
-            'border-gray-400': !modelValue
+            'border-gray-400': !modelValue,
           },
-          sizeClass.button
+          sizeClass.button,
         ]"
       >
         <span
@@ -18,9 +18,9 @@
           :class="[
             {
               'bg-green-500': modelValue,
-              'bg-gray-400': !modelValue
+              'bg-gray-400': !modelValue,
             },
-            sizeClass.span
+            sizeClass.span,
           ]"
         ></span>
       </button>
@@ -29,9 +29,9 @@
         :class="[
           {
             'text-green-500': modelValue,
-            'text-gray-400': !modelValue
+            'text-gray-400': !modelValue,
           },
-          sizeClass.text
+          sizeClass.text,
         ]"
       >
         {{ modelValue ? title[0] : title[1] }}
@@ -46,18 +46,18 @@ export default defineComponent({
   props: {
     modelValue: {
       type: Boolean,
-      required: true
+      required: true,
     },
     label: {
-      type: String
+      type: String,
     },
     size: {
       type: String,
-      default: "base"
+      default: "base",
     },
     title: {
-      type: Array as PropType<string[]>
-    }
+      type: Array as PropType<string[]>,
+    },
   },
   setup(props) {
     const sizeClass = computed(() => {
@@ -67,25 +67,25 @@ export default defineComponent({
         sm: {
           button: "w-8 h-4",
           span: `h-2 w-2 ${props.modelValue ? "ml-4" : "ml-1"}`,
-          text: "text-sm"
+          text: "text-sm",
         },
         base: {
           button: "w-12 h-6",
           span: `h-4 w-4 ${props.modelValue ? "ml-6" : "ml-1"}`,
-          text: "text-base"
+          text: "text-base",
         },
         lg: {
           button: "w-16 h-9",
           span: `h-6 w-6 ${props.modelValue ? "ml-8" : "ml-1"}`,
-          text: "text-lg"
-        }
+          text: "text-lg",
+        },
       };
       return options[props.size];
     });
 
     return {
-      sizeClass
+      sizeClass,
     };
-  }
+  },
 });
 </script>

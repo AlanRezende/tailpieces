@@ -28,16 +28,16 @@ export default defineComponent({
   props: {
     label: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup() {
     let open = ref(false);
 
     return {
-      open
+      open,
     };
-  }
+  },
 });
 </script>
 <style scoped>

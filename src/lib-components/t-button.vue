@@ -15,19 +15,19 @@ export default defineComponent({
   props: {
     size: {
       type: String,
-      default: "base"
+      default: "base",
     },
     color: {
       type: String,
-      default: "blue"
-    }
+      default: "blue",
+    },
   },
   setup(props) {
     const sizeClass = computed(() => {
       let options: { [key: string]: string } = {
         sm: "text-sm px-2",
         base: "text-base px-4 py-1",
-        lg: "text-lg px-8 py-2"
+        lg: "text-lg px-8 py-2",
       };
       return options[props.size];
     });
@@ -39,7 +39,7 @@ export default defineComponent({
         yellow: "bg-yellow-500",
         green: "bg-green-700",
         red: "bg-yellow-700",
-        gray: "bg-gray-500"
+        gray: "bg-gray-500",
       };
       if (props.color.split("-").length > 1) {
         return props.color;
@@ -49,8 +49,8 @@ export default defineComponent({
 
     return {
       sizeClass,
-      colorClass
+      colorClass,
     };
-  }
+  },
 });
 </script>

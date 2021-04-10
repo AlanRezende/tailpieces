@@ -22,12 +22,12 @@ export default defineComponent({
   props: {
     info: {
       type: Object as PropType<{ title?: string; messages: string[] }>,
-      required: true
+      required: true,
     },
     color: {
       type: String,
-      default: "blue"
-    }
+      default: "blue",
+    },
   },
   setup(props) {
     let show = ref(true);
@@ -38,7 +38,7 @@ export default defineComponent({
         blue: "bg-blue-100 text-blue-900 border-blue-300",
         yellow: "bg-yellow-100 text-yellow-900 border-yellow-300",
         green: "bg-green-100 text-green-900 border-green-300",
-        gray: "bg-gray-50 text-gray-900 border-gray-300"
+        gray: "bg-gray-50 text-gray-900 border-gray-300",
       };
       if (props.color.split("-").length > 1) {
         return props.color;
@@ -48,8 +48,8 @@ export default defineComponent({
 
     return {
       show,
-      colorClass
+      colorClass,
     };
-  }
+  },
 });
 </script>

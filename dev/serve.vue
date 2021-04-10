@@ -11,7 +11,7 @@
         label="Ativo"
         :items="[
           { name: 'Sim', value: true },
-          { name: 'Não', value: false }
+          { name: 'Não', value: false },
         ]"
         v-model="user.active"
       ></t-select>
@@ -91,7 +91,7 @@ export default defineComponent({
     let user = ref({ name: "Alan Rezende", active: true, new: false });
     const success = {
       title: "Sucesso!",
-      messages: ["Salvo com sucesso no banco de dados"]
+      messages: ["Salvo com sucesso no banco de dados"],
     };
     const items: FormItemInterface = {
       value: [
@@ -100,27 +100,27 @@ export default defineComponent({
             value: "Alan",
             status: "",
             validationRules: "",
-            validationError: ""
-          }
+            validationError: "",
+          },
         },
         {
           name: {
             value: "Mari",
             status: "",
             validationRules: "",
-            validationError: ""
-          }
-        }
+            validationError: "",
+          },
+        },
       ],
       status: "",
       validationError: "",
-      validationRules: ""
+      validationRules: "",
     };
     return {
       user,
       success,
-      items
+      items,
     };
-  }
+  },
 });
 </script>

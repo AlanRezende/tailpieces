@@ -22,15 +22,15 @@ export default defineComponent({
   props: {
     label: {
       type: String,
-      required: true
+      required: true,
     },
     modelValue: {
-      required: true
+      required: true,
     },
     items: {
       type: Array as PropType<{ name: string; value: string | number }[]>,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props, { emit }) {
     /**
@@ -40,7 +40,7 @@ export default defineComponent({
       value: "",
       validationRules: "",
       validationError: "",
-      status: "pristine"
+      status: "pristine",
     } as formItem);
 
     /**
@@ -59,7 +59,7 @@ export default defineComponent({
           emit("update:modelValue", newVal);
         }
       },
-      { deep: true }
+      { deep: true },
     );
 
     /**
@@ -71,15 +71,15 @@ export default defineComponent({
         adjustProps(newVal as string | formItem);
       },
       {
-        deep: true
-      }
+        deep: true,
+      },
     );
 
     /**
      * Ajusta as props nos casos de string / number / object
      */
     const adjustProps = (
-      value: string | formItem | number | boolean | undefined
+      value: string | formItem | number | boolean | undefined,
     ) => {
       if (
         typeof value == "string" ||
@@ -104,8 +104,8 @@ export default defineComponent({
     });
 
     return {
-      formItem
+      formItem,
     };
-  }
+  },
 });
 </script>

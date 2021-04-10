@@ -1,7 +1,7 @@
 export class Validator {
   validate(
     value: string | number | boolean | null | undefined,
-    rules: string
+    rules: string,
   ): string {
     if (typeof value == "string") {
       return this.validateString(value, rules);

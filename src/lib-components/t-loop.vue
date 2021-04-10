@@ -16,8 +16,8 @@ export default defineComponent({
   props: {
     data: {
       type: Object as PropType<FormItemInterface>,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 });
 </script>

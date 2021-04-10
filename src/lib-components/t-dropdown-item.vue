@@ -17,12 +17,12 @@ export default defineComponent({
   props: {
     type: {
       type: String,
-      default: "link"
+      default: "link",
     },
     href: {
       type: String,
-      default: "#"
-    }
-  }
+      default: "#",
+    },
+  },
 });
 </script>
