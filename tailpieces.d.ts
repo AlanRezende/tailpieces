@@ -48,13 +48,50 @@ export const TAlert: DefineComponent<{}, {}, any>;
 export const TDropdown: DefineComponent<{}, {}, any>;
 export const TDropdownItem: DefineComponent<{}, {}, any>;
 export const TLoop: DefineComponent<{}, {}, any>;
+export class Form {
+  data: FormInterface;
+  validationRules: FormRule;
+  constructor(data: DefaultObjectInterface, validationRules?: FormRule);
+  getOriginal(): DefaultObjectInterface;
+  syncRules(): void;
+  setPristine(): void;
+  clearErrors(data?: any): void;
+  hasErrors(): boolean;
+  errors(data?: FormInterface): number;
+  validate(data?: FormInterface): void;
+  get(
+    key: string,
+  ): string | number | boolean | null | FormInterface[] | undefined;
+  /**
+   * Adiciona as regras de validação aos itens do form
+   * 1 nível @todo subníveis
+   */
+  setRules(rules: FormRule, data?: any): void;
+  /**
+   * Retorna o objeto ao estado inicial
+   */
+  private removeProperties;
+  /**
+   * Adiciona as propriedades extras do objeto
+   */
+  private addProperties;
+}
 
 export interface FormInterface {
   [index: string]: FormItemInterface;
 }
+
 export interface FormItemInterface {
   value: string | number | boolean | undefined | null | FormInterface[];
   validationRules: string;
   validationError: string;
   status: string;
+}
+
+export interface DefaultObjectInterface {
+  [index: string]: string | number | boolean | null | DefaultObjectInterface[];
+}
+
+export interface FormRule {
+  [index: string]: string | FormRule;
 }
