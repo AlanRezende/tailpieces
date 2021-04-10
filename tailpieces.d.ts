@@ -3,7 +3,42 @@ import { DefineComponent, Plugin } from "vue";
 declare const Tailpieces: Exclude<Plugin["install"], undefined>;
 export default Tailpieces;
 
-export const TButton: DefineComponent<{}, {}, any>;
+export const TButton: DefineComponent<
+  {
+    size: {
+      type: StringConstructor;
+      default: string;
+    };
+    color: {
+      type: StringConstructor;
+      default: string;
+    };
+  },
+  {
+    sizeClass: import("vue").ComputedRef<string>;
+    colorClass: import("vue").ComputedRef<string>;
+  },
+  unknown,
+  {},
+  {},
+  import("vue").ComponentOptionsMixin,
+  import("vue").ComponentOptionsMixin,
+  Record<string, any>,
+  string,
+  import("vue").VNodeProps &
+    import("vue").AllowedComponentProps &
+    import("vue").ComponentCustomProps,
+  Readonly<
+    {
+      color: string;
+      size: string;
+    } & {}
+  >,
+  {
+    color: string;
+    size: string;
+  }
+>;
 export const TInput: DefineComponent<{}, {}, any>;
 export const TFormSection: DefineComponent<{}, {}, any>;
 export const TSelect: DefineComponent<{}, {}, any>;

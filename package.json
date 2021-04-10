@@ -1,21 +1,34 @@
 {
   "name": "tailpieces",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Vue 3 + TypeScript + TailwindCss Components Library UI",
-
+  "keywords": [
+    "tailwindcss",
+    "vue",
+    "vue3",
+    "components",
+    "ui framework",
+    "component framework",
+    "ui library",
+    "component library",
+    "forms",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlanRezende/tailpieces.git"
+  },
   "main": "dist/tailpieces.ssr.js",
   "browser": "dist/tailpieces.esm.js",
   "module": "dist/tailpieces.esm.js",
   "unpkg": "dist/tailpieces.min.js",
   "types": "tailpieces.d.ts",
-
   "files": [
     "dist/*",
     "tailpieces.d.ts",
     "src/**/*.vue"
   ],
   "sideEffects": false,
-
   "scripts": {
     "serve": "vue-cli-service serve dev/serve.ts",
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
@@ -23,10 +36,7 @@
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
-
-  "dependencies": {
-  },
-
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
