@@ -2,6 +2,7 @@
   "name": "tailpieces",
   "version": "1.0.11",
   "description": "Vue 3 + TypeScript + TailwindCss Components Library UI",
+  "license": "MIT",
   "keywords": [
     "tailwindcss",
     "vue",
