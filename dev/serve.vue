@@ -13,10 +13,10 @@
           { name: 'Sim', value: true },
           { name: 'Não', value: false },
         ]"
-        v-model="user.active"
+        v-model="user.data.active.value"
       ></t-select>
       <t-toggle
-        v-model="user.new"
+        v-model="user.data.new.value"
         label="Status"
         :title="['Ativo', 'Inativo']"
       />
@@ -80,15 +80,16 @@
   </div>
 </template>
 <script lang="ts">
-import tFormSection from "@/lib-components/t-form-section.vue";
 import { FormItemInterface } from "tailpieces";
 import { defineComponent, ref } from "vue";
-
+import { Form } from "@/entry.esm";
 export default defineComponent({
-  components: { tFormSection },
   name: "ServeDev",
   setup() {
-    let user = ref({ name: "Alan Rezende", active: true, new: false });
+    let user = ref(
+      new Form({ name: "Alan Rezende", active: true, new: false }),
+    );
+    console.log(user.value.data);
     const success = {
       title: "Sucesso!",
       messages: ["Salvo com sucesso no banco de dados"],

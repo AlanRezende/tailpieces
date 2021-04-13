@@ -4,7 +4,7 @@ import {
   DefaultObjectInterface,
   FormRule,
 } from "../types";
-import { Validator } from "./Validator";
+import { Validator } from ".";
 
 export default class Form {
   data: FormInterface;

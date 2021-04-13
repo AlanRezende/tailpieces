@@ -56,6 +56,168 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
 
 script$9.render = render$9;
 
+class Form {
+  constructor(data, validationRules = {}) {
+    this.data = this.addProperties(data);
+    this.validationRules = {};
+
+    if (validationRules != {}) {
+      this.setRules(validationRules);
+    }
+  }
+
+  getOriginal() {
+    return this.removeProperties(this.data);
+  }
+
+  syncRules() {
+    this.setRules(this.validationRules, this.data);
+  }
+
+  setPristine() {// Muda o status de todos os campos do form
+  }
+
+  clearErrors(data = this.data) {
+    Object.entries(data).forEach(([key, value]) => {
+      if (typeof value.value == "object" && value.value != null) {
+        if (typeof value == "object") {
+          value.value.forEach(item => {
+            this.clearErrors(item);
+          });
+        }
+      } else {
+        value.value;
+        data[key]["validationError"] = "";
+      }
+    });
+  }
+
+  hasErrors() {
+    return this.errors() > 0;
+  }
+
+  errors(data = this.data) {
+    let totalErrors = 0;
+    Object.values(data).forEach(value => {
+      if (typeof value.value == "object" && value.value != null) {
+        value.value.forEach(item => {
+          totalErrors += this.errors(item);
+        });
+      } else {
+        if (value.validationError != "") {
+          totalErrors += 1;
+        }
+      }
+    });
+    return totalErrors;
+  }
+
+  validate(data = this.data) {
+    const validator = new Validator();
+    Object.values(data).forEach(value => {
+      if (typeof value.value == "object" && value.value != null) {
+        value.value.forEach(item => {
+          this.validate(item);
+        });
+      } else {
+        value.validationError = validator.validate(value.value, value.validationRules);
+      }
+    });
+  }
+
+  get(key) {
+    if (this.data[key]) {
+      return this.data[key].value;
+    }
+
+    return undefined;
+  }
+  /**
+   * Adiciona as regras de validação aos itens do form
+   * 1 nível @todo subníveis
+   */
+
+
+  setRules(rules, data = this.data) {
+    if (data == this.data) {
+      this.validationRules = rules;
+    }
+
+    Object.entries(rules).forEach(([key, value]) => {
+      if (data[key] && typeof value == "string") {
+        data[key]["validationRules"] = value;
+      } else {
+        const temp = data[key.substr(1)];
+
+        if (temp && typeof value == "object" && typeof temp.value == "object" && temp.value != null) {
+          temp.value.forEach(item => {
+            this.setRules(value, item);
+          });
+        }
+      }
+    });
+  } // @todo criar SetRule para apenas 1 item
+  // name: 'required' ou categories.name: required
+
+  /**
+   * Retorna o objeto ao estado inicial
+   */
+
+
+  removeProperties(data) {
+    const newObj = {};
+    Object.entries(data).forEach(([key, value]) => {
+      if (typeof value.value == "object" && value.value != null) {
+        const nested = [];
+        value.value.forEach(item => {
+          nested.push(this.removeProperties(item));
+        });
+        newObj[key] = nested;
+      } else {
+        if (typeof value.value != "undefined") {
+          newObj[key] = value.value;
+        }
+      }
+    });
+    return newObj;
+  }
+  /**
+   * Adiciona as propriedades extras do objeto
+   */
+
+
+  addProperties(data) {
+    if (data == null) {
+      return;
+    }
+
+    const newObj = {};
+    Object.entries(data).forEach(([key, value]) => {
+      if (typeof value == "object" && value != null) {
+        const nested = [];
+        value.forEach(item => {
+          nested.push(this.addProperties(item));
+        });
+        newObj[key] = {
+          value: nested,
+          validationRules: "",
+          validationError: "",
+          status: ""
+        };
+      } else {
+        newObj[key] = {
+          value: value,
+          validationRules: "",
+          validationError: "",
+          status: ""
+        };
+      }
+    });
+    return newObj;
+  }
+
+}
+
 class Validator {
   validate(value, rules) {
     if (typeof value == "string") {
@@ -419,9 +581,9 @@ var script$5 = defineComponent({
 
 });
 
-const _withId = /*#__PURE__*/withScopeId("data-v-9f667f02");
+const _withId = /*#__PURE__*/withScopeId("data-v-05d6287b");
 
-pushScopeId("data-v-9f667f02");
+pushScopeId("data-v-05d6287b");
 
 const _hoisted_1$5 = {
   class: "rounded border"
@@ -478,11 +640,11 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = "\n.fade-enter-active[data-v-9f667f02],\n.fade-leave-active[data-v-9f667f02] {\n  opacity: 1;\n  transform: translate3d(0, 0, 0);\n}\n.fade-enter-from[data-v-9f667f02],\n.fade-leave-to[data-v-9f667f02] {\n  opacity: 0;\n  transform: translate3d(0, -100%, 0);\n}\n";
+var css_248z = "\n.fade-enter-active[data-v-05d6287b],\n.fade-leave-active[data-v-05d6287b] {\n  opacity: 1;\n  transform: translate3d(0, 0, 0);\n}\n.fade-enter-from[data-v-05d6287b],\n.fade-leave-to[data-v-05d6287b] {\n  opacity: 0;\n  transform: translate3d(0, -100%, 0);\n}\n";
 styleInject(css_248z);
 
 script$5.render = render$5;
-script$5.__scopeId = "data-v-9f667f02";
+script$5.__scopeId = "data-v-05d6287b";
 
 var script$4 = defineComponent({
   props: {
@@ -770,4 +932,4 @@ const install = function installTailpieces(app) {
 }; // Create module definition for Vue.use()
 
 export default install;
-export { script$5 as TAccordion, script$3 as TAlert, script$9 as TButton, script$2 as TDropdown, script$1 as TDropdownItem, script$7 as TFormSection, script$8 as TInput, script as TLoop, script$6 as TSelect, script$4 as TToggle };
+export { Form, script$5 as TAccordion, script$3 as TAlert, script$9 as TButton, script$2 as TDropdown, script$1 as TDropdownItem, script$7 as TFormSection, script$8 as TInput, script as TLoop, script$6 as TSelect, script$4 as TToggle, Validator };

@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { Validator } from "./Validator";
+import { Validator } from "@/lib-classes";
 import { defineComponent, ref, watch, onMounted, computed } from "vue";
 interface formItem {
   value: string | number | boolean | undefined;

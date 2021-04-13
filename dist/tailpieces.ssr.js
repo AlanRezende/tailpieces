@@ -138,7 +138,218 @@ function _nonIterableRest() {
     class: ["mr-2 inline-block rounded text-white", [_ctx.sizeClass, _ctx.colorClass]],
     type: "button"
   }, [vue.renderSlot(_ctx.$slots, "default")], 2);
-}script$9.render = render$9;var Validator = /*#__PURE__*/function () {
+}script$9.render = render$9;var Form = /*#__PURE__*/function () {
+  function Form(data) {
+    var validationRules = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    _classCallCheck(this, Form);
+
+    this.data = this.addProperties(data);
+    this.validationRules = {};
+
+    if (validationRules != {}) {
+      this.setRules(validationRules);
+    }
+  }
+
+  _createClass(Form, [{
+    key: "getOriginal",
+    value: function getOriginal() {
+      return this.removeProperties(this.data);
+    }
+  }, {
+    key: "syncRules",
+    value: function syncRules() {
+      this.setRules(this.validationRules, this.data);
+    }
+  }, {
+    key: "setPristine",
+    value: function setPristine() {// Muda o status de todos os campos do form
+    }
+  }, {
+    key: "clearErrors",
+    value: function clearErrors() {
+      var _this = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.data;
+      Object.entries(data).forEach(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            key = _ref2[0],
+            value = _ref2[1];
+
+        if (_typeof(value.value) == "object" && value.value != null) {
+          if (_typeof(value) == "object") {
+            value.value.forEach(function (item) {
+              _this.clearErrors(item);
+            });
+          }
+        } else {
+          value.value;
+          data[key]["validationError"] = "";
+        }
+      });
+    }
+  }, {
+    key: "hasErrors",
+    value: function hasErrors() {
+      return this.errors() > 0;
+    }
+  }, {
+    key: "errors",
+    value: function errors() {
+      var _this2 = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.data;
+      var totalErrors = 0;
+      Object.values(data).forEach(function (value) {
+        if (_typeof(value.value) == "object" && value.value != null) {
+          value.value.forEach(function (item) {
+            totalErrors += _this2.errors(item);
+          });
+        } else {
+          if (value.validationError != "") {
+            totalErrors += 1;
+          }
+        }
+      });
+      return totalErrors;
+    }
+  }, {
+    key: "validate",
+    value: function validate() {
+      var _this3 = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.data;
+      var validator = new Validator();
+      Object.values(data).forEach(function (value) {
+        if (_typeof(value.value) == "object" && value.value != null) {
+          value.value.forEach(function (item) {
+            _this3.validate(item);
+          });
+        } else {
+          value.validationError = validator.validate(value.value, value.validationRules);
+        }
+      });
+    }
+  }, {
+    key: "get",
+    value: function get(key) {
+      if (this.data[key]) {
+        return this.data[key].value;
+      }
+
+      return undefined;
+    }
+    /**
+     * Adiciona as regras de validação aos itens do form
+     * 1 nível @todo subníveis
+     */
+
+  }, {
+    key: "setRules",
+    value: function setRules(rules) {
+      var _this4 = this;
+
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.data;
+
+      if (data == this.data) {
+        this.validationRules = rules;
+      }
+
+      Object.entries(rules).forEach(function (_ref3) {
+        var _ref4 = _slicedToArray(_ref3, 2),
+            key = _ref4[0],
+            value = _ref4[1];
+
+        if (data[key] && typeof value == "string") {
+          data[key]["validationRules"] = value;
+        } else {
+          var temp = data[key.substr(1)];
+
+          if (temp && _typeof(value) == "object" && _typeof(temp.value) == "object" && temp.value != null) {
+            temp.value.forEach(function (item) {
+              _this4.setRules(value, item);
+            });
+          }
+        }
+      });
+    } // @todo criar SetRule para apenas 1 item
+    // name: 'required' ou categories.name: required
+
+    /**
+     * Retorna o objeto ao estado inicial
+     */
+
+  }, {
+    key: "removeProperties",
+    value: function removeProperties(data) {
+      var _this5 = this;
+
+      var newObj = {};
+      Object.entries(data).forEach(function (_ref5) {
+        var _ref6 = _slicedToArray(_ref5, 2),
+            key = _ref6[0],
+            value = _ref6[1];
+
+        if (_typeof(value.value) == "object" && value.value != null) {
+          var nested = [];
+          value.value.forEach(function (item) {
+            nested.push(_this5.removeProperties(item));
+          });
+          newObj[key] = nested;
+        } else {
+          if (typeof value.value != "undefined") {
+            newObj[key] = value.value;
+          }
+        }
+      });
+      return newObj;
+    }
+    /**
+     * Adiciona as propriedades extras do objeto
+     */
+
+  }, {
+    key: "addProperties",
+    value: function addProperties(data) {
+      var _this6 = this;
+
+      if (data == null) {
+        return;
+      }
+
+      var newObj = {};
+      Object.entries(data).forEach(function (_ref7) {
+        var _ref8 = _slicedToArray(_ref7, 2),
+            key = _ref8[0],
+            value = _ref8[1];
+
+        if (_typeof(value) == "object" && value != null) {
+          var nested = [];
+          value.forEach(function (item) {
+            nested.push(_this6.addProperties(item));
+          });
+          newObj[key] = {
+            value: nested,
+            validationRules: "",
+            validationError: "",
+            status: ""
+          };
+        } else {
+          newObj[key] = {
+            value: value,
+            validationRules: "",
+            validationError: "",
+            status: ""
+          };
+        }
+      });
+      return newObj;
+    }
+  }]);
+
+  return Form;
+}();var Validator = /*#__PURE__*/function () {
   function Validator() {
     _classCallCheck(this, Validator);
   }
@@ -500,9 +711,9 @@ function render$6(_ctx, _cache, $props, $setup, $data, $options) {
       open: open
     };
   }
-});var _withId = /*#__PURE__*/vue.withScopeId("data-v-9f667f02");
+});var _withId = /*#__PURE__*/vue.withScopeId("data-v-05d6287b");
 
-vue.pushScopeId("data-v-9f667f02");
+vue.pushScopeId("data-v-05d6287b");
 
 var _hoisted_1$5 = {
   class: "rounded border"
@@ -559,9 +770,9 @@ var render$5 = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $dat
   } else {
     style.appendChild(document.createTextNode(css));
   }
-}var css_248z = "\n.fade-enter-active[data-v-9f667f02],\n.fade-leave-active[data-v-9f667f02] {\n  opacity: 1;\n  transform: translate3d(0, 0, 0);\n}\n.fade-enter-from[data-v-9f667f02],\n.fade-leave-to[data-v-9f667f02] {\n  opacity: 0;\n  transform: translate3d(0, -100%, 0);\n}\n";
+}var css_248z = "\n.fade-enter-active[data-v-05d6287b],\n.fade-leave-active[data-v-05d6287b] {\n  opacity: 1;\n  transform: translate3d(0, 0, 0);\n}\n.fade-enter-from[data-v-05d6287b],\n.fade-leave-to[data-v-05d6287b] {\n  opacity: 0;\n  transform: translate3d(0, -100%, 0);\n}\n";
 styleInject(css_248z);script$5.render = render$5;
-script$5.__scopeId = "data-v-9f667f02";var script$4 = vue.defineComponent({
+script$5.__scopeId = "data-v-05d6287b";var script$4 = vue.defineComponent({
   props: {
     modelValue: {
       type: Boolean,
@@ -805,7 +1016,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     app.component(componentName, component);
   });
 }; // Create module definition for Vue.use()
-var components=/*#__PURE__*/Object.freeze({__proto__:null,'default': install,TButton: script$9,TInput: script$8,TFormSection: script$7,TSelect: script$6,TAccordion: script$5,TToggle: script$4,TAlert: script$3,TDropdown: script$2,TDropdownItem: script$1,TLoop: script});// only expose one global var, with component exports exposed as properties of
+var components=/*#__PURE__*/Object.freeze({__proto__:null,'default': install,TButton: script$9,TInput: script$8,TFormSection: script$7,TSelect: script$6,TAccordion: script$5,TToggle: script$4,TAlert: script$3,TDropdown: script$2,TDropdownItem: script$1,TLoop: script,Form: Form,Validator: Validator});// only expose one global var, with component exports exposed as properties of
 // that global var (eg. plugin.component)
 
 Object.entries(components).forEach(function (_ref) {
@@ -813,7 +1024,7 @@ Object.entries(components).forEach(function (_ref) {
       componentName = _ref2[0],
       component = _ref2[1];
 
-  if (componentName !== 'default') {
+  if (componentName !== "default") {
     var key = componentName;
     var val = component;
     install[key] = val;
