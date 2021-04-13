@@ -5,7 +5,7 @@
     <t-alert :info="success" />
     <t-form-section label="Seção Teste">
       <t-input label="Nome" :maxlength="100" v-model="user.name" />
-      <t-button>Teste</t-button>
+      <t-button @click="debug">Debug</t-button>
       <t-select
         class="md:w-1/2"
         label="Ativo"
@@ -20,6 +20,8 @@
         label="Status"
         :title="['Ativo', 'Inativo']"
       />
+      <t-editor v-model="paragraph.data.content" label="Conteúdo Form" />
+      <t-editor v-model="paragraph2" label="Conteúdo Normal" />
       <t-accordion label="Test accordion">
         Pellentesque scelerisque augue eget dui lobortis auctor. Aenean sit amet
         nisi urna. Pellentesque eu massa leo. Ut sit amet urna non nisi volutpat
@@ -89,10 +91,22 @@ export default defineComponent({
     let user = ref(
       new Form({ name: "Alan Rezende", active: true, new: false }),
     );
-    console.log(user.value.data);
+
     const success = {
       title: "Sucesso!",
       messages: ["Salvo com sucesso no banco de dados"],
+    };
+    const paragraph = ref(
+      new Form({
+        content:
+          "Nunc lobortis in nisi eget volutpat. In nec diam id purus ultrices sagittis a in ante. Pellentesque accumsan, lacus vel molestie interdum, justo nibh malesuada ante, at varius lectus erat vehicula quam. Suspendisse molestie mauris erat, id porttitor ex cursus quis. Aliquam quis diam vel nisl maximus egestas in a sapien. Etiam vel lobortis nibh, a gravida ante. Fusce vehicula neque a blandit lacinia. Sed tincidunt tellus quis elit vulputate pharetra. Phasellus porttitor felis eget dignissim iaculis. Sed ac iaculis diam, ac mollis leo. Pellentesque finibus augue elit. Maecenas facilisis, tellus sed porttitor convallis, orci lorem venenatis justo, in volutpat ipsum nisi consectetur ante. Nam quis hendrerit orci, non fringilla metus. Cras at enim fringilla, semper ligula ut, pretium turpis.",
+      }),
+    );
+    const paragraph2 = ref(
+      "Nunc lobortis in nisi eget volutpat. In nec diam id purus ultrices sagittis a in ante. Pellentesque accumsan, lacus vel molestie interdum, justo nibh malesuada ante, at varius lectus erat vehicula quam. Suspendisse molestie mauris erat, id porttitor ex cursus quis. Aliquam quis diam vel nisl maximus egestas in a sapien. Etiam vel lobortis nibh, a gravida ante. Fusce vehicula neque a blandit lacinia. Sed tincidunt tellus quis elit vulputate pharetra. Phasellus porttitor felis eget dignissim iaculis. Sed ac iaculis diam, ac mollis leo. Pellentesque finibus augue elit. Maecenas facilisis, tellus sed porttitor convallis, orci lorem venenatis justo, in volutpat ipsum nisi consectetur ante. Nam quis hendrerit orci, non fringilla metus. Cras at enim fringilla, semper ligula ut, pretium turpis.",
+    );
+    const debug = () => {
+      console.log(paragraph.value.getOriginal(), paragraph2.value);
     };
     const items: FormItemInterface = {
       value: [
@@ -121,6 +135,9 @@ export default defineComponent({
       user,
       success,
       items,
+      paragraph,
+      paragraph2,
+      debug,
     };
   },
 });

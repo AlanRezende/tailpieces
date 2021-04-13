@@ -8,3 +8,4 @@ export { default as TAlert } from "./t-alert.vue";
 export { default as TDropdown } from "./t-dropdown.vue";
 export { default as TDropdownItem } from "./t-dropdown-item.vue";
 export { default as TLoop } from "./t-loop.vue";
+export { default as TEditor } from "./t-editor.vue";
