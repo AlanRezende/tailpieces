@@ -33,7 +33,11 @@ export default class Form {
 
   clearErrors(data = this.data): void {
     Object.entries(data).forEach(([key, value]) => {
-      if (typeof value.value == "object" && value.value != null) {
+      if (
+        typeof value.value == "object" &&
+        value.value != null &&
+        !(value.value instanceof Blob)
+      ) {
         if (typeof value == "object") {
           value.value.forEach(item => {
             this.clearErrors(item);
@@ -53,7 +57,11 @@ export default class Form {
   errors(data: FormInterface = this.data): number {
     let totalErrors = 0;
     Object.values(data).forEach(value => {
-      if (typeof value.value == "object" && value.value != null) {
+      if (
+        typeof value.value == "object" &&
+        value.value != null &&
+        !(value.value instanceof Blob)
+      ) {
         value.value.forEach(item => {
           totalErrors += this.errors(item);
         });
@@ -69,7 +77,11 @@ export default class Form {
   validate(data: FormInterface = this.data): void {
     const validator = new Validator();
     Object.values(data).forEach(value => {
-      if (typeof value.value == "object" && value.value != null) {
+      if (
+        typeof value.value == "object" &&
+        value.value != null &&
+        !(value.value instanceof Blob)
+      ) {
         value.value.forEach(item => {
           this.validate(item);
         });
@@ -84,7 +96,7 @@ export default class Form {
 
   get(
     key: string,
-  ): string | number | boolean | null | FormInterface[] | undefined {
+  ): string | number | boolean | null | Blob | FormInterface[] | undefined {
     if (this.data[key]) {
       return this.data[key].value;
     }
@@ -109,7 +121,8 @@ export default class Form {
           temp &&
           typeof value == "object" &&
           typeof temp.value == "object" &&
-          temp.value != null
+          temp.value != null &&
+          !(temp.value instanceof Blob)
         ) {
           temp.value.forEach(item => {
             this.setRules(value, item);
@@ -127,7 +140,11 @@ export default class Form {
   private removeProperties(data: { [index: string]: FormItemInterface }) {
     const newObj: DefaultObjectInterface = {};
     Object.entries(data).forEach(([key, value]) => {
-      if (typeof value.value == "object" && value.value != null) {
+      if (
+        typeof value.value == "object" &&
+        value.value != null &&
+        !(value.value instanceof Blob)
+      ) {
         const nested: DefaultObjectInterface[] = [];
         value.value.forEach(item => {
           nested.push(this.removeProperties(item) as DefaultObjectInterface);
@@ -155,7 +172,11 @@ export default class Form {
       [index: string]: FormItemInterface;
     } = {};
     Object.entries(data).forEach(([key, value]) => {
-      if (typeof value == "object" && value != null) {
+      if (
+        typeof value == "object" &&
+        value != null &&
+        !(value instanceof Blob)
+      ) {
         const nested: FormInterface[] = [];
         value.forEach(item => {
           nested.push(this.addProperties(item) as FormInterface);

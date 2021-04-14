@@ -79,7 +79,7 @@ class Form {
 
   clearErrors(data = this.data) {
     Object.entries(data).forEach(([key, value]) => {
-      if (typeof value.value == "object" && value.value != null) {
+      if (typeof value.value == "object" && value.value != null && !(value.value instanceof Blob)) {
         if (typeof value == "object") {
           value.value.forEach(item => {
             this.clearErrors(item);
@@ -99,7 +99,7 @@ class Form {
   errors(data = this.data) {
     let totalErrors = 0;
     Object.values(data).forEach(value => {
-      if (typeof value.value == "object" && value.value != null) {
+      if (typeof value.value == "object" && value.value != null && !(value.value instanceof Blob)) {
         value.value.forEach(item => {
           totalErrors += this.errors(item);
         });
@@ -115,7 +115,7 @@ class Form {
   validate(data = this.data) {
     const validator = new Validator();
     Object.values(data).forEach(value => {
-      if (typeof value.value == "object" && value.value != null) {
+      if (typeof value.value == "object" && value.value != null && !(value.value instanceof Blob)) {
         value.value.forEach(item => {
           this.validate(item);
         });
@@ -149,7 +149,7 @@ class Form {
       } else {
         const temp = data[key.substr(1)];
 
-        if (temp && typeof value == "object" && typeof temp.value == "object" && temp.value != null) {
+        if (temp && typeof value == "object" && typeof temp.value == "object" && temp.value != null && !(temp.value instanceof Blob)) {
           temp.value.forEach(item => {
             this.setRules(value, item);
           });
@@ -167,7 +167,7 @@ class Form {
   removeProperties(data) {
     const newObj = {};
     Object.entries(data).forEach(([key, value]) => {
-      if (typeof value.value == "object" && value.value != null) {
+      if (typeof value.value == "object" && value.value != null && !(value.value instanceof Blob)) {
         const nested = [];
         value.value.forEach(item => {
           nested.push(this.removeProperties(item));
@@ -193,7 +193,7 @@ class Form {
 
     const newObj = {};
     Object.entries(data).forEach(([key, value]) => {
-      if (typeof value == "object" && value != null) {
+      if (typeof value == "object" && value != null && !(value instanceof Blob)) {
         const nested = [];
         value.forEach(item => {
           nested.push(this.addProperties(item));
