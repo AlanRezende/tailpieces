@@ -52,9 +52,7 @@ export default defineComponent({
     } as formItem);
 
     onMounted(() => {
-      console.log(QuillEditor, props);
       adjustProps(props.modelValue as string | formItem);
-      //
     });
 
     /**
@@ -63,7 +61,6 @@ export default defineComponent({
     watch(
       () => props.modelValue,
       newVal => {
-        console.log("adjust");
         adjustProps(newVal as string | formItem);
       },
       {
