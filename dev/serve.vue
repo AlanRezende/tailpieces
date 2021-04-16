@@ -4,7 +4,8 @@
     <t-alert :info="success" color="green" />
     <t-alert :info="success" />
     <t-form-section label="Seção Teste">
-      <t-input label="Nome" :maxlength="100" v-model="user.name" />
+      <t-input label="Nome" :maxlength="100" v-model="user.data.name" />
+      <t-image-input label="Imagem" v-model="user.data.image.value" />
       <t-button @click="debug">Debug</t-button>
       <t-button @click="show = true">Modal</t-button>
       <t-select
@@ -97,7 +98,7 @@ export default defineComponent({
   name: "ServeDev",
   setup() {
     let user = ref(
-      new Form({ name: "Alan Rezende", active: true, new: false }),
+      new Form({ name: "Alan Rezende", image: null, active: true, new: false }),
     );
 
     const success = {
@@ -115,7 +116,7 @@ export default defineComponent({
       "Nunc lobortis in nisi eget volutpat. In nec diam id purus ultrices sagittis a in ante. Pellentesque accumsan, lacus vel molestie interdum, justo nibh malesuada ante, at varius lectus erat vehicula quam. Suspendisse molestie mauris erat, id porttitor ex cursus quis. Aliquam quis diam vel nisl maximus egestas in a sapien. Etiam vel lobortis nibh, a gravida ante. Fusce vehicula neque a blandit lacinia. Sed tincidunt tellus quis elit vulputate pharetra. Phasellus porttitor felis eget dignissim iaculis. Sed ac iaculis diam, ac mollis leo. Pellentesque finibus augue elit. Maecenas facilisis, tellus sed porttitor convallis, orci lorem venenatis justo, in volutpat ipsum nisi consectetur ante. Nam quis hendrerit orci, non fringilla metus. Cras at enim fringilla, semper ligula ut, pretium turpis.",
     );
     const debug = () => {
-      console.log(paragraph.value.getOriginal(), paragraph2.value);
+      console.log(user.value.data);
     };
     const items: FormItemInterface = {
       value: [
