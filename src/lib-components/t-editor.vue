@@ -2,7 +2,7 @@
   <div class="flex flex-col mb-4 relative w-full">
     <label>{{ label }}</label>
     <QuillEditor
-      class="p-2 border rounded-b"
+      class="p-2 border rounded-b min-h-56"
       ref="qeditor"
       contentType="html"
       @update:content="update"
@@ -131,6 +131,9 @@ export default defineComponent({
 });
 </script>
 <style>
+.ql-editor {
+  min-height: 200px;
+}
 .ql-container {
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
