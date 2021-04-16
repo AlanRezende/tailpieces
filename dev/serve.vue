@@ -6,6 +6,7 @@
     <t-form-section label="Seção Teste">
       <t-input label="Nome" :maxlength="100" v-model="user.name" />
       <t-button @click="debug">Debug</t-button>
+      <t-button @click="show = true">Modal</t-button>
       <t-select
         class="md:w-1/2"
         label="Ativo"
@@ -79,7 +80,14 @@
         >{{ name.name.value }}
       </t-loop>
     </t-form-section>
+    <t-dialog-modal :show="show" @close="show = false">
+      sdasd
+      <template #footer>
+        <t-button @click="show = false"> Fechar </t-button>
+      </template>
+    </t-dialog-modal>
   </div>
+  <div id="modals-target"></div>
 </template>
 <script lang="ts">
 import { FormItemInterface } from "tailpieces";
@@ -96,6 +104,7 @@ export default defineComponent({
       title: "Sucesso!",
       messages: ["Salvo com sucesso no banco de dados"],
     };
+    const show = ref(false);
     const paragraph = ref(
       new Form({
         content:
@@ -138,6 +147,7 @@ export default defineComponent({
       paragraph,
       paragraph2,
       debug,
+      show,
     };
   },
 });
