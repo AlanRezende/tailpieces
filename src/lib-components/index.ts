@@ -10,3 +10,6 @@ export { default as TDropdownItem } from "./t-dropdown-item.vue";
 export { default as TLoop } from "./t-loop.vue";
 export { default as TEditor } from "./t-editor.vue";
 export { default as TImageInput } from "./t-image-input.vue";
+export { default as TModal } from "./t-modal/t-modal.vue";
+export { default as TDialogModal } from "./t-modal/t-dialog-modal.vue";
+export { default as TConfirmationModal } from "./t-modal/t-confirmation-modal.vue";

@@ -50,6 +50,9 @@ export const TDropdownItem: DefineComponent<{}, {}, any>;
 export const TLoop: DefineComponent<{}, {}, any>;
 export const TEditor: DefineComponent<{}, {}, any>;
 export const TImageInput: DefineComponent<{}, {}, any>;
+export const TModal: DefineComponent<{}, {}, any>;
+export const TDialogModal: DefineComponent<{}, {}, any>;
+export const TConfirmationModal: DefineComponent<{}, {}, any>;
 
 export class Form {
   data: FormInterface;
