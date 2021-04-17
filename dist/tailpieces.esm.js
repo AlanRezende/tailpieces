@@ -1,6 +1,6 @@
 import { defineComponent, computed, openBlock, createBlock, renderSlot, ref, watch, onMounted, createVNode, toDisplayString, withDirectives, vModelText, vModelDynamic, createCommentVNode, Fragment, renderList, vModelSelect, pushScopeId, popScopeId, Transition, withScopeId, createTextVNode, vShow, onBeforeUnmount, h, nextTick, resolveComponent, onUnmounted, Teleport, withCtx, withModifiers } from 'vue';
 
-var script$e = defineComponent({
+var script$f = defineComponent({
   name: "TButton",
   props: {
     size: {
@@ -26,11 +26,11 @@ var script$e = defineComponent({
       // 5 cores blue, green, yellow, red, gray
       // ou bg-indigo-400
       let options = {
-        blue: "bg-blue-900",
-        yellow: "bg-yellow-500",
-        green: "bg-green-700",
-        red: "bg-yellow-700",
-        gray: "bg-gray-500"
+        blue: "bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700",
+        yellow: "bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-700",
+        green: "bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-800",
+        red: "bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800",
+        gray: "bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-700"
       };
 
       if (props.color.split("-").length > 1) {
@@ -47,14 +47,14 @@ var script$e = defineComponent({
 
 });
 
-function render$e(_ctx, _cache, $props, $setup, $data, $options) {
+function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("button", {
     class: ["mr-2 inline-block rounded text-white", [_ctx.sizeClass, _ctx.colorClass]],
     type: "button"
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
 
-script$e.render = render$e;
+script$f.render = render$f;
 
 class Form {
   constructor(data, validationRules = {}) {
@@ -288,7 +288,7 @@ class Validator {
 
 }
 
-var script$d = defineComponent({
+var script$e = defineComponent({
   name: "BaseInput",
   props: {
     label: {
@@ -404,18 +404,18 @@ var script$d = defineComponent({
 
 });
 
-const _hoisted_1$d = {
+const _hoisted_1$e = {
   class: "flex flex-col mb-4 relative w-full"
 };
-const _hoisted_2$9 = {
+const _hoisted_2$a = {
   key: 2,
   class: "absolute right-0 text-xs top-2 text-gray-500"
 };
-const _hoisted_3$6 = {
+const _hoisted_3$7 = {
   class: "text-red-800 text-sm ml-0.5"
 };
-function render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$d, [createVNode("label", null, toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? withDirectives((openBlock(), createBlock("textarea", {
+function render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1$e, [createVNode("label", null, toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? withDirectives((openBlock(), createBlock("textarea", {
     key: 0,
     class: ["p-2 border rounded", {
       'border-red-800': _ctx.formItem.validationError
@@ -438,12 +438,12 @@ function render$d(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[4] || (_cache[4] = (...args) => _ctx.validate && _ctx.validate(...args)),
     onKeydown: _cache[5] || (_cache[5] = $event => _ctx.formItem.validationError = ''),
     "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => _ctx.formItem.value = $event)
-  }, null, 42, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2$9, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true), createVNode("span", _hoisted_3$6, toDisplayString(_ctx.formItem.validationError), 1)]);
+  }, null, 42, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2$a, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true), createVNode("span", _hoisted_3$7, toDisplayString(_ctx.formItem.validationError), 1)]);
 }
 
-script$d.render = render$d;
+script$e.render = render$e;
 
-var script$c = defineComponent({
+var script$d = defineComponent({
   name: "FormSection",
   props: {
     label: {
@@ -453,19 +453,19 @@ var script$c = defineComponent({
   }
 });
 
-const _hoisted_1$c = {
+const _hoisted_1$d = {
   class: "text-lg text-blue-900 mb-2"
 };
-const _hoisted_2$8 = {
+const _hoisted_2$9 = {
   class: "bg-white shadow-sm p-3 rounded mb-4 flex flex-wrap"
 };
-function render$c(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(Fragment, null, [createVNode("div", _hoisted_1$c, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$8, [renderSlot(_ctx.$slots, "default")])], 64);
+function render$d(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock(Fragment, null, [createVNode("div", _hoisted_1$d, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$9, [renderSlot(_ctx.$slots, "default")])], 64);
 }
 
-script$c.render = render$c;
+script$d.render = render$d;
 
-var script$b = defineComponent({
+var script$c = defineComponent({
   name: "BaseSelect",
   props: {
     label: {
@@ -544,11 +544,11 @@ var script$b = defineComponent({
 
 });
 
-const _hoisted_1$b = {
+const _hoisted_1$c = {
   class: "flex flex-col mb-4 w-full"
 };
-function render$b(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$b, [createVNode("label", null, toDisplayString(_ctx.label), 1), withDirectives(createVNode("select", {
+function render$c(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1$c, [createVNode("label", null, toDisplayString(_ctx.label), 1), withDirectives(createVNode("select", {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => _ctx.formItem.value = $event),
     class: "p-2 border rounded",
     name: "",
@@ -561,9 +561,9 @@ function render$b(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128))], 512), [[vModelSelect, _ctx.formItem.value]])]);
 }
 
-script$b.render = render$b;
+script$c.render = render$c;
 
-var script$a = defineComponent({
+var script$b = defineComponent({
   name: "TAccordion",
   props: {
     label: {
@@ -585,30 +585,30 @@ const _withId = /*#__PURE__*/withScopeId("data-v-05d6287b");
 
 pushScopeId("data-v-05d6287b");
 
-const _hoisted_1$a = {
+const _hoisted_1$b = {
   class: "rounded border"
 };
-const _hoisted_2$7 = {
+const _hoisted_2$8 = {
   class: "overflow-hidden"
 };
-const _hoisted_3$5 = {
+const _hoisted_3$6 = {
   key: 0,
   class: "transition-all rounded-b ease-in-out overflow-hidden origin-top"
 };
-const _hoisted_4$2 = {
+const _hoisted_4$3 = {
   class: "p-2"
 };
 
 popScopeId();
 
-const render$a = /*#__PURE__*/_withId((_ctx, _cache, $props, $setup, $data, $options) => {
-  return openBlock(), createBlock("div", _hoisted_1$a, [createVNode("div", {
+const render$b = /*#__PURE__*/_withId((_ctx, _cache, $props, $setup, $data, $options) => {
+  return openBlock(), createBlock("div", _hoisted_1$b, [createVNode("div", {
     onClick: _cache[1] || (_cache[1] = $event => _ctx.open = !_ctx.open),
     class: "cursor-pointer rounded-t bg-gray-100 p-1 px-2"
-  }, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$7, [createVNode(Transition, {
+  }, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$8, [createVNode(Transition, {
     name: "fade"
   }, {
-    default: _withId(() => [_ctx.open ? (openBlock(), createBlock("div", _hoisted_3$5, [createVNode("div", _hoisted_4$2, [renderSlot(_ctx.$slots, "default")])])) : createCommentVNode("", true)]),
+    default: _withId(() => [_ctx.open ? (openBlock(), createBlock("div", _hoisted_3$6, [createVNode("div", _hoisted_4$3, [renderSlot(_ctx.$slots, "default")])])) : createCommentVNode("", true)]),
     _: 3
   })])]);
 });
@@ -643,10 +643,10 @@ function styleInject(css, ref) {
 var css_248z$1 = ".fade-enter-active[data-v-05d6287b],\n.fade-leave-active[data-v-05d6287b] {\n  opacity: 1;\n  transform: translate3d(0, 0, 0);\n}\n\n.fade-enter-from[data-v-05d6287b],\n.fade-leave-to[data-v-05d6287b] {\n  opacity: 0;\n  transform: translate3d(0, -100%, 0);\n}\n";
 styleInject(css_248z$1);
 
-script$a.render = render$a;
-script$a.__scopeId = "data-v-05d6287b";
+script$b.render = render$b;
+script$b.__scopeId = "data-v-05d6287b";
 
-var script$9 = defineComponent({
+var script$a = defineComponent({
   props: {
     modelValue: {
       type: Boolean,
@@ -692,17 +692,17 @@ var script$9 = defineComponent({
 
 });
 
-const _hoisted_1$9 = {
+const _hoisted_1$a = {
   class: "cursor-pointer flex flex-col"
 };
-const _hoisted_2$6 = {
+const _hoisted_2$7 = {
   key: 0
 };
-const _hoisted_3$4 = {
+const _hoisted_3$5 = {
   class: "flex items-center"
 };
-function render$9(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$9, [_ctx.label ? (openBlock(), createBlock("label", _hoisted_2$6, toDisplayString(_ctx.label), 1)) : createCommentVNode("", true), createVNode("div", _hoisted_3$4, [createVNode("button", {
+function render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1$a, [_ctx.label ? (openBlock(), createBlock("label", _hoisted_2$7, toDisplayString(_ctx.label), 1)) : createCommentVNode("", true), createVNode("div", _hoisted_3$5, [createVNode("button", {
     class: ["rounded-full border-2 focus:outline-none mr-2", [{
       'border-green-500': _ctx.modelValue,
       'border-gray-400': !_ctx.modelValue
@@ -722,9 +722,9 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   }, toDisplayString(_ctx.modelValue ? _ctx.title[0] : _ctx.title[1]), 3)) : createCommentVNode("", true)])]);
 }
 
-script$9.render = render$9;
+script$a.render = render$a;
 
-var script$8 = defineComponent({
+var script$9 = defineComponent({
   props: {
     info: {
       type: Object,
@@ -761,21 +761,21 @@ var script$8 = defineComponent({
 
 });
 
-const _hoisted_1$8 = {
+const _hoisted_1$9 = {
   key: 0,
   class: "text-lg font-bold"
 };
-const _hoisted_2$5 = {
+const _hoisted_2$6 = {
   class: "list-inside"
 };
-function render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.show ? (openBlock(), createBlock("div", {
     key: 0,
     class: ["relative border mb-4 p-3 rounded", _ctx.colorClass]
   }, [createVNode("span", {
     class: "absolute cursor-pointer right-2 top-1",
     onClick: _cache[1] || (_cache[1] = $event => _ctx.show = false)
-  }, "X"), _ctx.info.title ? (openBlock(), createBlock("p", _hoisted_1$8, toDisplayString(_ctx.info.title), 1)) : createCommentVNode("", true), createVNode("ul", _hoisted_2$5, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.info.messages, (item, index) => {
+  }, "X"), _ctx.info.title ? (openBlock(), createBlock("p", _hoisted_1$9, toDisplayString(_ctx.info.title), 1)) : createCommentVNode("", true), createVNode("ul", _hoisted_2$6, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.info.messages, (item, index) => {
     return openBlock(), createBlock("li", {
       class: {
         'list-disc': _ctx.info.title
@@ -785,9 +785,9 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128))])], 2)) : createCommentVNode("", true);
 }
 
-script$8.render = render$8;
+script$9.render = render$9;
 
-var script$7 = defineComponent({
+var script$8 = defineComponent({
   props: {
     label: {
       type: String,
@@ -824,26 +824,26 @@ var script$7 = defineComponent({
 
 });
 
-const _hoisted_1$7 = {
+const _hoisted_1$8 = {
   ref: "root",
   class: "relative inline-block"
 };
-const _hoisted_2$4 = {
+const _hoisted_2$5 = {
   class: "focus:outline-none hover:underline flex items-center"
 };
 
-const _hoisted_3$3 = /*#__PURE__*/createVNode("path", {
+const _hoisted_3$4 = /*#__PURE__*/createVNode("path", {
   d: "M6 9l6 6 6-6"
 }, null, -1);
 
-const _hoisted_4$1 = {
+const _hoisted_4$2 = {
   class: "shadow rounded z-30 border bg-white absolute"
 };
-function render$7(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$7, [createVNode("div", {
+function render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1$8, [createVNode("div", {
     onClick: _cache[1] || (_cache[1] = (...args) => _ctx.toggleDropdown && _ctx.toggleDropdown(...args)),
     class: "inline-block"
-  }, [renderSlot(_ctx.$slots, "trigger", {}, () => [createVNode("button", _hoisted_2$4, [createTextVNode(toDisplayString(_ctx.label) + " ", 1), (openBlock(), createBlock("svg", {
+  }, [renderSlot(_ctx.$slots, "trigger", {}, () => [createVNode("button", _hoisted_2$5, [createTextVNode(toDisplayString(_ctx.label) + " ", 1), (openBlock(), createBlock("svg", {
     fill: "none",
     class: ["fill-current w-6 h-6 transition-all duration-500 ease-in-out", {
       'transform rotate-180': _ctx.open
@@ -853,12 +853,12 @@ function render$7(_ctx, _cache, $props, $setup, $data, $options) {
     "stroke-linejoin": "round",
     "stroke-width": "2",
     xmlns: "http://www.w3.org/2000/svg"
-  }, [_hoisted_3$3], 2))])])]), withDirectives(createVNode("ul", _hoisted_4$1, [renderSlot(_ctx.$slots, "default")], 512), [[vShow, _ctx.open]])], 512);
+  }, [_hoisted_3$4], 2))])])]), withDirectives(createVNode("ul", _hoisted_4$2, [renderSlot(_ctx.$slots, "default")], 512), [[vShow, _ctx.open]])], 512);
 }
 
-script$7.render = render$7;
+script$8.render = render$8;
 
-var script$6 = defineComponent({
+var script$7 = defineComponent({
   props: {
     type: {
       type: String,
@@ -871,21 +871,21 @@ var script$6 = defineComponent({
   }
 });
 
-const _hoisted_1$6 = {
+const _hoisted_1$7 = {
   key: 1,
   class: "border-t mt-1 pt-1"
 };
-function render$6(_ctx, _cache, $props, $setup, $data, $options) {
+function render$7(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("li", null, [_ctx.type == 'link' ? (openBlock(), createBlock("a", {
     key: 0,
     class: "hover:bg-gray-100 px-4 py-1 block whitespace-nowrap",
     href: _ctx.href
-  }, [renderSlot(_ctx.$slots, "default")], 8, ["href"])) : (openBlock(), createBlock("hr", _hoisted_1$6))]);
+  }, [renderSlot(_ctx.$slots, "default")], 8, ["href"])) : (openBlock(), createBlock("hr", _hoisted_1$7))]);
 }
 
-script$6.render = render$6;
+script$7.render = render$7;
 
-var script$5 = defineComponent({
+var script$6 = defineComponent({
   props: {
     data: {
       type: Object,
@@ -894,11 +894,11 @@ var script$5 = defineComponent({
   }
 });
 
-const _hoisted_1$5 = {
+const _hoisted_1$6 = {
   key: 0
 };
-function render$5(_ctx, _cache, $props, $setup, $data, $options) {
-  return typeof _ctx.data.value == 'object' ? (openBlock(), createBlock("div", _hoisted_1$5, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.data.value, (item, index) => {
+function render$6(_ctx, _cache, $props, $setup, $data, $options) {
+  return typeof _ctx.data.value == 'object' ? (openBlock(), createBlock("div", _hoisted_1$6, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.data.value, (item, index) => {
     return renderSlot(_ctx.$slots, "default", {
       item: item,
       index: index,
@@ -907,7 +907,7 @@ function render$5(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128))])) : createCommentVNode("", true);
 }
 
-script$5.render = render$5;
+script$6.render = render$6;
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -13516,7 +13516,7 @@ const QuillEditor = defineComponent({
     },
 });
 
-var script$4 = defineComponent({
+var script$5 = defineComponent({
   components: {
     QuillEditor
   },
@@ -13624,13 +13624,13 @@ var script$4 = defineComponent({
 
 });
 
-const _hoisted_1$4 = {
+const _hoisted_1$5 = {
   class: "flex flex-col mb-4 relative w-full"
 };
-function render$4(_ctx, _cache, $props, $setup, $data, $options) {
+function render$5(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_QuillEditor = resolveComponent("QuillEditor");
 
-  return openBlock(), createBlock("div", _hoisted_1$4, [createVNode("label", null, toDisplayString(_ctx.label), 1), createVNode(_component_QuillEditor, {
+  return openBlock(), createBlock("div", _hoisted_1$5, [createVNode("label", null, toDisplayString(_ctx.label), 1), createVNode(_component_QuillEditor, {
     class: "p-2 border rounded-b min-h-56",
     ref: "qeditor",
     contentType: "html",
@@ -13643,9 +13643,9 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
 var css_248z = ".ql-editor {\n  min-height: 200px;\n}\n\n.ql-container {\n  box-sizing: border-box;\n  font-family: Helvetica, Arial, sans-serif;\n  font-size: 13px;\n  height: 100%;\n  margin: 0px;\n  position: relative;\n}\n\n.ql-container.ql-disabled .ql-tooltip {\n  visibility: hidden;\n}\n\n.ql-container.ql-disabled .ql-editor ul[data-checked] > li::before {\n  pointer-events: none;\n}\n\n.ql-clipboard {\n  left: -100000px;\n  height: 1px;\n  overflow-y: hidden;\n  position: absolute;\n  top: 50%;\n}\n\n.ql-clipboard p {\n  margin: 0;\n  padding: 0;\n}\n\n.ql-editor {\n  box-sizing: border-box;\n  line-height: 1.42;\n  height: 100%;\n  outline: none;\n  overflow-y: auto;\n  tab-size: 4;\n  -moz-tab-size: 4;\n  text-align: left;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}\n\n.ql-editor > * {\n  cursor: text;\n}\n\n.ql-editor p,\n.ql-editor ol,\n.ql-editor ul,\n.ql-editor pre,\n.ql-editor blockquote,\n.ql-editor h1,\n.ql-editor h2,\n.ql-editor h3,\n.ql-editor h4,\n.ql-editor h5,\n.ql-editor h6 {\n  margin: 0;\n  padding: 0;\n  counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol,\n.ql-editor ul {\n  padding-left: 1.5em;\n}\n\n.ql-editor ol > li,\n.ql-editor ul > li {\n  list-style-type: none;\n}\n\n.ql-editor ul > li::before {\n  content: \"\\2022\";\n}\n\n.ql-editor ul[data-checked=\"true\"],\n.ql-editor ul[data-checked=\"false\"] {\n  pointer-events: none;\n}\n\n.ql-editor ul[data-checked=\"true\"] > li *,\n.ql-editor ul[data-checked=\"false\"] > li * {\n  pointer-events: all;\n}\n\n.ql-editor ul[data-checked=\"true\"] > li::before,\n.ql-editor ul[data-checked=\"false\"] > li::before {\n  color: #777;\n  cursor: pointer;\n  pointer-events: all;\n}\n\n.ql-editor ul[data-checked=\"true\"] > li::before {\n  content: \"\\2611\";\n}\n\n.ql-editor ul[data-checked=\"false\"] > li::before {\n  content: \"\\2610\";\n}\n\n.ql-editor li::before {\n  display: inline-block;\n  white-space: nowrap;\n  width: 1.2em;\n}\n\n.ql-editor li:not(.ql-direction-rtl)::before {\n  margin-left: -1.5em;\n  margin-right: 0.3em;\n  text-align: right;\n}\n\n.ql-editor li.ql-direction-rtl::before {\n  margin-left: 0.3em;\n  margin-right: -1.5em;\n}\n\n.ql-editor ol li:not(.ql-direction-rtl),\n.ql-editor ul li:not(.ql-direction-rtl) {\n  padding-left: 1.5em;\n}\n\n.ql-editor ol li.ql-direction-rtl,\n.ql-editor ul li.ql-direction-rtl {\n  padding-right: 1.5em;\n}\n\n.ql-editor ol li {\n  counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;\n  counter-increment: list-0;\n}\n\n.ql-editor ol li:before {\n  content: counter(list-0, decimal) \". \";\n}\n\n.ql-editor ol li.ql-indent-1 {\n  counter-increment: list-1;\n}\n\n.ql-editor ol li.ql-indent-1:before {\n  content: counter(list-1, lower-alpha) \". \";\n}\n\n.ql-editor ol li.ql-indent-1 {\n  counter-reset: list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-2 {\n  counter-increment: list-2;\n}\n\n.ql-editor ol li.ql-indent-2:before {\n  content: counter(list-2, lower-roman) \". \";\n}\n\n.ql-editor ol li.ql-indent-2 {\n  counter-reset: list-3 list-4 list-5 list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-3 {\n  counter-increment: list-3;\n}\n\n.ql-editor ol li.ql-indent-3:before {\n  content: counter(list-3, decimal) \". \";\n}\n\n.ql-editor ol li.ql-indent-3 {\n  counter-reset: list-4 list-5 list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-4 {\n  counter-increment: list-4;\n}\n\n.ql-editor ol li.ql-indent-4:before {\n  content: counter(list-4, lower-alpha) \". \";\n}\n\n.ql-editor ol li.ql-indent-4 {\n  counter-reset: list-5 list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-5 {\n  counter-increment: list-5;\n}\n\n.ql-editor ol li.ql-indent-5:before {\n  content: counter(list-5, lower-roman) \". \";\n}\n\n.ql-editor ol li.ql-indent-5 {\n  counter-reset: list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-6 {\n  counter-increment: list-6;\n}\n\n.ql-editor ol li.ql-indent-6:before {\n  content: counter(list-6, decimal) \". \";\n}\n\n.ql-editor ol li.ql-indent-6 {\n  counter-reset: list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-7 {\n  counter-increment: list-7;\n}\n\n.ql-editor ol li.ql-indent-7:before {\n  content: counter(list-7, lower-alpha) \". \";\n}\n\n.ql-editor ol li.ql-indent-7 {\n  counter-reset: list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-8 {\n  counter-increment: list-8;\n}\n\n.ql-editor ol li.ql-indent-8:before {\n  content: counter(list-8, lower-roman) \". \";\n}\n\n.ql-editor ol li.ql-indent-8 {\n  counter-reset: list-9;\n}\n\n.ql-editor ol li.ql-indent-9 {\n  counter-increment: list-9;\n}\n\n.ql-editor ol li.ql-indent-9:before {\n  content: counter(list-9, decimal) \". \";\n}\n\n.ql-editor .ql-indent-1:not(.ql-direction-rtl) {\n  padding-left: 3em;\n}\n\n.ql-editor li.ql-indent-1:not(.ql-direction-rtl) {\n  padding-left: 4.5em;\n}\n\n.ql-editor .ql-indent-1.ql-direction-rtl.ql-align-right {\n  padding-right: 3em;\n}\n\n.ql-editor li.ql-indent-1.ql-direction-rtl.ql-align-right {\n  padding-right: 4.5em;\n}\n\n.ql-editor .ql-indent-2:not(.ql-direction-rtl) {\n  padding-left: 6em;\n}\n\n.ql-editor li.ql-indent-2:not(.ql-direction-rtl) {\n  padding-left: 7.5em;\n}\n\n.ql-editor .ql-indent-2.ql-direction-rtl.ql-align-right {\n  padding-right: 6em;\n}\n\n.ql-editor li.ql-indent-2.ql-direction-rtl.ql-align-right {\n  padding-right: 7.5em;\n}\n\n.ql-editor .ql-indent-3:not(.ql-direction-rtl) {\n  padding-left: 9em;\n}\n\n.ql-editor li.ql-indent-3:not(.ql-direction-rtl) {\n  padding-left: 10.5em;\n}\n\n.ql-editor .ql-indent-3.ql-direction-rtl.ql-align-right {\n  padding-right: 9em;\n}\n\n.ql-editor li.ql-indent-3.ql-direction-rtl.ql-align-right {\n  padding-right: 10.5em;\n}\n\n.ql-editor .ql-indent-4:not(.ql-direction-rtl) {\n  padding-left: 12em;\n}\n\n.ql-editor li.ql-indent-4:not(.ql-direction-rtl) {\n  padding-left: 13.5em;\n}\n\n.ql-editor .ql-indent-4.ql-direction-rtl.ql-align-right {\n  padding-right: 12em;\n}\n\n.ql-editor li.ql-indent-4.ql-direction-rtl.ql-align-right {\n  padding-right: 13.5em;\n}\n\n.ql-editor .ql-indent-5:not(.ql-direction-rtl) {\n  padding-left: 15em;\n}\n\n.ql-editor li.ql-indent-5:not(.ql-direction-rtl) {\n  padding-left: 16.5em;\n}\n\n.ql-editor .ql-indent-5.ql-direction-rtl.ql-align-right {\n  padding-right: 15em;\n}\n\n.ql-editor li.ql-indent-5.ql-direction-rtl.ql-align-right {\n  padding-right: 16.5em;\n}\n\n.ql-editor .ql-indent-6:not(.ql-direction-rtl) {\n  padding-left: 18em;\n}\n\n.ql-editor li.ql-indent-6:not(.ql-direction-rtl) {\n  padding-left: 19.5em;\n}\n\n.ql-editor .ql-indent-6.ql-direction-rtl.ql-align-right {\n  padding-right: 18em;\n}\n\n.ql-editor li.ql-indent-6.ql-direction-rtl.ql-align-right {\n  padding-right: 19.5em;\n}\n\n.ql-editor .ql-indent-7:not(.ql-direction-rtl) {\n  padding-left: 21em;\n}\n\n.ql-editor li.ql-indent-7:not(.ql-direction-rtl) {\n  padding-left: 22.5em;\n}\n\n.ql-editor .ql-indent-7.ql-direction-rtl.ql-align-right {\n  padding-right: 21em;\n}\n\n.ql-editor li.ql-indent-7.ql-direction-rtl.ql-align-right {\n  padding-right: 22.5em;\n}\n\n.ql-editor .ql-indent-8:not(.ql-direction-rtl) {\n  padding-left: 24em;\n}\n\n.ql-editor li.ql-indent-8:not(.ql-direction-rtl) {\n  padding-left: 25.5em;\n}\n\n.ql-editor .ql-indent-8.ql-direction-rtl.ql-align-right {\n  padding-right: 24em;\n}\n\n.ql-editor li.ql-indent-8.ql-direction-rtl.ql-align-right {\n  padding-right: 25.5em;\n}\n\n.ql-editor .ql-indent-9:not(.ql-direction-rtl) {\n  padding-left: 27em;\n}\n\n.ql-editor li.ql-indent-9:not(.ql-direction-rtl) {\n  padding-left: 28.5em;\n}\n\n.ql-editor .ql-indent-9.ql-direction-rtl.ql-align-right {\n  padding-right: 27em;\n}\n\n.ql-editor li.ql-indent-9.ql-direction-rtl.ql-align-right {\n  padding-right: 28.5em;\n}\n\n.ql-editor .ql-video {\n  display: block;\n  max-width: 100%;\n}\n\n.ql-editor .ql-video.ql-align-center {\n  margin: 0 auto;\n}\n\n.ql-editor .ql-video.ql-align-right {\n  margin: 0 0 0 auto;\n}\n\n.ql-editor .ql-bg-black {\n  background-color: #000;\n}\n\n.ql-editor .ql-bg-red {\n  background-color: #e60000;\n}\n\n.ql-editor .ql-bg-orange {\n  background-color: #f90;\n}\n\n.ql-editor .ql-bg-yellow {\n  background-color: #ff0;\n}\n\n.ql-editor .ql-bg-green {\n  background-color: #008a00;\n}\n\n.ql-editor .ql-bg-blue {\n  background-color: #06c;\n}\n\n.ql-editor .ql-bg-purple {\n  background-color: #93f;\n}\n\n.ql-editor .ql-color-white {\n  color: #fff;\n}\n\n.ql-editor .ql-color-red {\n  color: #e60000;\n}\n\n.ql-editor .ql-color-orange {\n  color: #f90;\n}\n\n.ql-editor .ql-color-yellow {\n  color: #ff0;\n}\n\n.ql-editor .ql-color-green {\n  color: #008a00;\n}\n\n.ql-editor .ql-color-blue {\n  color: #06c;\n}\n\n.ql-editor .ql-color-purple {\n  color: #93f;\n}\n\n.ql-editor .ql-font-serif {\n  font-family: Georgia, Times New Roman, serif;\n}\n\n.ql-editor .ql-font-monospace {\n  font-family: Monaco, Courier New, monospace;\n}\n\n.ql-editor .ql-size-small {\n  font-size: 0.75em;\n}\n\n.ql-editor .ql-size-large {\n  font-size: 1.5em;\n}\n\n.ql-editor .ql-size-huge {\n  font-size: 2.5em;\n}\n\n.ql-editor .ql-direction-rtl {\n  direction: rtl;\n  text-align: inherit;\n}\n\n.ql-editor .ql-align-center {\n  text-align: center;\n}\n\n.ql-editor .ql-align-justify {\n  text-align: justify;\n}\n\n.ql-editor .ql-align-right {\n  text-align: right;\n}\n\n.ql-editor.ql-blank::before {\n  color: rgba(0, 0, 0, 0.6);\n  content: attr(data-placeholder);\n  font-style: italic;\n  left: 15px;\n  pointer-events: none;\n  position: absolute;\n  right: 15px;\n}\n\n.ql-snow.ql-toolbar:after,\n.ql-snow .ql-toolbar:after {\n  clear: both;\n  content: \"\";\n  display: table;\n}\n\n.ql-snow.ql-toolbar button,\n.ql-snow .ql-toolbar button {\n  background: none;\n  border: none;\n  cursor: pointer;\n  display: inline-block;\n  float: left;\n  height: 24px;\n  padding: 3px 5px;\n  width: 28px;\n  margin-left: 1px;\n  margin-right: 1px;\n}\n\n.ql-snow.ql-toolbar button svg,\n.ql-snow .ql-toolbar button svg {\n  float: left;\n  height: 100%;\n}\n\n.ql-snow.ql-toolbar button:active:hover,\n.ql-snow .ql-toolbar button:active:hover {\n  outline: none;\n}\n\n.ql-snow.ql-toolbar input.ql-image[type=\"file\"],\n.ql-snow .ql-toolbar input.ql-image[type=\"file\"] {\n  display: none;\n}\n\n.ql-snow.ql-toolbar button:hover,\n.ql-snow .ql-toolbar button:hover,\n.ql-snow.ql-toolbar button:focus,\n.ql-snow .ql-toolbar button:focus,\n.ql-snow.ql-toolbar .ql-picker-label:hover,\n.ql-snow .ql-toolbar .ql-picker-label:hover,\n.ql-snow.ql-toolbar .ql-picker-item:hover,\n.ql-snow .ql-toolbar .ql-picker-item:hover {\n  background-color: #f3f4f6;\n}\n\n.ql-snow.ql-toolbar button.ql-active,\n.ql-snow .ql-toolbar button.ql-active,\n.ql-snow.ql-toolbar .ql-picker-label.ql-active,\n.ql-snow .ql-toolbar .ql-picker-label.ql-active,\n.ql-snow.ql-toolbar .ql-picker-item.ql-selected,\n.ql-snow .ql-toolbar .ql-picker-item.ql-selected {\n  background-color: #dbeafe;\n  color: #2563eb;\n}\n\n.ql-snow.ql-toolbar button.ql-active .ql-fill,\n.ql-snow .ql-toolbar button.ql-active .ql-fill,\n.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill,\n.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill,\n.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill,\n.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill,\n.ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill,\n.ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill,\n.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,\n.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,\n.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,\n.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {\n  fill: #2563eb;\n}\n\n.ql-snow.ql-toolbar button.ql-active .ql-stroke,\n.ql-snow .ql-toolbar button.ql-active .ql-stroke,\n.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,\n.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,\n.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,\n.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,\n.ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,\n.ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,\n.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,\n.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,\n.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,\n.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {\n  stroke: #2563eb;\n}\n\n@media (pointer: coarse) {\n  .ql-snow.ql-toolbar button:hover:not(.ql-active),\n  .ql-snow .ql-toolbar button:hover:not(.ql-active) {\n    color: #4b5563;\n  }\n\n  .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-fill,\n  .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-fill,\n  .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill,\n  .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill {\n    fill: #4b5563;\n  }\n\n  .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke,\n  .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke,\n  .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter,\n  .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter {\n    stroke: #4b5563;\n  }\n}\n\n.ql-snow {\n  box-sizing: border-box;\n}\n\n.ql-snow * {\n  box-sizing: border-box;\n}\n\n.ql-snow .ql-hidden {\n  display: none;\n}\n\n.ql-snow .ql-out-bottom,\n.ql-snow .ql-out-top {\n  visibility: hidden;\n}\n\n.ql-snow .ql-tooltip {\n  position: absolute;\n  transform: translateY(10px);\n}\n\n.ql-snow .ql-tooltip a {\n  cursor: pointer;\n  text-decoration: none;\n}\n\n.ql-snow .ql-tooltip.ql-flip {\n  transform: translateY(-10px);\n}\n\n.ql-snow .ql-formats {\n  display: inline-block;\n  vertical-align: middle;\n}\n\n.ql-snow .ql-formats:after {\n  clear: both;\n  content: \"\";\n  display: table;\n}\n\n.ql-snow .ql-stroke {\n  fill: none;\n  stroke: #4b5563;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  stroke-width: 2;\n}\n\n.ql-snow .ql-stroke-miter {\n  fill: none;\n  stroke: #4b5563;\n  stroke-miterlimit: 10;\n  stroke-width: 2;\n}\n\n.ql-snow .ql-fill,\n.ql-snow .ql-stroke.ql-fill {\n  fill: #4b5563;\n}\n\n.ql-snow .ql-empty {\n  fill: none;\n}\n\n.ql-snow .ql-even {\n  fill-rule: evenodd;\n}\n\n.ql-snow .ql-thin,\n.ql-snow .ql-stroke.ql-thin {\n  stroke-width: 1;\n}\n\n.ql-snow .ql-transparent {\n  opacity: 0.4;\n}\n\n.ql-snow .ql-direction svg:last-child {\n  display: none;\n}\n\n.ql-snow .ql-direction.ql-active svg:last-child {\n  display: inline;\n}\n\n.ql-snow .ql-direction.ql-active svg:first-child {\n  display: none;\n}\n\n.ql-snow .ql-editor h1 {\n  font-size: 2em;\n}\n\n.ql-snow .ql-editor h2 {\n  font-size: 1.5em;\n}\n\n.ql-snow .ql-editor h3 {\n  font-size: 1.17em;\n}\n\n.ql-snow .ql-editor h4 {\n  font-size: 1em;\n}\n\n.ql-snow .ql-editor h5 {\n  font-size: 0.83em;\n}\n\n.ql-snow .ql-editor h6 {\n  font-size: 0.67em;\n}\n\n.ql-snow .ql-editor a {\n  text-decoration: underline;\n}\n\n.ql-snow .ql-editor blockquote {\n  border-left: 4px solid #ccc;\n  margin-bottom: 5px;\n  margin-top: 5px;\n  padding-left: 16px;\n}\n\n.ql-snow .ql-editor code,\n.ql-snow .ql-editor pre {\n  background-color: #f0f0f0;\n  border-radius: 3px;\n}\n\n.ql-snow .ql-editor pre {\n  white-space: pre-wrap;\n  margin-bottom: 5px;\n  margin-top: 5px;\n  padding: 5px 10px;\n}\n\n.ql-snow .ql-editor code {\n  font-size: 85%;\n  padding: 2px 4px;\n}\n\n.ql-snow .ql-editor pre.ql-syntax {\n  background-color: #23241f;\n  color: #f8f8f2;\n  overflow: visible;\n}\n\n.ql-snow .ql-editor img {\n  max-width: 100%;\n}\n\n.ql-snow .ql-picker {\n  color: #4b5563;\n  display: inline-block;\n  float: left;\n  font-size: 14px;\n  font-weight: 500;\n  height: 24px;\n  position: relative;\n  vertical-align: middle;\n  margin-right: 1px;\n  margin-left: 1px;\n}\n\n.ql-snow .ql-picker-label {\n  cursor: pointer;\n  display: inline-block;\n  height: 100%;\n  padding-left: 8px;\n  padding-right: 2px;\n  position: relative;\n  width: 100%;\n}\n\n.ql-snow .ql-picker-label::before {\n  display: inline-block;\n  line-height: 22px;\n}\n\n.ql-snow .ql-picker-options {\n  background-color: #fff;\n  display: none;\n  min-width: 100%;\n  position: absolute;\n  white-space: nowrap;\n}\n\n.ql-snow .ql-picker-options .ql-picker-item {\n  cursor: pointer;\n  display: block;\n  padding: 5px 8px;\n}\n\n.ql-snow .ql-picker.ql-expanded .ql-picker-label {\n  color: #d1d5db;\n  z-index: 2;\n}\n\n.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill {\n  fill: #d1d5db;\n}\n\n.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke {\n  stroke: #d1d5db;\n}\n\n.ql-snow .ql-picker.ql-expanded .ql-picker-options {\n  display: block;\n  margin-top: -1px;\n  top: 100%;\n  z-index: 1;\n}\n\n.ql-snow .ql-color-picker,\n.ql-snow .ql-icon-picker {\n  width: 28px;\n}\n\n.ql-snow .ql-color-picker .ql-picker-label,\n.ql-snow .ql-icon-picker .ql-picker-label {\n  padding: 2px 4px;\n}\n\n.ql-snow .ql-color-picker .ql-picker-label svg,\n.ql-snow .ql-icon-picker .ql-picker-label svg {\n  right: 4px;\n}\n\n.ql-snow .ql-icon-picker .ql-picker-options {\n  padding: 3px;\n}\n\n.ql-snow .ql-icon-picker .ql-picker-item {\n  height: 24px;\n  width: 24px;\n  padding: 2px 4px;\n  margin: 2px;\n}\n\n.ql-snow .ql-color-picker .ql-picker-options {\n  padding: 3px 5px;\n  width: 152px;\n}\n\n.ql-snow .ql-color-picker .ql-picker-item {\n  border: 1px solid transparent;\n  float: left;\n  height: 16px;\n  margin: 2px;\n  padding: 0px;\n  width: 16px;\n}\n\n.ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg {\n  position: absolute;\n  margin-top: -9px;\n  right: 0;\n  top: 50%;\n  width: 18px;\n}\n\n.ql-snow\n  .ql-picker.ql-header\n  .ql-picker-label[data-label]:not([data-label=\"\"])::before,\n.ql-snow\n  .ql-picker.ql-font\n  .ql-picker-label[data-label]:not([data-label=\"\"])::before,\n.ql-snow\n  .ql-picker.ql-size\n  .ql-picker-label[data-label]:not([data-label=\"\"])::before,\n.ql-snow\n  .ql-picker.ql-header\n  .ql-picker-item[data-label]:not([data-label=\"\"])::before,\n.ql-snow\n  .ql-picker.ql-font\n  .ql-picker-item[data-label]:not([data-label=\"\"])::before,\n.ql-snow\n  .ql-picker.ql-size\n  .ql-picker-item[data-label]:not([data-label=\"\"])::before {\n  content: attr(data-label);\n}\n\n.ql-snow .ql-picker.ql-header {\n  width: 98px;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item::before {\n  content: \"Normal\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"1\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"1\"]::before {\n  content: \"Heading 1\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"2\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"2\"]::before {\n  content: \"Heading 2\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"3\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"3\"]::before {\n  content: \"Heading 3\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"4\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"4\"]::before {\n  content: \"Heading 4\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"5\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"5\"]::before {\n  content: \"Heading 5\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"6\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"6\"]::before {\n  content: \"Heading 6\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"1\"]::before {\n  font-size: 2em;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"2\"]::before {\n  font-size: 1.5em;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"3\"]::before {\n  font-size: 1.17em;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"4\"]::before {\n  font-size: 1em;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"5\"]::before {\n  font-size: 0.83em;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"6\"]::before {\n  font-size: 0.67em;\n}\n\n.ql-snow .ql-picker.ql-font {\n  width: 108px;\n}\n\n.ql-snow .ql-picker.ql-font .ql-picker-label::before,\n.ql-snow .ql-picker.ql-font .ql-picker-item::before {\n  content: \"Sans Serif\";\n}\n\n.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=\"serif\"]::before,\n.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=\"serif\"]::before {\n  content: \"Serif\";\n}\n\n.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=\"monospace\"]::before,\n.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=\"monospace\"]::before {\n  content: \"Monospace\";\n}\n\n.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=\"serif\"]::before {\n  font-family: Georgia, Times New Roman, serif;\n}\n\n.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=\"monospace\"]::before {\n  font-family: Monaco, Courier New, monospace;\n}\n\n.ql-snow .ql-picker.ql-size {\n  width: 98px;\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-label::before,\n.ql-snow .ql-picker.ql-size .ql-picker-item::before {\n  content: \"Normal\";\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=\"small\"]::before,\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"small\"]::before {\n  content: \"Small\";\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=\"large\"]::before,\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"large\"]::before {\n  content: \"Large\";\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=\"huge\"]::before,\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"huge\"]::before {\n  content: \"Huge\";\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"small\"]::before {\n  font-size: 10px;\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"large\"]::before {\n  font-size: 18px;\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"huge\"]::before {\n  font-size: 32px;\n}\n\n.ql-snow .ql-color-picker.ql-background .ql-picker-item {\n  background-color: #fff;\n}\n\n.ql-snow .ql-color-picker.ql-color .ql-picker-item {\n  background-color: #000;\n}\n\n.ql-toolbar.ql-snow .ql-formats {\n  margin-right: 15px;\n}\n\n.ql-toolbar.ql-snow .ql-picker-label {\n  border: 1px solid transparent;\n}\n\n.ql-toolbar.ql-snow .ql-picker-options {\n  border: 1px solid transparent;\n  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;\n}\n\n.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label {\n  border-color: #d1d5db;\n}\n\n.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {\n  border-color: #d1d5db;\n}\n\n.ql-toolbar.ql-snow .ql-color-picker .ql-picker-item.ql-selected,\n.ql-toolbar.ql-snow .ql-color-picker .ql-picker-item:hover {\n  border-color: #000;\n}\n\n.ql-snow .ql-tooltip {\n  background-color: #fff;\n  border: 1px solid #d1d5db;\n  box-shadow: 0px 0px 5px #d1d5db;\n  color: #4b5563;\n  padding: 5px 12px;\n  white-space: nowrap;\n}\n\n.ql-snow .ql-tooltip::before {\n  content: \"Visit URL:\";\n  line-height: 26px;\n  margin-right: 8px;\n}\n\n.ql-snow .ql-tooltip input[type=\"text\"] {\n  display: none;\n  border: 1px solid #d1d5db;\n  font-size: 13px;\n  height: 26px;\n  margin: 0px;\n  padding: 3px 5px;\n  width: 170px;\n}\n\n.ql-snow .ql-tooltip a.ql-preview {\n  display: inline-block;\n  max-width: 200px;\n  overflow-x: hidden;\n  text-overflow: ellipsis;\n  vertical-align: top;\n}\n\n.ql-snow .ql-tooltip a.ql-action::after {\n  border-right: 1px solid #d1d5db;\n  content: \"Edit\";\n  margin-left: 16px;\n  padding-right: 8px;\n}\n\n.ql-snow .ql-tooltip a.ql-remove::before {\n  content: \"Remove\";\n  margin-left: 8px;\n}\n\n.ql-snow .ql-tooltip a {\n  line-height: 26px;\n}\n\n.ql-snow .ql-tooltip.ql-editing a.ql-preview,\n.ql-snow .ql-tooltip.ql-editing a.ql-remove {\n  display: none;\n}\n\n.ql-snow .ql-tooltip.ql-editing input[type=\"text\"] {\n  display: inline-block;\n}\n\n.ql-snow .ql-tooltip.ql-editing a.ql-action::after {\n  border-right: 0px;\n  content: \"Save\";\n  padding-right: 0px;\n}\n\n.ql-snow .ql-tooltip[data-mode=\"link\"]::before {\n  content: \"Enter link:\";\n}\n\n.ql-snow .ql-tooltip[data-mode=\"formula\"]::before {\n  content: \"Enter formula:\";\n}\n\n.ql-snow .ql-tooltip[data-mode=\"video\"]::before {\n  content: \"Enter video:\";\n}\n\n.ql-snow a {\n  color: #2563eb;\n}\n\n.ql-snow.ql-toolbar {\n  padding: 0.25rem;\n  border-width: 1px !important;\n  padding-left: 0px;\n  padding-right: 0px;\n  border-top-left-radius: 0.25rem !important;\n  border-top-right-radius: 0.25rem !important;\n  border-bottom-width: 0px !important;\n}\n";
 styleInject(css_248z);
 
-script$4.render = render$4;
+script$5.render = render$5;
 
-var script$3 = defineComponent({
+var script$4 = defineComponent({
   props: {
     label: {
       type: String,
@@ -13764,15 +13764,15 @@ var script$3 = defineComponent({
 
 });
 
-const _hoisted_1$3 = {
+const _hoisted_1$4 = {
   class: "flex flex-col mb-4 relative w-full"
 };
-const _hoisted_2$3 = {
+const _hoisted_2$4 = {
   key: 0,
   class: "relative h-32 w-32"
 };
-function render$3(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$3, [createVNode("label", null, toDisplayString(_ctx.label), 1), _ctx.imagePreview || _ctx.placeholder ? (openBlock(), createBlock("div", _hoisted_2$3, [createVNode("img", {
+function render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("div", _hoisted_1$4, [createVNode("label", null, toDisplayString(_ctx.label), 1), _ctx.imagePreview || _ctx.placeholder ? (openBlock(), createBlock("div", _hoisted_2$4, [createVNode("img", {
     src: _ctx.imagePreview ? _ctx.imagePreview : _ctx.placeholder,
     onClick: _cache[1] || (_cache[1] = (...args) => _ctx.open && _ctx.open(...args)),
     class: "bg-gray-100 cursor-pointer flex h-32 hover:bg-gray-200 hover:opacity-100 items-center justify-center rounded w-32 opacity-90 object-contain"
@@ -13792,9 +13792,9 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 544)]);
 }
 
-script$3.render = render$3;
+script$4.render = render$4;
 
-var script$2 = defineComponent({
+var script$3 = defineComponent({
   props: {
     show: {
       default: false
@@ -13861,24 +13861,24 @@ var script$2 = defineComponent({
 
 });
 
-const _hoisted_1$2 = {
+const _hoisted_1$3 = {
   class: "fixed top-0 inset-x-0 mx-2 sm:flex sm:items-top sm:justify-center"
 };
 
-const _hoisted_2$2 = /*#__PURE__*/createVNode("div", {
+const _hoisted_2$3 = /*#__PURE__*/createVNode("div", {
   class: "absolute inset-0 bg-gray-500 opacity-75"
 }, null, -1);
 
-const _hoisted_3$2 = {
+const _hoisted_3$3 = {
   class: "absolute h-screen w-full flex justify-center overflow-scroll"
 };
-function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Teleport, {
     to: "#modals-target"
   }, [createVNode(Transition, {
     "leave-active-class": "duration-200"
   }, {
-    default: withCtx(() => [withDirectives(createVNode("div", _hoisted_1$2, [createVNode(Transition, {
+    default: withCtx(() => [withDirectives(createVNode("div", _hoisted_1$3, [createVNode(Transition, {
       "enter-active-class": "ease-out duration-300",
       "enter-class": "opacity-0",
       "enter-to-class": "opacity-100",
@@ -13889,9 +13889,9 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
       default: withCtx(() => [withDirectives(createVNode("div", {
         class: "fixed inset-0 transform transition-all",
         onClick: _cache[1] || (_cache[1] = (...args) => _ctx.close && _ctx.close(...args))
-      }, [_hoisted_2$2], 512), [[vShow, _ctx.show]])]),
+      }, [_hoisted_2$3], 512), [[vShow, _ctx.show]])]),
       _: 1
-    }), createVNode("div", _hoisted_3$2, [createVNode(Transition, {
+    }), createVNode("div", _hoisted_3$3, [createVNode(Transition, {
       "enter-active-class": "ease-out duration-300",
       "enter-class": "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95",
       "enter-to-class": "opacity-100 translate-y-0 sm:scale-100",
@@ -13910,11 +13910,11 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   })]);
 }
 
-script$2.render = render$2;
+script$3.render = render$3;
 
-var script$1 = defineComponent({
+var script$2 = defineComponent({
   components: {
-    TModal: script$2
+    TModal: script$3
   },
   props: {
     show: {
@@ -13950,18 +13950,18 @@ var script$1 = defineComponent({
 
 });
 
-const _hoisted_1$1 = {
+const _hoisted_1$2 = {
   class: "px-6 py-4"
 };
-const _hoisted_2$1 = {
+const _hoisted_2$2 = {
   key: 0,
   class: "text-lg mb-4"
 };
-const _hoisted_3$1 = {
+const _hoisted_3$2 = {
   key: 0,
   class: "px-6 py-4 bg-gray-100 text-right"
 };
-function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_t_modal = resolveComponent("t-modal");
 
   return openBlock(), createBlock(_component_t_modal, {
@@ -13971,16 +13971,16 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
     closeable: _ctx.closeable,
     onClose: _ctx.close
   }, {
-    default: withCtx(() => [createVNode("div", _hoisted_1$1, [_ctx.slots.title ? (openBlock(), createBlock("div", _hoisted_2$1, [renderSlot(_ctx.$slots, "title")])) : createCommentVNode("", true), createVNode("div", null, [renderSlot(_ctx.$slots, "default")])]), _ctx.slots.footer ? (openBlock(), createBlock("div", _hoisted_3$1, [renderSlot(_ctx.$slots, "footer")])) : createCommentVNode("", true)]),
+    default: withCtx(() => [createVNode("div", _hoisted_1$2, [_ctx.slots.title ? (openBlock(), createBlock("div", _hoisted_2$2, [renderSlot(_ctx.$slots, "title")])) : createCommentVNode("", true), createVNode("div", null, [renderSlot(_ctx.$slots, "default")])]), _ctx.slots.footer ? (openBlock(), createBlock("div", _hoisted_3$2, [renderSlot(_ctx.$slots, "footer")])) : createCommentVNode("", true)]),
     _: 3
   }, 8, ["show", "onShown", "max-width", "closeable", "onClose"]);
 }
 
-script$1.render = render$1;
+script$2.render = render$2;
 
-var script = defineComponent({
+var script$1 = defineComponent({
   components: {
-    TModal: script$2
+    TModal: script$3
   },
   props: {
     show: {
@@ -14009,14 +14009,14 @@ var script = defineComponent({
 
 });
 
-const _hoisted_1 = {
+const _hoisted_1$1 = {
   class: "bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
 };
-const _hoisted_2 = {
+const _hoisted_2$1 = {
   class: "sm:flex sm:items-start"
 };
 
-const _hoisted_3 = /*#__PURE__*/createVNode("div", {
+const _hoisted_3$1 = /*#__PURE__*/createVNode("div", {
   class: "mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
 }, [/*#__PURE__*/createVNode("svg", {
   class: "h-6 w-6 text-red-600",
@@ -14030,7 +14030,7 @@ const _hoisted_3 = /*#__PURE__*/createVNode("div", {
   d: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
 })])], -1);
 
-const _hoisted_4 = {
+const _hoisted_4$1 = {
   class: "mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left"
 };
 const _hoisted_5 = {
@@ -14042,7 +14042,7 @@ const _hoisted_6 = {
 const _hoisted_7 = {
   class: "px-6 py-4 bg-gray-100 text-right"
 };
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_t_modal = resolveComponent("t-modal");
 
   return openBlock(), createBlock(_component_t_modal, {
@@ -14051,30 +14051,165 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     closeable: _ctx.closeable,
     onClose: _ctx.close
   }, {
-    default: withCtx(() => [createVNode("div", _hoisted_1, [createVNode("div", _hoisted_2, [_hoisted_3, createVNode("div", _hoisted_4, [createVNode("h3", _hoisted_5, [renderSlot(_ctx.$slots, "title")]), createVNode("div", _hoisted_6, [renderSlot(_ctx.$slots, "content")])])])]), createVNode("div", _hoisted_7, [renderSlot(_ctx.$slots, "footer")])]),
+    default: withCtx(() => [createVNode("div", _hoisted_1$1, [createVNode("div", _hoisted_2$1, [_hoisted_3$1, createVNode("div", _hoisted_4$1, [createVNode("h3", _hoisted_5, [renderSlot(_ctx.$slots, "title")]), createVNode("div", _hoisted_6, [renderSlot(_ctx.$slots, "content")])])])]), createVNode("div", _hoisted_7, [renderSlot(_ctx.$slots, "footer")])]),
     _: 3
   }, 8, ["show", "max-width", "closeable", "onClose"]);
+}
+
+script$1.render = render$1;
+
+var script = defineComponent({
+  props: {
+    value: {
+      type: Object,
+      required: true
+    },
+    itemClass: {
+      type: Object
+    },
+    size: {
+      type: String,
+      default: "base"
+    },
+    header: {
+      type: Object,
+      required: true
+    }
+  },
+
+  setup(props, {
+    emit,
+    slots
+  }) {
+    const checkItem = item => {
+      if (typeof item == "string") {
+        return item;
+      }
+
+      return item.value;
+    };
+
+    const itemScopedClass = item => {
+      console.log(item);
+      let newClass = {};
+
+      if (typeof props.itemClass == "object") {
+        Object.entries(props.itemClass).forEach(element => {
+          console.log(element);
+          newClass[element[0]] = eval(element[1]);
+          console.log(element[0], eval(element[1]));
+        });
+        return newClass;
+      }
+    };
+
+    const colunas = computed(() => {
+      return Object.entries(props.header).map(([key, value]) => {
+        if (typeof value == "string") {
+          return {
+            key: key,
+            label: value
+          };
+        }
+
+        return { ...value,
+          key
+        };
+      });
+    });
+    return {
+      colunas,
+      itemScopedClass,
+      checkItem,
+      emit,
+      slots
+    };
+  }
+
+});
+
+const _hoisted_1 = {
+  class: "border-collapse w-full"
+};
+const _hoisted_2 = {
+  class: "sm:rounded-lg"
+};
+const _hoisted_3 = {
+  class: "lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
+};
+
+const _hoisted_4 = /*#__PURE__*/createVNode("span", {
+  class: "lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
+}, " Ações ", -1);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock("table", _hoisted_1, [createVNode("thead", null, [createVNode("tr", _hoisted_2, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.colunas, coluna => {
+    return openBlock(), createBlock("th", {
+      key: `coluna-${coluna.key}`,
+      class: ["font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell", [{
+        'p-1 text-xs': _ctx.size == 'sm'
+      }, {
+        'p-3 text-sm': _ctx.size == 'base'
+      }]]
+    }, toDisplayString(coluna.label), 3);
+  }), 128)), _ctx.slots.actions ? (openBlock(), createBlock("th", {
+    key: 0,
+    class: ["font-bold uppercase bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell", [{
+      'p-1 text-xs': _ctx.size == 'sm'
+    }, {
+      'p-3 text-sm': _ctx.size == 'base'
+    }]]
+  }, " Ações ", 2)) : createCommentVNode("", true)])]), createVNode("tbody", null, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.value, (item, index) => {
+    return openBlock(), createBlock("tr", {
+      onClick: $event => _ctx.emit('itemClick', {
+        item,
+        index
+      }),
+      key: item.ukey,
+      class: ["bg-white dark:bg-black lg:dark:hover:bg-gray-800 cursor-pointer lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0", _ctx.itemScopedClass(item)]
+    }, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.colunas, coluna => {
+      return openBlock(), createBlock("td", {
+        key: `coluna-${coluna.key}`,
+        class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b block lg:table-cell relative lg:static", [{
+          'p-1': _ctx.size == 'sm'
+        }, {
+          'p-3': _ctx.size == 'base'
+        }]]
+      }, [createVNode("span", _hoisted_3, toDisplayString(coluna.label), 1), createTextVNode(" " + toDisplayString(_ctx.checkItem(item[coluna.key])), 1)], 2);
+    }), 128)), _ctx.slots.actions ? (openBlock(), createBlock("td", {
+      key: 0,
+      class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b block lg:table-cell relative lg:static", [{
+        'p-0': _ctx.size == 'sm'
+      }, {
+        'p-3': _ctx.size == 'base'
+      }]]
+    }, [_hoisted_4, renderSlot(_ctx.$slots, "actions", {
+      onClick: _cache[1] || (_cache[1] = withModifiers(() => {}, ["prevent"])),
+      $item: item
+    })], 2)) : createCommentVNode("", true)], 10, ["onClick"]);
+  }), 128))])]);
 }
 
 script.render = render;
 
 var components = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  TButton: script$e,
-  TInput: script$d,
-  TFormSection: script$c,
-  TSelect: script$b,
-  TAccordion: script$a,
-  TToggle: script$9,
-  TAlert: script$8,
-  TDropdown: script$7,
-  TDropdownItem: script$6,
-  TLoop: script$5,
-  TEditor: script$4,
-  TImageInput: script$3,
-  TModal: script$2,
-  TDialogModal: script$1,
-  TConfirmationModal: script
+  TButton: script$f,
+  TInput: script$e,
+  TFormSection: script$d,
+  TSelect: script$c,
+  TAccordion: script$b,
+  TToggle: script$a,
+  TAlert: script$9,
+  TDropdown: script$8,
+  TDropdownItem: script$7,
+  TLoop: script$6,
+  TEditor: script$5,
+  TImageInput: script$4,
+  TModal: script$3,
+  TDialogModal: script$2,
+  TConfirmationModal: script$1,
+  TTable: script
 });
 
 // Import vue components
@@ -14086,4 +14221,4 @@ const install = function installTailpieces(app) {
 }; // Create module definition for Vue.use()
 
 export default install;
-export { Form, script$a as TAccordion, script$8 as TAlert, script$e as TButton, script as TConfirmationModal, script$1 as TDialogModal, script$7 as TDropdown, script$6 as TDropdownItem, script$4 as TEditor, script$c as TFormSection, script$3 as TImageInput, script$d as TInput, script$5 as TLoop, script$2 as TModal, script$b as TSelect, script$9 as TToggle, Validator };
+export { Form, script$b as TAccordion, script$9 as TAlert, script$f as TButton, script$1 as TConfirmationModal, script$2 as TDialogModal, script$8 as TDropdown, script$7 as TDropdownItem, script$5 as TEditor, script$d as TFormSection, script$4 as TImageInput, script$e as TInput, script$6 as TLoop, script$3 as TModal, script$c as TSelect, script as TTable, script$a as TToggle, Validator };
