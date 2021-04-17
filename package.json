@@ -1,6 +1,6 @@
 {
   "name": "tailpieces",
-  "version": "1.0.14",
+  "version": "1.0.15-alpha.1",
   "description": "Vue 3 + TypeScript + TailwindCss Components Library UI",
   "license": "MIT",
   "keywords": [
