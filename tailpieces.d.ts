@@ -53,6 +53,7 @@ export const TImageInput: DefineComponent<{}, {}, any>;
 export const TModal: DefineComponent<{}, {}, any>;
 export const TDialogModal: DefineComponent<{}, {}, any>;
 export const TConfirmationModal: DefineComponent<{}, {}, any>;
+export const TTable: DefineComponent<{}, {}, any>;
 
 export class Form {
   data: FormInterface;

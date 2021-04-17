@@ -3,6 +3,47 @@
     <t-alert :info="success" color="red" />
     <t-alert :info="success" color="green" />
     <t-alert :info="success" />
+    <t-form-section label="Seção Tabela">
+      <div class="bg-gray-200 w-full p-4">
+        <t-table
+          size="sm"
+          @itemClick="debug($event.item)"
+          :itemClass="{
+            'bg-red-100 lg:hover:bg-red-300': 'item.postID == \'277\'',
+          }"
+          :value="dataTable"
+          :header="{ postID: 'ID do Post', nome: 'Nome', link: 'Link' }"
+        ></t-table>
+        <t-table
+          size="sm"
+          :itemClass="{
+            'bg-red-100 lg:hover:bg-red-300': 'item.postID == \'277\'',
+          }"
+          @itemClick="debug($event.item)"
+          :value="dataTable"
+          :header="{
+            postID: 'ID do Post',
+            nome: 'Nome',
+            link: 'Link',
+          }"
+        >
+          <template #actions="{ $item }">
+            <t-button
+              size="sm"
+              class="m-2"
+              @click.stop="debug({ nome: 'asdasd' })"
+              >{{ $item.postID }}</t-button
+            >
+          </template>
+        </t-table>
+        <br />
+        <t-button @click="debug">Debug</t-button>
+        <t-button color="yellow" @click="debug">Debug</t-button>
+        <t-button color="red" @click="debug">Debug</t-button>
+        <t-button color="gray" @click="debug">Debug</t-button>
+        <t-button color="green" @click="debug">Debug</t-button>
+      </div>
+    </t-form-section>
     <t-form-section label="Seção Teste">
       <t-input label="Nome" :maxlength="100" v-model="user.data.name" />
       <t-image-input label="Imagem" v-model="user.data.image.value" />
@@ -94,6 +135,7 @@
 import { FormItemInterface } from "tailpieces";
 import { defineComponent, ref } from "vue";
 import { Form } from "@/entry.esm";
+import { DefaultObjectInterface } from "@/types";
 export default defineComponent({
   name: "ServeDev",
   setup() {
@@ -115,9 +157,78 @@ export default defineComponent({
     const paragraph2 = ref(
       "Nunc lobortis in nisi eget volutpat. In nec diam id purus ultrices sagittis a in ante. Pellentesque accumsan, lacus vel molestie interdum, justo nibh malesuada ante, at varius lectus erat vehicula quam. Suspendisse molestie mauris erat, id porttitor ex cursus quis. Aliquam quis diam vel nisl maximus egestas in a sapien. Etiam vel lobortis nibh, a gravida ante. Fusce vehicula neque a blandit lacinia. Sed tincidunt tellus quis elit vulputate pharetra. Phasellus porttitor felis eget dignissim iaculis. Sed ac iaculis diam, ac mollis leo. Pellentesque finibus augue elit. Maecenas facilisis, tellus sed porttitor convallis, orci lorem venenatis justo, in volutpat ipsum nisi consectetur ante. Nam quis hendrerit orci, non fringilla metus. Cras at enim fringilla, semper ligula ut, pretium turpis.",
     );
-    const debug = () => {
-      console.log(user.value.data);
+    const debug = (data: DefaultObjectInterface) => {
+      console.log(data);
     };
+
+    const dataTable = [
+      {
+        postID: "277",
+        nome: "asdasdasddddd",
+        conteudo:
+          '<p><em>asdasdsad</em></p><p><br></p><p><br></p><p><br></p><p><a href="asdad" rel="noopener noreferrer" target="_blank"><u>asdasdad</u></a></p>',
+        chamada: null,
+        link: "",
+        tipo: "noticia",
+        dataCriado: "2021-04-14 19:43:15",
+        pai: null,
+        destaque: "0",
+        codigo: "",
+        status: null,
+        slug: null,
+        imagem_pequena_path: "/public//imagens-posts/277_p.jpg?1618612470",
+        imagem_grande_path: "/public//imagens-posts/277_g.jpg?1618612470",
+      },
+      {
+        postID: "276",
+        nome: "teste",
+        conteudo: "<p>asdadasdasdasdasd</p>",
+        chamada: null,
+        link: "adasdasd",
+        tipo: "noticia",
+        dataCriado: "2021-04-14 19:41:01",
+        pai: null,
+        destaque: "0",
+        codigo: "",
+        status: null,
+        slug: null,
+        imagem_pequena_path: "/public//imagens-posts/276_p.jpg?1618612470",
+        imagem_grande_path: "/public//imagens-posts/276_g.jpg?1618612470",
+      },
+      {
+        postID: "274",
+        nome: "asdasd222222",
+        conteudo: "<p><strong>sadasdas</strong></p>",
+        chamada: null,
+        link: "asdasdasd",
+        tipo: "noticia",
+        dataCriado: "2021-04-13 17:10:08",
+        pai: null,
+        destaque: "0",
+        codigo: "",
+        status: null,
+        slug: null,
+        imagem_pequena_path: "/public//imagens-posts/274_p.jpg?1618612470",
+        imagem_grande_path: "/public//imagens-posts/274_g.jpg?1618612470",
+      },
+      {
+        postID: "273",
+        nome: "asdasd",
+        conteudo: '<p><span style="color: rgb(230, 0, 0);">sadasd</span></p>',
+        chamada: null,
+        link: "asdasd",
+        tipo: "noticia",
+        dataCriado: "2021-04-12 19:36:51",
+        pai: null,
+        destaque: "0",
+        codigo: "",
+        status: null,
+        slug: null,
+        imagem_pequena_path: "/public//imagens-posts/273_p.jpg?1618612470",
+        imagem_grande_path: "/public//imagens-posts/273_g.jpg?1618612470",
+      },
+    ];
+
     const items: FormItemInterface = {
       value: [
         {
@@ -149,6 +260,7 @@ export default defineComponent({
       paragraph2,
       debug,
       show,
+      dataTable,
     };
   },
 });
