@@ -14082,6 +14082,10 @@ var script = defineComponent({
     slots
   }) {
     const checkItem = item => {
+      if (!item) {
+        return "";
+      }
+
       if (typeof item == "string") {
         return item;
       }
@@ -14090,14 +14094,13 @@ var script = defineComponent({
     };
 
     const itemScopedClass = item => {
-      console.log(item);
       let newClass = {};
 
       if (typeof props.itemClass == "object") {
         Object.entries(props.itemClass).forEach(element => {
-          console.log(element);
-          newClass[element[0]] = eval(element[1]);
-          console.log(element[0], eval(element[1]));
+          if (item) {
+            newClass[element[0]] = eval(element[1]);
+          }
         });
         return newClass;
       }
@@ -14137,11 +14140,9 @@ const _hoisted_2 = {
 const _hoisted_3 = {
   class: "lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
 };
-
-const _hoisted_4 = /*#__PURE__*/createVNode("span", {
-  class: "lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
-}, " Ações ", -1);
-
+const _hoisted_4 = {
+  class: "inline-block"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("table", _hoisted_1, [createVNode("thead", null, [createVNode("tr", _hoisted_2, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.colunas, coluna => {
     return openBlock(), createBlock("th", {
@@ -14152,14 +14153,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         'p-3 text-sm': _ctx.size == 'base'
       }]]
     }, toDisplayString(coluna.label), 3);
-  }), 128)), _ctx.slots.actions ? (openBlock(), createBlock("th", {
-    key: 0,
-    class: ["font-bold uppercase bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell", [{
-      'p-1 text-xs': _ctx.size == 'sm'
-    }, {
-      'p-3 text-sm': _ctx.size == 'base'
-    }]]
-  }, " Ações ", 2)) : createCommentVNode("", true)])]), createVNode("tbody", null, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.value, (item, index) => {
+  }), 128))])]), createVNode("tbody", null, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.value, (item, index) => {
     return openBlock(), createBlock("tr", {
       onClick: $event => _ctx.emit('itemClick', {
         item,
@@ -14170,23 +14164,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.colunas, coluna => {
       return openBlock(), createBlock("td", {
         key: `coluna-${coluna.key}`,
-        class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b block lg:table-cell relative lg:static", [{
+        class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static", [{
           'p-1': _ctx.size == 'sm'
         }, {
           'p-3': _ctx.size == 'base'
         }]]
-      }, [createVNode("span", _hoisted_3, toDisplayString(coluna.label), 1), createTextVNode(" " + toDisplayString(_ctx.checkItem(item[coluna.key])), 1)], 2);
-    }), 128)), _ctx.slots.actions ? (openBlock(), createBlock("td", {
-      key: 0,
-      class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b block lg:table-cell relative lg:static", [{
-        'p-0': _ctx.size == 'sm'
-      }, {
-        'p-3': _ctx.size == 'base'
-      }]]
-    }, [_hoisted_4, renderSlot(_ctx.$slots, "actions", {
-      onClick: _cache[1] || (_cache[1] = withModifiers(() => {}, ["prevent"])),
-      $item: item
-    })], 2)) : createCommentVNode("", true)], 10, ["onClick"]);
+      }, [createVNode("span", _hoisted_3, toDisplayString(coluna.label), 1), createVNode("div", _hoisted_4, [renderSlot(_ctx.$slots, coluna.key, {
+        $item: item
+      }, () => [createTextVNode(toDisplayString(_ctx.checkItem(item[coluna.key])), 1)])])], 2);
+    }), 128))], 10, ["onClick"]);
   }), 128))])]);
 }
 

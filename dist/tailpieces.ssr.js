@@ -14202,6 +14202,10 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
         slots = _ref.slots;
 
     var checkItem = function checkItem(item) {
+      if (!item) {
+        return "";
+      }
+
       if (typeof item == "string") {
         return item;
       }
@@ -14210,14 +14214,13 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
     };
 
     var itemScopedClass = function itemScopedClass(item) {
-      console.log(item);
       var newClass = {};
 
       if (_typeof(props.itemClass) == "object") {
         Object.entries(props.itemClass).forEach(function (element) {
-          console.log(element);
-          newClass[element[0]] = eval(element[1]);
-          console.log(element[0], eval(element[1]));
+          if (item) {
+            newClass[element[0]] = eval(element[1]);
+          }
         });
         return newClass;
       }
@@ -14258,11 +14261,9 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   class: "lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
 };
-
-var _hoisted_4 = /*#__PURE__*/vue.createVNode("span", {
-  class: "lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
-}, " Ações ", -1);
-
+var _hoisted_4 = {
+  class: "inline-block"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock("table", _hoisted_1, [vue.createVNode("thead", null, [vue.createVNode("tr", _hoisted_2, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
     return vue.openBlock(), vue.createBlock("th", {
@@ -14273,14 +14274,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         'p-3 text-sm': _ctx.size == 'base'
       }]]
     }, vue.toDisplayString(coluna.label), 3);
-  }), 128)), _ctx.slots.actions ? (vue.openBlock(), vue.createBlock("th", {
-    key: 0,
-    class: ["font-bold uppercase bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell", [{
-      'p-1 text-xs': _ctx.size == 'sm'
-    }, {
-      'p-3 text-sm': _ctx.size == 'base'
-    }]]
-  }, " Ações ", 2)) : vue.createCommentVNode("", true)])]), vue.createVNode("tbody", null, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.value, function (item, index) {
+  }), 128))])]), vue.createVNode("tbody", null, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.value, function (item, index) {
     return vue.openBlock(), vue.createBlock("tr", {
       onClick: function onClick($event) {
         return _ctx.emit('itemClick', {
@@ -14293,23 +14287,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
       return vue.openBlock(), vue.createBlock("td", {
         key: "coluna-".concat(coluna.key),
-        class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b block lg:table-cell relative lg:static", [{
+        class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static", [{
           'p-1': _ctx.size == 'sm'
         }, {
           'p-3': _ctx.size == 'base'
         }]]
-      }, [vue.createVNode("span", _hoisted_3, vue.toDisplayString(coluna.label), 1), vue.createTextVNode(" " + vue.toDisplayString(_ctx.checkItem(item[coluna.key])), 1)], 2);
-    }), 128)), _ctx.slots.actions ? (vue.openBlock(), vue.createBlock("td", {
-      key: 0,
-      class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b block lg:table-cell relative lg:static", [{
-        'p-0': _ctx.size == 'sm'
-      }, {
-        'p-3': _ctx.size == 'base'
-      }]]
-    }, [_hoisted_4, vue.renderSlot(_ctx.$slots, "actions", {
-      onClick: _cache[1] || (_cache[1] = vue.withModifiers(function () {}, ["prevent"])),
-      $item: item
-    })], 2)) : vue.createCommentVNode("", true)], 10, ["onClick"]);
+      }, [vue.createVNode("span", _hoisted_3, vue.toDisplayString(coluna.label), 1), vue.createVNode("div", _hoisted_4, [vue.renderSlot(_ctx.$slots, coluna.key, {
+        $item: item
+      }, function () {
+        return [vue.createTextVNode(vue.toDisplayString(_ctx.checkItem(item[coluna.key])), 1)];
+      })])], 2);
+    }), 128))], 10, ["onClick"]);
   }), 128))])]);
 }script.render = render;var components$1=/*#__PURE__*/Object.freeze({__proto__:null,TButton: script$f,TInput: script$e,TFormSection: script$d,TSelect: script$c,TAccordion: script$b,TToggle: script$a,TAlert: script$9,TDropdown: script$8,TDropdownItem: script$7,TLoop: script$6,TEditor: script$5,TImageInput: script$4,TModal: script$3,TDialogModal: script$2,TConfirmationModal: script$1,TTable: script});var install = function installTailpieces(app) {
   Object.entries(components$1).forEach(function (_ref) {

@@ -24,11 +24,15 @@
           :header="{
             postID: 'ID do Post',
             nome: 'Nome',
+            imagem_grande: 'Imagem',
             link: 'Link',
+            actions: 'Ações',
           }"
         >
-          <template #actions="{ $item }">
-            <t-button
+          <template #link="{ $item }">Link é {{ $item.link }} </template>
+          <template #imagem_grande>Texto Qualquer</template>
+          <template #actions="{ $item }"
+            ><t-button
               size="sm"
               class="m-2"
               @click.stop="debug({ nome: 'asdasd' })"

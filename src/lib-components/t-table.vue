@@ -13,16 +13,6 @@
         >
           {{ coluna.label }}
         </th>
-        <th
-          v-if="slots.actions"
-          class="font-bold uppercase bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell"
-          :class="[
-            { 'p-1 text-xs': size == 'sm' },
-            { 'p-3 text-sm': size == 'base' },
-          ]"
-        >
-          Ações
-        </th>
       </tr>
     </thead>
     <tbody>
@@ -36,7 +26,7 @@
         <td
           v-for="coluna in colunas"
           :key="`coluna-${coluna.key}`"
-          class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b block lg:table-cell relative lg:static"
+          class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static"
           :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]"
         >
           <span
@@ -44,19 +34,11 @@
           >
             {{ coluna.label }}
           </span>
-          {{ checkItem(item[coluna.key]) }}
-        </td>
-        <td
-          v-if="slots.actions"
-          class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b block lg:table-cell relative lg:static"
-          :class="[{ 'p-0': size == 'sm' }, { 'p-3': size == 'base' }]"
-        >
-          <span
-            class="lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
-          >
-            Ações
-          </span>
-          <slot name="actions" @click.prevent :$item="item"></slot>
+          <div class="inline-block">
+            <slot :name="coluna.key" :$item="item">
+              {{ checkItem(item[coluna.key]) }}
+            </slot>
+          </div>
         </td>
       </tr>
     </tbody>
@@ -94,6 +76,9 @@ export default defineComponent({
   },
   setup(props, { emit, slots }) {
     const checkItem = (item: FormItemInterface | string) => {
+      if (!item) {
+        return "";
+      }
       if (typeof item == "string") {
         return item;
       }
@@ -101,13 +86,12 @@ export default defineComponent({
     };
 
     const itemScopedClass = (item: DefaultObjectInterface) => {
-      console.log(item);
       let newClass: { [index: string]: string } = {};
       if (typeof props.itemClass == "object") {
         Object.entries(props.itemClass).forEach(element => {
-          console.log(element);
-          newClass[element[0]] = eval(element[1]);
-          console.log(element[0], eval(element[1]));
+          if (item) {
+            newClass[element[0]] = eval(element[1]);
+          }
         });
         return newClass;
       }
