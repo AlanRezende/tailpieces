@@ -1,4 +1,4 @@
-import { defineComponent, computed, openBlock, createBlock, renderSlot, ref, watch, onMounted, createVNode, toDisplayString, withDirectives, vModelText, vModelDynamic, createCommentVNode, Fragment, renderList, vModelSelect, pushScopeId, popScopeId, Transition, withScopeId, createTextVNode, vShow, onBeforeUnmount, h, nextTick, resolveComponent, onUnmounted, Teleport, withCtx, withModifiers } from 'vue';
+import { defineComponent, computed, openBlock, createBlock, renderSlot, ref, watch, onMounted, createVNode, toDisplayString, withDirectives, mergeProps, vModelText, vModelDynamic, createCommentVNode, Fragment, renderList, vModelSelect, pushScopeId, popScopeId, Transition, withScopeId, createTextVNode, vShow, onBeforeUnmount, h, nextTick, resolveComponent, onUnmounted, Teleport, withCtx, withModifiers } from 'vue';
 
 var script$f = defineComponent({
   name: "TButton",
@@ -290,6 +290,7 @@ class Validator {
 
 var script$e = defineComponent({
   name: "BaseInput",
+  inheritAttrs: false,
   props: {
     label: {
       type: String,
@@ -310,6 +311,9 @@ var script$e = defineComponent({
     validationRules: {
       type: String,
       default: ""
+    },
+    tclass: {
+      type: String
     },
     maxlength: {
       type: Number
@@ -405,17 +409,19 @@ var script$e = defineComponent({
 });
 
 const _hoisted_1$e = {
-  class: "flex flex-col mb-4 relative w-full"
+  class: "relative w-full flex flex-col"
 };
 const _hoisted_2$a = {
   key: 2,
-  class: "absolute right-0 text-xs top-2 text-gray-500"
+  class: "absolute right-0 text-xs -top-4 text-gray-500"
 };
 const _hoisted_3$7 = {
   class: "text-red-800 text-sm ml-0.5"
 };
 function render$e(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$e, [createVNode("label", null, toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? withDirectives((openBlock(), createBlock("textarea", {
+  return openBlock(), createBlock("div", {
+    class: ["flex flex-col mb-4 relative w-full", _ctx.tclass]
+  }, [createVNode("label", null, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_1$e, [_ctx.type == 'textarea' ? withDirectives((openBlock(), createBlock("textarea", mergeProps({
     key: 0,
     class: ["p-2 border rounded", {
       'border-red-800': _ctx.formItem.validationError
@@ -427,7 +433,7 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[1] || (_cache[1] = (...args) => _ctx.validate && _ctx.validate(...args)),
     onKeydown: _cache[2] || (_cache[2] = $event => _ctx.formItem.validationError = ''),
     "onUpdate:modelValue": _cache[3] || (_cache[3] = $event => _ctx.formItem.value = $event)
-  }, null, 42, ["type", "rows", "maxlength", "placeholder"])), [[vModelText, _ctx.formItem.value]]) : withDirectives((openBlock(), createBlock("input", {
+  }, _ctx.$attrs), null, 16, ["type", "rows", "maxlength", "placeholder"])), [[vModelText, _ctx.formItem.value]]) : withDirectives((openBlock(), createBlock("input", mergeProps({
     key: 1,
     class: ["p-2 border rounded", {
       'border-red-800': _ctx.formItem.validationError
@@ -438,7 +444,7 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[4] || (_cache[4] = (...args) => _ctx.validate && _ctx.validate(...args)),
     onKeydown: _cache[5] || (_cache[5] = $event => _ctx.formItem.validationError = ''),
     "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => _ctx.formItem.value = $event)
-  }, null, 42, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2$a, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true), createVNode("span", _hoisted_3$7, toDisplayString(_ctx.formItem.validationError), 1)]);
+  }, _ctx.$attrs), null, 16, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2$a, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true)]), createVNode("span", _hoisted_3$7, toDisplayString(_ctx.formItem.validationError), 1)], 2);
 }
 
 script$e.render = render$e;

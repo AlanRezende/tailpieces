@@ -1,35 +1,39 @@
 <template>
-  <div class="flex flex-col mb-4 relative w-full">
+  <div class="flex flex-col mb-4 relative w-full" :class="tclass">
     <label>{{ label }}</label>
-    <textarea
-      v-if="type == 'textarea'"
-      class="p-2 border rounded"
-      :class="{ 'border-red-800': formItem.validationError }"
-      :type="type"
-      :rows="rows"
-      :maxlength="maxlength"
-      :placeholder="label"
-      @blur="validate"
-      @keydown="formItem.validationError = ''"
-      v-model="formItem.value"
-    ></textarea>
-    <input
-      v-else
-      class="p-2 border rounded"
-      :class="{ 'border-red-800': formItem.validationError }"
-      :type="type"
-      :maxlength="maxlength"
-      :placeholder="label"
-      @blur="validate"
-      @keydown="formItem.validationError = ''"
-      v-model="formItem.value"
-    />
-    <span
-      class="absolute right-0 text-xs top-2 text-gray-500"
-      v-if="maxlengthLeft != null && maxlengthLeft >= 0"
-    >
-      Restam {{ maxlengthLeft }} caracteres
-    </span>
+    <div class="relative w-full flex flex-col">
+      <textarea
+        v-if="type == 'textarea'"
+        class="p-2 border rounded"
+        :class="{ 'border-red-800': formItem.validationError }"
+        :type="type"
+        :rows="rows"
+        :maxlength="maxlength"
+        :placeholder="label"
+        @blur="validate"
+        @keydown="formItem.validationError = ''"
+        v-model="formItem.value"
+        v-bind="$attrs"
+      ></textarea>
+      <input
+        v-else
+        class="p-2 border rounded"
+        :class="{ 'border-red-800': formItem.validationError }"
+        :type="type"
+        :maxlength="maxlength"
+        :placeholder="label"
+        @blur="validate"
+        @keydown="formItem.validationError = ''"
+        v-model="formItem.value"
+        v-bind="$attrs"
+      />
+      <span
+        class="absolute right-0 text-xs -top-4 text-gray-500"
+        v-if="maxlengthLeft != null && maxlengthLeft >= 0"
+      >
+        Restam {{ maxlengthLeft }} caracteres
+      </span>
+    </div>
     <span class="text-red-800 text-sm ml-0.5">{{
       formItem.validationError
     }}</span>
@@ -47,6 +51,7 @@ interface formItem {
 }
 export default defineComponent({
   name: "BaseInput",
+  inheritAttrs: false,
   props: {
     label: {
       type: String,
@@ -67,6 +72,9 @@ export default defineComponent({
     validationRules: {
       type: String,
       default: "",
+    },
+    tclass: {
+      type: String,
     },
     maxlength: {
       type: Number,

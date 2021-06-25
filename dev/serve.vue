@@ -50,6 +50,14 @@
     </t-form-section>
     <t-form-section label="Seção Teste">
       <t-input label="Nome" :maxlength="100" v-model="user.data.name" />
+      <t-input
+        label="Número"
+        min="30"
+        tclass="sm:w-1/2"
+        type="number"
+        v-model="user.data.age"
+      />
+
       <t-image-input label="Imagem" v-model="user.data.image.value" />
       <t-button @click="debug">Debug</t-button>
       <t-button @click="show = true">Modal</t-button>
@@ -144,7 +152,13 @@ export default defineComponent({
   name: "ServeDev",
   setup() {
     let user = ref(
-      new Form({ name: "Alan Rezende", image: null, active: true, new: false }),
+      new Form({
+        name: "Alan Rezende",
+        age: 32,
+        image: null,
+        active: true,
+        new: false,
+      }),
     );
 
     const success = {

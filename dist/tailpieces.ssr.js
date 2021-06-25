@@ -477,6 +477,7 @@ function _nonIterableRest() {
   return Validator;
 }();var script$e = vue.defineComponent({
   name: "BaseInput",
+  inheritAttrs: false,
   props: {
     label: {
       type: String,
@@ -497,6 +498,9 @@ function _nonIterableRest() {
     validationRules: {
       type: String,
       default: ""
+    },
+    tclass: {
+      type: String
     },
     maxlength: {
       type: Number
@@ -590,17 +594,19 @@ function _nonIterableRest() {
     };
   }
 });var _hoisted_1$e = {
-  class: "flex flex-col mb-4 relative w-full"
+  class: "relative w-full flex flex-col"
 };
 var _hoisted_2$a = {
   key: 2,
-  class: "absolute right-0 text-xs top-2 text-gray-500"
+  class: "absolute right-0 text-xs -top-4 text-gray-500"
 };
 var _hoisted_3$7 = {
   class: "text-red-800 text-sm ml-0.5"
 };
 function render$e(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1$e, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), _ctx.type == 'textarea' ? vue.withDirectives((vue.openBlock(), vue.createBlock("textarea", {
+  return vue.openBlock(), vue.createBlock("div", {
+    class: ["flex flex-col mb-4 relative w-full", _ctx.tclass]
+  }, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_1$e, [_ctx.type == 'textarea' ? vue.withDirectives((vue.openBlock(), vue.createBlock("textarea", vue.mergeProps({
     key: 0,
     class: ["p-2 border rounded", {
       'border-red-800': _ctx.formItem.validationError
@@ -618,7 +624,7 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return _ctx.formItem.value = $event;
     })
-  }, null, 42, ["type", "rows", "maxlength", "placeholder"])), [[vue.vModelText, _ctx.formItem.value]]) : vue.withDirectives((vue.openBlock(), vue.createBlock("input", {
+  }, _ctx.$attrs), null, 16, ["type", "rows", "maxlength", "placeholder"])), [[vue.vModelText, _ctx.formItem.value]]) : vue.withDirectives((vue.openBlock(), vue.createBlock("input", vue.mergeProps({
     key: 1,
     class: ["p-2 border rounded", {
       'border-red-800': _ctx.formItem.validationError
@@ -635,7 +641,7 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return _ctx.formItem.value = $event;
     })
-  }, null, 42, ["type", "maxlength", "placeholder"])), [[vue.vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (vue.openBlock(), vue.createBlock("span", _hoisted_2$a, " Restam " + vue.toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : vue.createCommentVNode("", true), vue.createVNode("span", _hoisted_3$7, vue.toDisplayString(_ctx.formItem.validationError), 1)]);
+  }, _ctx.$attrs), null, 16, ["type", "maxlength", "placeholder"])), [[vue.vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (vue.openBlock(), vue.createBlock("span", _hoisted_2$a, " Restam " + vue.toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : vue.createCommentVNode("", true)]), vue.createVNode("span", _hoisted_3$7, vue.toDisplayString(_ctx.formItem.validationError), 1)], 2);
 }script$e.render = render$e;var script$d = vue.defineComponent({
   name: "FormSection",
   props: {
