@@ -670,7 +670,9 @@ var script$a = defineComponent({
     }
   },
 
-  setup(props) {
+  setup(props, {
+    emit
+  }) {
     const sizeClass = computed(() => {
       let options = {
         sm: {
@@ -691,8 +693,15 @@ var script$a = defineComponent({
       };
       return options[props.size];
     });
+
+    const change = val => {
+      emit("update:modelValue", !val);
+      emit("change");
+    };
+
     return {
-      sizeClass
+      sizeClass,
+      change
     };
   }
 
@@ -713,7 +722,7 @@ function render$a(_ctx, _cache, $props, $setup, $data, $options) {
       'border-green-500': _ctx.modelValue,
       'border-gray-400': !_ctx.modelValue
     }, _ctx.sizeClass.button]],
-    onClick: _cache[1] || (_cache[1] = $event => _ctx.$emit('update:modelValue', !_ctx.modelValue))
+    onClick: _cache[1] || (_cache[1] = $event => _ctx.change(_ctx.modelValue))
   }, [createVNode("span", {
     class: ["top-1 transition-all duration-500 ease-in-out block rounded-full", [{
       'bg-green-500': _ctx.modelValue,

@@ -4,7 +4,7 @@
     <div class="flex items-center">
       <button
         class="rounded-full border-2 focus:outline-none mr-2"
-        @click="$emit('update:modelValue', !modelValue)"
+        @click="change(modelValue)"
         :class="[
           {
             'border-green-500': modelValue,
@@ -59,7 +59,7 @@ export default defineComponent({
       type: Array as PropType<string[]>,
     },
   },
-  setup(props) {
+  setup(props, { emit }) {
     const sizeClass = computed(() => {
       let options: {
         [key: string]: { button: string; span: string; text: string };
@@ -83,8 +83,14 @@ export default defineComponent({
       return options[props.size];
     });
 
+    const change = (val: boolean) => {
+      emit("update:modelValue", !val);
+      emit("change");
+    };
+
     return {
       sizeClass,
+      change,
     };
   },
 });

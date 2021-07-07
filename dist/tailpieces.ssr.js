@@ -844,7 +844,8 @@ script$b.__scopeId = "data-v-05d6287b";var script$a = vue.defineComponent({
       type: Array
     }
   },
-  setup: function setup(props) {
+  setup: function setup(props, _ref) {
+    var emit = _ref.emit;
     var sizeClass = vue.computed(function () {
       var options = {
         sm: {
@@ -865,8 +866,15 @@ script$b.__scopeId = "data-v-05d6287b";var script$a = vue.defineComponent({
       };
       return options[props.size];
     });
+
+    var change = function change(val) {
+      emit("update:modelValue", !val);
+      emit("change");
+    };
+
     return {
-      sizeClass: sizeClass
+      sizeClass: sizeClass,
+      change: change
     };
   }
 });var _hoisted_1$a = {
@@ -885,7 +893,7 @@ function render$a(_ctx, _cache, $props, $setup, $data, $options) {
       'border-gray-400': !_ctx.modelValue
     }, _ctx.sizeClass.button]],
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.$emit('update:modelValue', !_ctx.modelValue);
+      return _ctx.change(_ctx.modelValue);
     })
   }, [vue.createVNode("span", {
     class: ["top-1 transition-all duration-500 ease-in-out block rounded-full", [{
