@@ -3,6 +3,11 @@
     <t-alert :info="success" color="red" />
     <t-alert :info="success" color="green" />
     <t-alert :info="success" />
+    <t-transfer-list
+      :title="item => item.name"
+      :options="options"
+      v-model="selecteds"
+    />
     <t-form-section label="Seção Tabela">
       <div class="bg-gray-200 w-full p-4">
         <t-table
@@ -183,6 +188,23 @@ export default defineComponent({
       console.log(data);
     };
 
+    const options = [
+      {
+        name: "Alan",
+        id: 3,
+      },
+      {
+        name: "Mari",
+        id: 4,
+      },
+      {
+        name: "John",
+        id: 6,
+      },
+    ];
+
+    const selecteds = ref([]);
+
     const dataTable = [
       {
         postID: "277",
@@ -284,6 +306,8 @@ export default defineComponent({
       debug,
       show,
       dataTable,
+      options,
+      selecteds,
     };
   },
 });

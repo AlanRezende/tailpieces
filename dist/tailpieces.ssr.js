@@ -139,7 +139,7 @@ function _arrayLikeToArray(arr, len) {
 
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}var script$f = vue.defineComponent({
+}var script$g = vue.defineComponent({
   name: "TButton",
   props: {
     size: {
@@ -182,12 +182,12 @@ function _nonIterableRest() {
       colorClass: colorClass
     };
   }
-});function render$f(_ctx, _cache, $props, $setup, $data, $options) {
+});function render$g(_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock("button", {
     class: ["mr-2 inline-block rounded text-white", [_ctx.sizeClass, _ctx.colorClass]],
     type: "button"
   }, [vue.renderSlot(_ctx.$slots, "default")], 2);
-}script$f.render = render$f;var Form = /*#__PURE__*/function () {
+}script$g.render = render$g;var Form = /*#__PURE__*/function () {
   function Form(data) {
     var validationRules = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
@@ -475,7 +475,7 @@ function _nonIterableRest() {
   }]);
 
   return Validator;
-}();var script$e = vue.defineComponent({
+}();var script$f = vue.defineComponent({
   name: "BaseInput",
   inheritAttrs: false,
   props: {
@@ -593,20 +593,20 @@ function _nonIterableRest() {
       maxlengthLeft: maxlengthLeft
     };
   }
-});var _hoisted_1$e = {
+});var _hoisted_1$f = {
   class: "relative w-full flex flex-col"
 };
-var _hoisted_2$a = {
+var _hoisted_2$b = {
   key: 2,
   class: "absolute right-0 text-xs -top-4 text-gray-500"
 };
-var _hoisted_3$7 = {
+var _hoisted_3$8 = {
   class: "text-red-800 text-sm ml-0.5"
 };
-function render$e(_ctx, _cache, $props, $setup, $data, $options) {
+function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock("div", {
     class: ["flex flex-col mb-4 relative w-full", _ctx.tclass]
-  }, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_1$e, [_ctx.type == 'textarea' ? vue.withDirectives((vue.openBlock(), vue.createBlock("textarea", vue.mergeProps({
+  }, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_1$f, [_ctx.type == 'textarea' ? vue.withDirectives((vue.openBlock(), vue.createBlock("textarea", vue.mergeProps({
     key: 0,
     class: ["p-2 border rounded", {
       'border-red-800': _ctx.formItem.validationError
@@ -641,8 +641,8 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return _ctx.formItem.value = $event;
     })
-  }, _ctx.$attrs), null, 16, ["type", "maxlength", "placeholder"])), [[vue.vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (vue.openBlock(), vue.createBlock("span", _hoisted_2$a, " Restam " + vue.toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : vue.createCommentVNode("", true)]), vue.createVNode("span", _hoisted_3$7, vue.toDisplayString(_ctx.formItem.validationError), 1)], 2);
-}script$e.render = render$e;var script$d = vue.defineComponent({
+  }, _ctx.$attrs), null, 16, ["type", "maxlength", "placeholder"])), [[vue.vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (vue.openBlock(), vue.createBlock("span", _hoisted_2$b, " Restam " + vue.toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : vue.createCommentVNode("", true)]), vue.createVNode("span", _hoisted_3$8, vue.toDisplayString(_ctx.formItem.validationError), 1)], 2);
+}script$f.render = render$f;var script$e = vue.defineComponent({
   name: "FormSection",
   props: {
     label: {
@@ -650,15 +650,15 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
       required: true
     }
   }
-});var _hoisted_1$d = {
+});var _hoisted_1$e = {
   class: "text-lg text-blue-900 mb-2"
 };
-var _hoisted_2$9 = {
+var _hoisted_2$a = {
   class: "bg-white shadow-sm p-3 rounded mb-4 flex flex-wrap"
 };
-function render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock(vue.Fragment, null, [vue.createVNode("div", _hoisted_1$d, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_2$9, [vue.renderSlot(_ctx.$slots, "default")])], 64);
-}script$d.render = render$d;var script$c = vue.defineComponent({
+function render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock(vue.Fragment, null, [vue.createVNode("div", _hoisted_1$e, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_2$a, [vue.renderSlot(_ctx.$slots, "default")])], 64);
+}script$e.render = render$e;var script$d = vue.defineComponent({
   name: "BaseSelect",
   props: {
     label: {
@@ -735,11 +735,11 @@ function render$d(_ctx, _cache, $props, $setup, $data, $options) {
       formItem: formItem
     };
   }
-});var _hoisted_1$c = {
+});var _hoisted_1$d = {
   class: "flex flex-col mb-4 w-full"
 };
-function render$c(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1$c, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.withDirectives(vue.createVNode("select", {
+function render$d(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1$d, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.withDirectives(vue.createVNode("select", {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return _ctx.formItem.value = $event;
     }),
@@ -752,7 +752,7 @@ function render$c(_ctx, _cache, $props, $setup, $data, $options) {
       key: item.value
     }, vue.toDisplayString(item.name), 9, ["value"]);
   }), 128))], 512), [[vue.vModelSelect, _ctx.formItem.value]])]);
-}script$c.render = render$c;var script$b = vue.defineComponent({
+}script$d.render = render$d;var script$c = vue.defineComponent({
   name: "TAccordion",
   props: {
     label: {
@@ -770,33 +770,33 @@ function render$c(_ctx, _cache, $props, $setup, $data, $options) {
 
 vue.pushScopeId("data-v-05d6287b");
 
-var _hoisted_1$b = {
+var _hoisted_1$c = {
   class: "rounded border"
 };
-var _hoisted_2$8 = {
+var _hoisted_2$9 = {
   class: "overflow-hidden"
 };
-var _hoisted_3$6 = {
+var _hoisted_3$7 = {
   key: 0,
   class: "transition-all rounded-b ease-in-out overflow-hidden origin-top"
 };
-var _hoisted_4$3 = {
+var _hoisted_4$4 = {
   class: "p-2"
 };
 
 vue.popScopeId();
 
-var render$b = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1$b, [vue.createVNode("div", {
+var render$c = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1$c, [vue.createVNode("div", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.open = !_ctx.open;
     }),
     class: "cursor-pointer rounded-t bg-gray-100 p-1 px-2"
-  }, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_2$8, [vue.createVNode(vue.Transition, {
+  }, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_2$9, [vue.createVNode(vue.Transition, {
     name: "fade"
   }, {
     default: _withId(function () {
-      return [_ctx.open ? (vue.openBlock(), vue.createBlock("div", _hoisted_3$6, [vue.createVNode("div", _hoisted_4$3, [vue.renderSlot(_ctx.$slots, "default")])])) : vue.createCommentVNode("", true)];
+      return [_ctx.open ? (vue.openBlock(), vue.createBlock("div", _hoisted_3$7, [vue.createVNode("div", _hoisted_4$4, [vue.renderSlot(_ctx.$slots, "default")])])) : vue.createCommentVNode("", true)];
     }),
     _: 3
   })])]);
@@ -826,8 +826,8 @@ var render$b = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $dat
     style.appendChild(document.createTextNode(css));
   }
 }var css_248z$1 = ".fade-enter-active[data-v-05d6287b],\n.fade-leave-active[data-v-05d6287b] {\n  opacity: 1;\n  transform: translate3d(0, 0, 0);\n}\n\n.fade-enter-from[data-v-05d6287b],\n.fade-leave-to[data-v-05d6287b] {\n  opacity: 0;\n  transform: translate3d(0, -100%, 0);\n}\n";
-styleInject(css_248z$1);script$b.render = render$b;
-script$b.__scopeId = "data-v-05d6287b";var script$a = vue.defineComponent({
+styleInject(css_248z$1);script$c.render = render$c;
+script$c.__scopeId = "data-v-05d6287b";var script$b = vue.defineComponent({
   props: {
     modelValue: {
       type: Boolean,
@@ -877,17 +877,17 @@ script$b.__scopeId = "data-v-05d6287b";var script$a = vue.defineComponent({
       change: change
     };
   }
-});var _hoisted_1$a = {
+});var _hoisted_1$b = {
   class: "cursor-pointer flex flex-col"
 };
-var _hoisted_2$7 = {
+var _hoisted_2$8 = {
   key: 0
 };
-var _hoisted_3$5 = {
+var _hoisted_3$6 = {
   class: "flex items-center"
 };
-function render$a(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1$a, [_ctx.label ? (vue.openBlock(), vue.createBlock("label", _hoisted_2$7, vue.toDisplayString(_ctx.label), 1)) : vue.createCommentVNode("", true), vue.createVNode("div", _hoisted_3$5, [vue.createVNode("button", {
+function render$b(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1$b, [_ctx.label ? (vue.openBlock(), vue.createBlock("label", _hoisted_2$8, vue.toDisplayString(_ctx.label), 1)) : vue.createCommentVNode("", true), vue.createVNode("div", _hoisted_3$6, [vue.createVNode("button", {
     class: ["rounded-full border-2 focus:outline-none mr-2", [{
       'border-green-500': _ctx.modelValue,
       'border-gray-400': !_ctx.modelValue
@@ -907,7 +907,7 @@ function render$a(_ctx, _cache, $props, $setup, $data, $options) {
       'text-gray-400': !_ctx.modelValue
     }, _ctx.sizeClass.text]
   }, vue.toDisplayString(_ctx.modelValue ? _ctx.title[0] : _ctx.title[1]), 3)) : vue.createCommentVNode("", true)])]);
-}script$a.render = render$a;var script$9 = vue.defineComponent({
+}script$b.render = render$b;var script$a = vue.defineComponent({
   props: {
     info: {
       type: Object,
@@ -940,14 +940,14 @@ function render$a(_ctx, _cache, $props, $setup, $data, $options) {
       colorClass: colorClass
     };
   }
-});var _hoisted_1$9 = {
+});var _hoisted_1$a = {
   key: 0,
   class: "text-lg font-bold"
 };
-var _hoisted_2$6 = {
+var _hoisted_2$7 = {
   class: "list-inside"
 };
-function render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function render$a(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.show ? (vue.openBlock(), vue.createBlock("div", {
     key: 0,
     class: ["relative border mb-4 p-3 rounded", _ctx.colorClass]
@@ -956,7 +956,7 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.show = false;
     })
-  }, "X"), _ctx.info.title ? (vue.openBlock(), vue.createBlock("p", _hoisted_1$9, vue.toDisplayString(_ctx.info.title), 1)) : vue.createCommentVNode("", true), vue.createVNode("ul", _hoisted_2$6, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.info.messages, function (item, index) {
+  }, "X"), _ctx.info.title ? (vue.openBlock(), vue.createBlock("p", _hoisted_1$a, vue.toDisplayString(_ctx.info.title), 1)) : vue.createCommentVNode("", true), vue.createVNode("ul", _hoisted_2$7, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.info.messages, function (item, index) {
     return vue.openBlock(), vue.createBlock("li", {
       class: {
         'list-disc': _ctx.info.title
@@ -964,7 +964,7 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
       key: index
     }, vue.toDisplayString(item), 3);
   }), 128))])], 2)) : vue.createCommentVNode("", true);
-}script$9.render = render$9;var script$8 = vue.defineComponent({
+}script$a.render = render$a;var script$9 = vue.defineComponent({
   props: {
     label: {
       type: String,
@@ -997,29 +997,29 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
       root: root
     };
   }
-});var _hoisted_1$8 = {
+});var _hoisted_1$9 = {
   ref: "root",
   class: "relative inline-block"
 };
-var _hoisted_2$5 = {
+var _hoisted_2$6 = {
   class: "focus:outline-none hover:underline flex items-center"
 };
 
-var _hoisted_3$4 = /*#__PURE__*/vue.createVNode("path", {
+var _hoisted_3$5 = /*#__PURE__*/vue.createVNode("path", {
   d: "M6 9l6 6 6-6"
 }, null, -1);
 
-var _hoisted_4$2 = {
+var _hoisted_4$3 = {
   class: "shadow rounded z-30 border bg-white absolute"
 };
-function render$8(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1$8, [vue.createVNode("div", {
+function render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1$9, [vue.createVNode("div", {
     onClick: _cache[1] || (_cache[1] = function () {
       return _ctx.toggleDropdown && _ctx.toggleDropdown.apply(_ctx, arguments);
     }),
     class: "inline-block"
   }, [vue.renderSlot(_ctx.$slots, "trigger", {}, function () {
-    return [vue.createVNode("button", _hoisted_2$5, [vue.createTextVNode(vue.toDisplayString(_ctx.label) + " ", 1), (vue.openBlock(), vue.createBlock("svg", {
+    return [vue.createVNode("button", _hoisted_2$6, [vue.createTextVNode(vue.toDisplayString(_ctx.label) + " ", 1), (vue.openBlock(), vue.createBlock("svg", {
       fill: "none",
       class: ["fill-current w-6 h-6 transition-all duration-500 ease-in-out", {
         'transform rotate-180': _ctx.open
@@ -1029,9 +1029,9 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
       "stroke-linejoin": "round",
       "stroke-width": "2",
       xmlns: "http://www.w3.org/2000/svg"
-    }, [_hoisted_3$4], 2))])];
-  })]), vue.withDirectives(vue.createVNode("ul", _hoisted_4$2, [vue.renderSlot(_ctx.$slots, "default")], 512), [[vue.vShow, _ctx.open]])], 512);
-}script$8.render = render$8;var script$7 = vue.defineComponent({
+    }, [_hoisted_3$5], 2))])];
+  })]), vue.withDirectives(vue.createVNode("ul", _hoisted_4$3, [vue.renderSlot(_ctx.$slots, "default")], 512), [[vue.vShow, _ctx.open]])], 512);
+}script$9.render = render$9;var script$8 = vue.defineComponent({
   props: {
     type: {
       type: String,
@@ -1042,35 +1042,35 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
       default: "#"
     }
   }
-});var _hoisted_1$7 = {
+});var _hoisted_1$8 = {
   key: 1,
   class: "border-t mt-1 pt-1"
 };
-function render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function render$8(_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock("li", null, [_ctx.type == 'link' ? (vue.openBlock(), vue.createBlock("a", {
     key: 0,
     class: "hover:bg-gray-100 px-4 py-1 block whitespace-nowrap",
     href: _ctx.href
-  }, [vue.renderSlot(_ctx.$slots, "default")], 8, ["href"])) : (vue.openBlock(), vue.createBlock("hr", _hoisted_1$7))]);
-}script$7.render = render$7;var script$6 = vue.defineComponent({
+  }, [vue.renderSlot(_ctx.$slots, "default")], 8, ["href"])) : (vue.openBlock(), vue.createBlock("hr", _hoisted_1$8))]);
+}script$8.render = render$8;var script$7 = vue.defineComponent({
   props: {
     data: {
       type: Object,
       required: true
     }
   }
-});var _hoisted_1$6 = {
+});var _hoisted_1$7 = {
   key: 0
 };
-function render$6(_ctx, _cache, $props, $setup, $data, $options) {
-  return _typeof(_ctx.data.value) == 'object' ? (vue.openBlock(), vue.createBlock("div", _hoisted_1$6, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.data.value, function (item, index) {
+function render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  return _typeof(_ctx.data.value) == 'object' ? (vue.openBlock(), vue.createBlock("div", _hoisted_1$7, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.data.value, function (item, index) {
     return vue.renderSlot(_ctx.$slots, "default", {
       item: item,
       index: index,
       key: index
     });
   }), 128))])) : vue.createCommentVNode("", true);
-}script$6.render = render$6;var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+}script$7.render = render$7;var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -13671,7 +13671,7 @@ const QuillEditor = vue.defineComponent({
         var _a, _b;
         return [(_b = (_a = this.$slots).toolbar) === null || _b === void 0 ? void 0 : _b.call(_a), vue.h('div', { ref: 'editor', ...this.$attrs })];
     },
-});var script$5 = vue.defineComponent({
+});var script$6 = vue.defineComponent({
   components: {
     QuillEditor: QuillEditor
   },
@@ -13776,13 +13776,13 @@ const QuillEditor = vue.defineComponent({
       formItem: formItem
     };
   }
-});var _hoisted_1$5 = {
+});var _hoisted_1$6 = {
   class: "flex flex-col mb-4 relative w-full"
 };
-function render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function render$6(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_QuillEditor = vue.resolveComponent("QuillEditor");
 
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1$5, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.createVNode(_component_QuillEditor, {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1$6, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.createVNode(_component_QuillEditor, {
     class: "p-2 border rounded-b min-h-56",
     ref: "qeditor",
     contentType: "html",
@@ -13791,7 +13791,7 @@ function render$5(_ctx, _cache, $props, $setup, $data, $options) {
     options: _ctx.options
   }, null, 8, ["onUpdate:content", "content", "options"])]);
 }var css_248z = ".ql-editor {\n  min-height: 200px;\n}\n\n.ql-container {\n  box-sizing: border-box;\n  font-family: Helvetica, Arial, sans-serif;\n  font-size: 13px;\n  height: 100%;\n  margin: 0px;\n  position: relative;\n}\n\n.ql-container.ql-disabled .ql-tooltip {\n  visibility: hidden;\n}\n\n.ql-container.ql-disabled .ql-editor ul[data-checked] > li::before {\n  pointer-events: none;\n}\n\n.ql-clipboard {\n  left: -100000px;\n  height: 1px;\n  overflow-y: hidden;\n  position: absolute;\n  top: 50%;\n}\n\n.ql-clipboard p {\n  margin: 0;\n  padding: 0;\n}\n\n.ql-editor {\n  box-sizing: border-box;\n  line-height: 1.42;\n  height: 100%;\n  outline: none;\n  overflow-y: auto;\n  tab-size: 4;\n  -moz-tab-size: 4;\n  text-align: left;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}\n\n.ql-editor > * {\n  cursor: text;\n}\n\n.ql-editor p,\n.ql-editor ol,\n.ql-editor ul,\n.ql-editor pre,\n.ql-editor blockquote,\n.ql-editor h1,\n.ql-editor h2,\n.ql-editor h3,\n.ql-editor h4,\n.ql-editor h5,\n.ql-editor h6 {\n  margin: 0;\n  padding: 0;\n  counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol,\n.ql-editor ul {\n  padding-left: 1.5em;\n}\n\n.ql-editor ol > li,\n.ql-editor ul > li {\n  list-style-type: none;\n}\n\n.ql-editor ul > li::before {\n  content: \"\\2022\";\n}\n\n.ql-editor ul[data-checked=\"true\"],\n.ql-editor ul[data-checked=\"false\"] {\n  pointer-events: none;\n}\n\n.ql-editor ul[data-checked=\"true\"] > li *,\n.ql-editor ul[data-checked=\"false\"] > li * {\n  pointer-events: all;\n}\n\n.ql-editor ul[data-checked=\"true\"] > li::before,\n.ql-editor ul[data-checked=\"false\"] > li::before {\n  color: #777;\n  cursor: pointer;\n  pointer-events: all;\n}\n\n.ql-editor ul[data-checked=\"true\"] > li::before {\n  content: \"\\2611\";\n}\n\n.ql-editor ul[data-checked=\"false\"] > li::before {\n  content: \"\\2610\";\n}\n\n.ql-editor li::before {\n  display: inline-block;\n  white-space: nowrap;\n  width: 1.2em;\n}\n\n.ql-editor li:not(.ql-direction-rtl)::before {\n  margin-left: -1.5em;\n  margin-right: 0.3em;\n  text-align: right;\n}\n\n.ql-editor li.ql-direction-rtl::before {\n  margin-left: 0.3em;\n  margin-right: -1.5em;\n}\n\n.ql-editor ol li:not(.ql-direction-rtl),\n.ql-editor ul li:not(.ql-direction-rtl) {\n  padding-left: 1.5em;\n}\n\n.ql-editor ol li.ql-direction-rtl,\n.ql-editor ul li.ql-direction-rtl {\n  padding-right: 1.5em;\n}\n\n.ql-editor ol li {\n  counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;\n  counter-increment: list-0;\n}\n\n.ql-editor ol li:before {\n  content: counter(list-0, decimal) \". \";\n}\n\n.ql-editor ol li.ql-indent-1 {\n  counter-increment: list-1;\n}\n\n.ql-editor ol li.ql-indent-1:before {\n  content: counter(list-1, lower-alpha) \". \";\n}\n\n.ql-editor ol li.ql-indent-1 {\n  counter-reset: list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-2 {\n  counter-increment: list-2;\n}\n\n.ql-editor ol li.ql-indent-2:before {\n  content: counter(list-2, lower-roman) \". \";\n}\n\n.ql-editor ol li.ql-indent-2 {\n  counter-reset: list-3 list-4 list-5 list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-3 {\n  counter-increment: list-3;\n}\n\n.ql-editor ol li.ql-indent-3:before {\n  content: counter(list-3, decimal) \". \";\n}\n\n.ql-editor ol li.ql-indent-3 {\n  counter-reset: list-4 list-5 list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-4 {\n  counter-increment: list-4;\n}\n\n.ql-editor ol li.ql-indent-4:before {\n  content: counter(list-4, lower-alpha) \". \";\n}\n\n.ql-editor ol li.ql-indent-4 {\n  counter-reset: list-5 list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-5 {\n  counter-increment: list-5;\n}\n\n.ql-editor ol li.ql-indent-5:before {\n  content: counter(list-5, lower-roman) \". \";\n}\n\n.ql-editor ol li.ql-indent-5 {\n  counter-reset: list-6 list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-6 {\n  counter-increment: list-6;\n}\n\n.ql-editor ol li.ql-indent-6:before {\n  content: counter(list-6, decimal) \". \";\n}\n\n.ql-editor ol li.ql-indent-6 {\n  counter-reset: list-7 list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-7 {\n  counter-increment: list-7;\n}\n\n.ql-editor ol li.ql-indent-7:before {\n  content: counter(list-7, lower-alpha) \". \";\n}\n\n.ql-editor ol li.ql-indent-7 {\n  counter-reset: list-8 list-9;\n}\n\n.ql-editor ol li.ql-indent-8 {\n  counter-increment: list-8;\n}\n\n.ql-editor ol li.ql-indent-8:before {\n  content: counter(list-8, lower-roman) \". \";\n}\n\n.ql-editor ol li.ql-indent-8 {\n  counter-reset: list-9;\n}\n\n.ql-editor ol li.ql-indent-9 {\n  counter-increment: list-9;\n}\n\n.ql-editor ol li.ql-indent-9:before {\n  content: counter(list-9, decimal) \". \";\n}\n\n.ql-editor .ql-indent-1:not(.ql-direction-rtl) {\n  padding-left: 3em;\n}\n\n.ql-editor li.ql-indent-1:not(.ql-direction-rtl) {\n  padding-left: 4.5em;\n}\n\n.ql-editor .ql-indent-1.ql-direction-rtl.ql-align-right {\n  padding-right: 3em;\n}\n\n.ql-editor li.ql-indent-1.ql-direction-rtl.ql-align-right {\n  padding-right: 4.5em;\n}\n\n.ql-editor .ql-indent-2:not(.ql-direction-rtl) {\n  padding-left: 6em;\n}\n\n.ql-editor li.ql-indent-2:not(.ql-direction-rtl) {\n  padding-left: 7.5em;\n}\n\n.ql-editor .ql-indent-2.ql-direction-rtl.ql-align-right {\n  padding-right: 6em;\n}\n\n.ql-editor li.ql-indent-2.ql-direction-rtl.ql-align-right {\n  padding-right: 7.5em;\n}\n\n.ql-editor .ql-indent-3:not(.ql-direction-rtl) {\n  padding-left: 9em;\n}\n\n.ql-editor li.ql-indent-3:not(.ql-direction-rtl) {\n  padding-left: 10.5em;\n}\n\n.ql-editor .ql-indent-3.ql-direction-rtl.ql-align-right {\n  padding-right: 9em;\n}\n\n.ql-editor li.ql-indent-3.ql-direction-rtl.ql-align-right {\n  padding-right: 10.5em;\n}\n\n.ql-editor .ql-indent-4:not(.ql-direction-rtl) {\n  padding-left: 12em;\n}\n\n.ql-editor li.ql-indent-4:not(.ql-direction-rtl) {\n  padding-left: 13.5em;\n}\n\n.ql-editor .ql-indent-4.ql-direction-rtl.ql-align-right {\n  padding-right: 12em;\n}\n\n.ql-editor li.ql-indent-4.ql-direction-rtl.ql-align-right {\n  padding-right: 13.5em;\n}\n\n.ql-editor .ql-indent-5:not(.ql-direction-rtl) {\n  padding-left: 15em;\n}\n\n.ql-editor li.ql-indent-5:not(.ql-direction-rtl) {\n  padding-left: 16.5em;\n}\n\n.ql-editor .ql-indent-5.ql-direction-rtl.ql-align-right {\n  padding-right: 15em;\n}\n\n.ql-editor li.ql-indent-5.ql-direction-rtl.ql-align-right {\n  padding-right: 16.5em;\n}\n\n.ql-editor .ql-indent-6:not(.ql-direction-rtl) {\n  padding-left: 18em;\n}\n\n.ql-editor li.ql-indent-6:not(.ql-direction-rtl) {\n  padding-left: 19.5em;\n}\n\n.ql-editor .ql-indent-6.ql-direction-rtl.ql-align-right {\n  padding-right: 18em;\n}\n\n.ql-editor li.ql-indent-6.ql-direction-rtl.ql-align-right {\n  padding-right: 19.5em;\n}\n\n.ql-editor .ql-indent-7:not(.ql-direction-rtl) {\n  padding-left: 21em;\n}\n\n.ql-editor li.ql-indent-7:not(.ql-direction-rtl) {\n  padding-left: 22.5em;\n}\n\n.ql-editor .ql-indent-7.ql-direction-rtl.ql-align-right {\n  padding-right: 21em;\n}\n\n.ql-editor li.ql-indent-7.ql-direction-rtl.ql-align-right {\n  padding-right: 22.5em;\n}\n\n.ql-editor .ql-indent-8:not(.ql-direction-rtl) {\n  padding-left: 24em;\n}\n\n.ql-editor li.ql-indent-8:not(.ql-direction-rtl) {\n  padding-left: 25.5em;\n}\n\n.ql-editor .ql-indent-8.ql-direction-rtl.ql-align-right {\n  padding-right: 24em;\n}\n\n.ql-editor li.ql-indent-8.ql-direction-rtl.ql-align-right {\n  padding-right: 25.5em;\n}\n\n.ql-editor .ql-indent-9:not(.ql-direction-rtl) {\n  padding-left: 27em;\n}\n\n.ql-editor li.ql-indent-9:not(.ql-direction-rtl) {\n  padding-left: 28.5em;\n}\n\n.ql-editor .ql-indent-9.ql-direction-rtl.ql-align-right {\n  padding-right: 27em;\n}\n\n.ql-editor li.ql-indent-9.ql-direction-rtl.ql-align-right {\n  padding-right: 28.5em;\n}\n\n.ql-editor .ql-video {\n  display: block;\n  max-width: 100%;\n}\n\n.ql-editor .ql-video.ql-align-center {\n  margin: 0 auto;\n}\n\n.ql-editor .ql-video.ql-align-right {\n  margin: 0 0 0 auto;\n}\n\n.ql-editor .ql-bg-black {\n  background-color: #000;\n}\n\n.ql-editor .ql-bg-red {\n  background-color: #e60000;\n}\n\n.ql-editor .ql-bg-orange {\n  background-color: #f90;\n}\n\n.ql-editor .ql-bg-yellow {\n  background-color: #ff0;\n}\n\n.ql-editor .ql-bg-green {\n  background-color: #008a00;\n}\n\n.ql-editor .ql-bg-blue {\n  background-color: #06c;\n}\n\n.ql-editor .ql-bg-purple {\n  background-color: #93f;\n}\n\n.ql-editor .ql-color-white {\n  color: #fff;\n}\n\n.ql-editor .ql-color-red {\n  color: #e60000;\n}\n\n.ql-editor .ql-color-orange {\n  color: #f90;\n}\n\n.ql-editor .ql-color-yellow {\n  color: #ff0;\n}\n\n.ql-editor .ql-color-green {\n  color: #008a00;\n}\n\n.ql-editor .ql-color-blue {\n  color: #06c;\n}\n\n.ql-editor .ql-color-purple {\n  color: #93f;\n}\n\n.ql-editor .ql-font-serif {\n  font-family: Georgia, Times New Roman, serif;\n}\n\n.ql-editor .ql-font-monospace {\n  font-family: Monaco, Courier New, monospace;\n}\n\n.ql-editor .ql-size-small {\n  font-size: 0.75em;\n}\n\n.ql-editor .ql-size-large {\n  font-size: 1.5em;\n}\n\n.ql-editor .ql-size-huge {\n  font-size: 2.5em;\n}\n\n.ql-editor .ql-direction-rtl {\n  direction: rtl;\n  text-align: inherit;\n}\n\n.ql-editor .ql-align-center {\n  text-align: center;\n}\n\n.ql-editor .ql-align-justify {\n  text-align: justify;\n}\n\n.ql-editor .ql-align-right {\n  text-align: right;\n}\n\n.ql-editor.ql-blank::before {\n  color: rgba(0, 0, 0, 0.6);\n  content: attr(data-placeholder);\n  font-style: italic;\n  left: 15px;\n  pointer-events: none;\n  position: absolute;\n  right: 15px;\n}\n\n.ql-snow.ql-toolbar:after,\n.ql-snow .ql-toolbar:after {\n  clear: both;\n  content: \"\";\n  display: table;\n}\n\n.ql-snow.ql-toolbar button,\n.ql-snow .ql-toolbar button {\n  background: none;\n  border: none;\n  cursor: pointer;\n  display: inline-block;\n  float: left;\n  height: 24px;\n  padding: 3px 5px;\n  width: 28px;\n  margin-left: 1px;\n  margin-right: 1px;\n}\n\n.ql-snow.ql-toolbar button svg,\n.ql-snow .ql-toolbar button svg {\n  float: left;\n  height: 100%;\n}\n\n.ql-snow.ql-toolbar button:active:hover,\n.ql-snow .ql-toolbar button:active:hover {\n  outline: none;\n}\n\n.ql-snow.ql-toolbar input.ql-image[type=\"file\"],\n.ql-snow .ql-toolbar input.ql-image[type=\"file\"] {\n  display: none;\n}\n\n.ql-snow.ql-toolbar button:hover,\n.ql-snow .ql-toolbar button:hover,\n.ql-snow.ql-toolbar button:focus,\n.ql-snow .ql-toolbar button:focus,\n.ql-snow.ql-toolbar .ql-picker-label:hover,\n.ql-snow .ql-toolbar .ql-picker-label:hover,\n.ql-snow.ql-toolbar .ql-picker-item:hover,\n.ql-snow .ql-toolbar .ql-picker-item:hover {\n  background-color: #f3f4f6;\n}\n\n.ql-snow.ql-toolbar button.ql-active,\n.ql-snow .ql-toolbar button.ql-active,\n.ql-snow.ql-toolbar .ql-picker-label.ql-active,\n.ql-snow .ql-toolbar .ql-picker-label.ql-active,\n.ql-snow.ql-toolbar .ql-picker-item.ql-selected,\n.ql-snow .ql-toolbar .ql-picker-item.ql-selected {\n  background-color: #dbeafe;\n  color: #2563eb;\n}\n\n.ql-snow.ql-toolbar button.ql-active .ql-fill,\n.ql-snow .ql-toolbar button.ql-active .ql-fill,\n.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill,\n.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill,\n.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill,\n.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill,\n.ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill,\n.ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill,\n.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,\n.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,\n.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,\n.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {\n  fill: #2563eb;\n}\n\n.ql-snow.ql-toolbar button.ql-active .ql-stroke,\n.ql-snow .ql-toolbar button.ql-active .ql-stroke,\n.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,\n.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,\n.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,\n.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,\n.ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,\n.ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,\n.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,\n.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,\n.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,\n.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {\n  stroke: #2563eb;\n}\n\n@media (pointer: coarse) {\n  .ql-snow.ql-toolbar button:hover:not(.ql-active),\n  .ql-snow .ql-toolbar button:hover:not(.ql-active) {\n    color: #4b5563;\n  }\n\n  .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-fill,\n  .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-fill,\n  .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill,\n  .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill {\n    fill: #4b5563;\n  }\n\n  .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke,\n  .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke,\n  .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter,\n  .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter {\n    stroke: #4b5563;\n  }\n}\n\n.ql-snow {\n  box-sizing: border-box;\n}\n\n.ql-snow * {\n  box-sizing: border-box;\n}\n\n.ql-snow .ql-hidden {\n  display: none;\n}\n\n.ql-snow .ql-out-bottom,\n.ql-snow .ql-out-top {\n  visibility: hidden;\n}\n\n.ql-snow .ql-tooltip {\n  position: absolute;\n  transform: translateY(10px);\n}\n\n.ql-snow .ql-tooltip a {\n  cursor: pointer;\n  text-decoration: none;\n}\n\n.ql-snow .ql-tooltip.ql-flip {\n  transform: translateY(-10px);\n}\n\n.ql-snow .ql-formats {\n  display: inline-block;\n  vertical-align: middle;\n}\n\n.ql-snow .ql-formats:after {\n  clear: both;\n  content: \"\";\n  display: table;\n}\n\n.ql-snow .ql-stroke {\n  fill: none;\n  stroke: #4b5563;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  stroke-width: 2;\n}\n\n.ql-snow .ql-stroke-miter {\n  fill: none;\n  stroke: #4b5563;\n  stroke-miterlimit: 10;\n  stroke-width: 2;\n}\n\n.ql-snow .ql-fill,\n.ql-snow .ql-stroke.ql-fill {\n  fill: #4b5563;\n}\n\n.ql-snow .ql-empty {\n  fill: none;\n}\n\n.ql-snow .ql-even {\n  fill-rule: evenodd;\n}\n\n.ql-snow .ql-thin,\n.ql-snow .ql-stroke.ql-thin {\n  stroke-width: 1;\n}\n\n.ql-snow .ql-transparent {\n  opacity: 0.4;\n}\n\n.ql-snow .ql-direction svg:last-child {\n  display: none;\n}\n\n.ql-snow .ql-direction.ql-active svg:last-child {\n  display: inline;\n}\n\n.ql-snow .ql-direction.ql-active svg:first-child {\n  display: none;\n}\n\n.ql-snow .ql-editor h1 {\n  font-size: 2em;\n}\n\n.ql-snow .ql-editor h2 {\n  font-size: 1.5em;\n}\n\n.ql-snow .ql-editor h3 {\n  font-size: 1.17em;\n}\n\n.ql-snow .ql-editor h4 {\n  font-size: 1em;\n}\n\n.ql-snow .ql-editor h5 {\n  font-size: 0.83em;\n}\n\n.ql-snow .ql-editor h6 {\n  font-size: 0.67em;\n}\n\n.ql-snow .ql-editor a {\n  text-decoration: underline;\n}\n\n.ql-snow .ql-editor blockquote {\n  border-left: 4px solid #ccc;\n  margin-bottom: 5px;\n  margin-top: 5px;\n  padding-left: 16px;\n}\n\n.ql-snow .ql-editor code,\n.ql-snow .ql-editor pre {\n  background-color: #f0f0f0;\n  border-radius: 3px;\n}\n\n.ql-snow .ql-editor pre {\n  white-space: pre-wrap;\n  margin-bottom: 5px;\n  margin-top: 5px;\n  padding: 5px 10px;\n}\n\n.ql-snow .ql-editor code {\n  font-size: 85%;\n  padding: 2px 4px;\n}\n\n.ql-snow .ql-editor pre.ql-syntax {\n  background-color: #23241f;\n  color: #f8f8f2;\n  overflow: visible;\n}\n\n.ql-snow .ql-editor img {\n  max-width: 100%;\n}\n\n.ql-snow .ql-picker {\n  color: #4b5563;\n  display: inline-block;\n  float: left;\n  font-size: 14px;\n  font-weight: 500;\n  height: 24px;\n  position: relative;\n  vertical-align: middle;\n  margin-right: 1px;\n  margin-left: 1px;\n}\n\n.ql-snow .ql-picker-label {\n  cursor: pointer;\n  display: inline-block;\n  height: 100%;\n  padding-left: 8px;\n  padding-right: 2px;\n  position: relative;\n  width: 100%;\n}\n\n.ql-snow .ql-picker-label::before {\n  display: inline-block;\n  line-height: 22px;\n}\n\n.ql-snow .ql-picker-options {\n  background-color: #fff;\n  display: none;\n  min-width: 100%;\n  position: absolute;\n  white-space: nowrap;\n}\n\n.ql-snow .ql-picker-options .ql-picker-item {\n  cursor: pointer;\n  display: block;\n  padding: 5px 8px;\n}\n\n.ql-snow .ql-picker.ql-expanded .ql-picker-label {\n  color: #d1d5db;\n  z-index: 2;\n}\n\n.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill {\n  fill: #d1d5db;\n}\n\n.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke {\n  stroke: #d1d5db;\n}\n\n.ql-snow .ql-picker.ql-expanded .ql-picker-options {\n  display: block;\n  margin-top: -1px;\n  top: 100%;\n  z-index: 1;\n}\n\n.ql-snow .ql-color-picker,\n.ql-snow .ql-icon-picker {\n  width: 28px;\n}\n\n.ql-snow .ql-color-picker .ql-picker-label,\n.ql-snow .ql-icon-picker .ql-picker-label {\n  padding: 2px 4px;\n}\n\n.ql-snow .ql-color-picker .ql-picker-label svg,\n.ql-snow .ql-icon-picker .ql-picker-label svg {\n  right: 4px;\n}\n\n.ql-snow .ql-icon-picker .ql-picker-options {\n  padding: 3px;\n}\n\n.ql-snow .ql-icon-picker .ql-picker-item {\n  height: 24px;\n  width: 24px;\n  padding: 2px 4px;\n  margin: 2px;\n}\n\n.ql-snow .ql-color-picker .ql-picker-options {\n  padding: 3px 5px;\n  width: 152px;\n}\n\n.ql-snow .ql-color-picker .ql-picker-item {\n  border: 1px solid transparent;\n  float: left;\n  height: 16px;\n  margin: 2px;\n  padding: 0px;\n  width: 16px;\n}\n\n.ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg {\n  position: absolute;\n  margin-top: -9px;\n  right: 0;\n  top: 50%;\n  width: 18px;\n}\n\n.ql-snow\n  .ql-picker.ql-header\n  .ql-picker-label[data-label]:not([data-label=\"\"])::before,\n.ql-snow\n  .ql-picker.ql-font\n  .ql-picker-label[data-label]:not([data-label=\"\"])::before,\n.ql-snow\n  .ql-picker.ql-size\n  .ql-picker-label[data-label]:not([data-label=\"\"])::before,\n.ql-snow\n  .ql-picker.ql-header\n  .ql-picker-item[data-label]:not([data-label=\"\"])::before,\n.ql-snow\n  .ql-picker.ql-font\n  .ql-picker-item[data-label]:not([data-label=\"\"])::before,\n.ql-snow\n  .ql-picker.ql-size\n  .ql-picker-item[data-label]:not([data-label=\"\"])::before {\n  content: attr(data-label);\n}\n\n.ql-snow .ql-picker.ql-header {\n  width: 98px;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item::before {\n  content: \"Normal\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"1\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"1\"]::before {\n  content: \"Heading 1\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"2\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"2\"]::before {\n  content: \"Heading 2\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"3\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"3\"]::before {\n  content: \"Heading 3\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"4\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"4\"]::before {\n  content: \"Heading 4\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"5\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"5\"]::before {\n  content: \"Heading 5\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-label[data-value=\"6\"]::before,\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"6\"]::before {\n  content: \"Heading 6\";\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"1\"]::before {\n  font-size: 2em;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"2\"]::before {\n  font-size: 1.5em;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"3\"]::before {\n  font-size: 1.17em;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"4\"]::before {\n  font-size: 1em;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"5\"]::before {\n  font-size: 0.83em;\n}\n\n.ql-snow .ql-picker.ql-header .ql-picker-item[data-value=\"6\"]::before {\n  font-size: 0.67em;\n}\n\n.ql-snow .ql-picker.ql-font {\n  width: 108px;\n}\n\n.ql-snow .ql-picker.ql-font .ql-picker-label::before,\n.ql-snow .ql-picker.ql-font .ql-picker-item::before {\n  content: \"Sans Serif\";\n}\n\n.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=\"serif\"]::before,\n.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=\"serif\"]::before {\n  content: \"Serif\";\n}\n\n.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=\"monospace\"]::before,\n.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=\"monospace\"]::before {\n  content: \"Monospace\";\n}\n\n.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=\"serif\"]::before {\n  font-family: Georgia, Times New Roman, serif;\n}\n\n.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=\"monospace\"]::before {\n  font-family: Monaco, Courier New, monospace;\n}\n\n.ql-snow .ql-picker.ql-size {\n  width: 98px;\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-label::before,\n.ql-snow .ql-picker.ql-size .ql-picker-item::before {\n  content: \"Normal\";\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=\"small\"]::before,\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"small\"]::before {\n  content: \"Small\";\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=\"large\"]::before,\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"large\"]::before {\n  content: \"Large\";\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=\"huge\"]::before,\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"huge\"]::before {\n  content: \"Huge\";\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"small\"]::before {\n  font-size: 10px;\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"large\"]::before {\n  font-size: 18px;\n}\n\n.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=\"huge\"]::before {\n  font-size: 32px;\n}\n\n.ql-snow .ql-color-picker.ql-background .ql-picker-item {\n  background-color: #fff;\n}\n\n.ql-snow .ql-color-picker.ql-color .ql-picker-item {\n  background-color: #000;\n}\n\n.ql-toolbar.ql-snow .ql-formats {\n  margin-right: 15px;\n}\n\n.ql-toolbar.ql-snow .ql-picker-label {\n  border: 1px solid transparent;\n}\n\n.ql-toolbar.ql-snow .ql-picker-options {\n  border: 1px solid transparent;\n  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;\n}\n\n.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label {\n  border-color: #d1d5db;\n}\n\n.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {\n  border-color: #d1d5db;\n}\n\n.ql-toolbar.ql-snow .ql-color-picker .ql-picker-item.ql-selected,\n.ql-toolbar.ql-snow .ql-color-picker .ql-picker-item:hover {\n  border-color: #000;\n}\n\n.ql-snow .ql-tooltip {\n  background-color: #fff;\n  border: 1px solid #d1d5db;\n  box-shadow: 0px 0px 5px #d1d5db;\n  color: #4b5563;\n  padding: 5px 12px;\n  white-space: nowrap;\n}\n\n.ql-snow .ql-tooltip::before {\n  content: \"Visit URL:\";\n  line-height: 26px;\n  margin-right: 8px;\n}\n\n.ql-snow .ql-tooltip input[type=\"text\"] {\n  display: none;\n  border: 1px solid #d1d5db;\n  font-size: 13px;\n  height: 26px;\n  margin: 0px;\n  padding: 3px 5px;\n  width: 170px;\n}\n\n.ql-snow .ql-tooltip a.ql-preview {\n  display: inline-block;\n  max-width: 200px;\n  overflow-x: hidden;\n  text-overflow: ellipsis;\n  vertical-align: top;\n}\n\n.ql-snow .ql-tooltip a.ql-action::after {\n  border-right: 1px solid #d1d5db;\n  content: \"Edit\";\n  margin-left: 16px;\n  padding-right: 8px;\n}\n\n.ql-snow .ql-tooltip a.ql-remove::before {\n  content: \"Remove\";\n  margin-left: 8px;\n}\n\n.ql-snow .ql-tooltip a {\n  line-height: 26px;\n}\n\n.ql-snow .ql-tooltip.ql-editing a.ql-preview,\n.ql-snow .ql-tooltip.ql-editing a.ql-remove {\n  display: none;\n}\n\n.ql-snow .ql-tooltip.ql-editing input[type=\"text\"] {\n  display: inline-block;\n}\n\n.ql-snow .ql-tooltip.ql-editing a.ql-action::after {\n  border-right: 0px;\n  content: \"Save\";\n  padding-right: 0px;\n}\n\n.ql-snow .ql-tooltip[data-mode=\"link\"]::before {\n  content: \"Enter link:\";\n}\n\n.ql-snow .ql-tooltip[data-mode=\"formula\"]::before {\n  content: \"Enter formula:\";\n}\n\n.ql-snow .ql-tooltip[data-mode=\"video\"]::before {\n  content: \"Enter video:\";\n}\n\n.ql-snow a {\n  color: #2563eb;\n}\n\n.ql-snow.ql-toolbar {\n  padding: 0.25rem;\n  border-width: 1px !important;\n  padding-left: 0px;\n  padding-right: 0px;\n  border-top-left-radius: 0.25rem !important;\n  border-top-right-radius: 0.25rem !important;\n  border-bottom-width: 0px !important;\n}\n";
-styleInject(css_248z);script$5.render = render$5;var script$4 = vue.defineComponent({
+styleInject(css_248z);script$6.render = render$6;var script$5 = vue.defineComponent({
   props: {
     label: {
       type: String,
@@ -13905,15 +13905,15 @@ styleInject(css_248z);script$5.render = render$5;var script$4 = vue.defineCompon
       formItem: formItem
     };
   }
-});var _hoisted_1$4 = {
+});var _hoisted_1$5 = {
   class: "flex flex-col mb-4 relative w-full"
 };
-var _hoisted_2$4 = {
+var _hoisted_2$5 = {
   key: 0,
   class: "relative h-32 w-32"
 };
-function render$4(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1$4, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), _ctx.imagePreview || _ctx.placeholder ? (vue.openBlock(), vue.createBlock("div", _hoisted_2$4, [vue.createVNode("img", {
+function render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1$5, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), _ctx.imagePreview || _ctx.placeholder ? (vue.openBlock(), vue.createBlock("div", _hoisted_2$5, [vue.createVNode("img", {
     src: _ctx.imagePreview ? _ctx.imagePreview : _ctx.placeholder,
     onClick: _cache[1] || (_cache[1] = function () {
       return _ctx.open && _ctx.open.apply(_ctx, arguments);
@@ -13939,7 +13939,7 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
     class: "hidden",
     ref: "imageField"
   }, null, 544)]);
-}script$4.render = render$4;var script$3 = vue.defineComponent({
+}script$5.render = render$5;var script$4 = vue.defineComponent({
   props: {
     show: {
       default: false
@@ -14004,25 +14004,25 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
       shown: shown
     };
   }
-});var _hoisted_1$3 = {
+});var _hoisted_1$4 = {
   class: "fixed top-0 inset-x-0 mx-2 sm:flex sm:items-top sm:justify-center"
 };
 
-var _hoisted_2$3 = /*#__PURE__*/vue.createVNode("div", {
+var _hoisted_2$4 = /*#__PURE__*/vue.createVNode("div", {
   class: "absolute inset-0 bg-gray-500 opacity-75"
 }, null, -1);
 
-var _hoisted_3$3 = {
+var _hoisted_3$4 = {
   class: "absolute h-screen w-full flex justify-center overflow-scroll"
 };
-function render$3(_ctx, _cache, $props, $setup, $data, $options) {
+function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock(vue.Teleport, {
     to: "#modals-target"
   }, [vue.createVNode(vue.Transition, {
     "leave-active-class": "duration-200"
   }, {
     default: vue.withCtx(function () {
-      return [vue.withDirectives(vue.createVNode("div", _hoisted_1$3, [vue.createVNode(vue.Transition, {
+      return [vue.withDirectives(vue.createVNode("div", _hoisted_1$4, [vue.createVNode(vue.Transition, {
         "enter-active-class": "ease-out duration-300",
         "enter-class": "opacity-0",
         "enter-to-class": "opacity-100",
@@ -14036,10 +14036,10 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
             onClick: _cache[1] || (_cache[1] = function () {
               return _ctx.close && _ctx.close.apply(_ctx, arguments);
             })
-          }, [_hoisted_2$3], 512), [[vue.vShow, _ctx.show]])];
+          }, [_hoisted_2$4], 512), [[vue.vShow, _ctx.show]])];
         }),
         _: 1
-      }), vue.createVNode("div", _hoisted_3$3, [vue.createVNode(vue.Transition, {
+      }), vue.createVNode("div", _hoisted_3$4, [vue.createVNode(vue.Transition, {
         "enter-active-class": "ease-out duration-300",
         "enter-class": "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95",
         "enter-to-class": "opacity-100 translate-y-0 sm:scale-100",
@@ -14059,9 +14059,9 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     _: 1
   })]);
-}script$3.render = render$3;var script$2 = vue.defineComponent({
+}script$4.render = render$4;var script$3 = vue.defineComponent({
   components: {
-    TModal: script$3
+    TModal: script$4
   },
   props: {
     show: {
@@ -14093,18 +14093,18 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
       slots: slots
     };
   }
-});var _hoisted_1$2 = {
+});var _hoisted_1$3 = {
   class: "px-6 py-4"
 };
-var _hoisted_2$2 = {
+var _hoisted_2$3 = {
   key: 0,
   class: "text-lg mb-4"
 };
-var _hoisted_3$2 = {
+var _hoisted_3$3 = {
   key: 0,
   class: "px-6 py-4 bg-gray-100 text-right"
 };
-function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_t_modal = vue.resolveComponent("t-modal");
 
   return vue.openBlock(), vue.createBlock(_component_t_modal, {
@@ -14115,13 +14115,13 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _ctx.close
   }, {
     default: vue.withCtx(function () {
-      return [vue.createVNode("div", _hoisted_1$2, [_ctx.slots.title ? (vue.openBlock(), vue.createBlock("div", _hoisted_2$2, [vue.renderSlot(_ctx.$slots, "title")])) : vue.createCommentVNode("", true), vue.createVNode("div", null, [vue.renderSlot(_ctx.$slots, "default")])]), _ctx.slots.footer ? (vue.openBlock(), vue.createBlock("div", _hoisted_3$2, [vue.renderSlot(_ctx.$slots, "footer")])) : vue.createCommentVNode("", true)];
+      return [vue.createVNode("div", _hoisted_1$3, [_ctx.slots.title ? (vue.openBlock(), vue.createBlock("div", _hoisted_2$3, [vue.renderSlot(_ctx.$slots, "title")])) : vue.createCommentVNode("", true), vue.createVNode("div", null, [vue.renderSlot(_ctx.$slots, "default")])]), _ctx.slots.footer ? (vue.openBlock(), vue.createBlock("div", _hoisted_3$3, [vue.renderSlot(_ctx.$slots, "footer")])) : vue.createCommentVNode("", true)];
     }),
     _: 3
   }, 8, ["show", "onShown", "max-width", "closeable", "onClose"]);
-}script$2.render = render$2;var script$1 = vue.defineComponent({
+}script$3.render = render$3;var script$2 = vue.defineComponent({
   components: {
-    TModal: script$3
+    TModal: script$4
   },
   props: {
     show: {
@@ -14146,14 +14146,14 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
       close: close
     };
   }
-});var _hoisted_1$1 = {
+});var _hoisted_1$2 = {
   class: "bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
 };
-var _hoisted_2$1 = {
+var _hoisted_2$2 = {
   class: "sm:flex sm:items-start"
 };
 
-var _hoisted_3$1 = /*#__PURE__*/vue.createVNode("div", {
+var _hoisted_3$2 = /*#__PURE__*/vue.createVNode("div", {
   class: "mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
 }, [/*#__PURE__*/vue.createVNode("svg", {
   class: "h-6 w-6 text-red-600",
@@ -14167,19 +14167,19 @@ var _hoisted_3$1 = /*#__PURE__*/vue.createVNode("div", {
   d: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
 })])], -1);
 
-var _hoisted_4$1 = {
+var _hoisted_4$2 = {
   class: "mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left"
 };
-var _hoisted_5 = {
+var _hoisted_5$1 = {
   class: "text-lg"
 };
-var _hoisted_6 = {
+var _hoisted_6$1 = {
   class: "mt-2"
 };
-var _hoisted_7 = {
+var _hoisted_7$1 = {
   class: "px-6 py-4 bg-gray-100 text-right"
 };
-function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_t_modal = vue.resolveComponent("t-modal");
 
   return vue.openBlock(), vue.createBlock(_component_t_modal, {
@@ -14189,11 +14189,11 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _ctx.close
   }, {
     default: vue.withCtx(function () {
-      return [vue.createVNode("div", _hoisted_1$1, [vue.createVNode("div", _hoisted_2$1, [_hoisted_3$1, vue.createVNode("div", _hoisted_4$1, [vue.createVNode("h3", _hoisted_5, [vue.renderSlot(_ctx.$slots, "title")]), vue.createVNode("div", _hoisted_6, [vue.renderSlot(_ctx.$slots, "content")])])])]), vue.createVNode("div", _hoisted_7, [vue.renderSlot(_ctx.$slots, "footer")])];
+      return [vue.createVNode("div", _hoisted_1$2, [vue.createVNode("div", _hoisted_2$2, [_hoisted_3$2, vue.createVNode("div", _hoisted_4$2, [vue.createVNode("h3", _hoisted_5$1, [vue.renderSlot(_ctx.$slots, "title")]), vue.createVNode("div", _hoisted_6$1, [vue.renderSlot(_ctx.$slots, "content")])])])]), vue.createVNode("div", _hoisted_7$1, [vue.renderSlot(_ctx.$slots, "footer")])];
     }),
     _: 3
   }, 8, ["show", "max-width", "closeable", "onClose"]);
-}script$1.render = render$1;var script = vue.defineComponent({
+}script$2.render = render$2;var script$1 = vue.defineComponent({
   props: {
     value: {
       type: Object,
@@ -14266,20 +14266,20 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
       slots: slots
     };
   }
-});var _hoisted_1 = {
+});var _hoisted_1$1 = {
   class: "border-collapse w-full"
 };
-var _hoisted_2 = {
+var _hoisted_2$1 = {
   class: "sm:rounded-lg"
 };
-var _hoisted_3 = {
+var _hoisted_3$1 = {
   class: "lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
 };
-var _hoisted_4 = {
+var _hoisted_4$1 = {
   class: "inline-block"
 };
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("table", _hoisted_1, [vue.createVNode("thead", null, [vue.createVNode("tr", _hoisted_2, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createBlock("table", _hoisted_1$1, [vue.createVNode("thead", null, [vue.createVNode("tr", _hoisted_2$1, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
     return vue.openBlock(), vue.createBlock("th", {
       key: "coluna-".concat(coluna.key),
       class: ["font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell", [{
@@ -14306,14 +14306,168 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, {
           'p-3': _ctx.size == 'base'
         }]]
-      }, [vue.createVNode("span", _hoisted_3, vue.toDisplayString(coluna.label), 1), vue.createVNode("div", _hoisted_4, [vue.renderSlot(_ctx.$slots, coluna.key, {
+      }, [vue.createVNode("span", _hoisted_3$1, vue.toDisplayString(coluna.label), 1), vue.createVNode("div", _hoisted_4$1, [vue.renderSlot(_ctx.$slots, coluna.key, {
         $item: item
       }, function () {
         return [vue.createTextVNode(vue.toDisplayString(_ctx.checkItem(item[coluna.key])), 1)];
       })])], 2);
     }), 128))], 10, ["onClick"]);
   }), 128))])]);
-}script.render = render;var components$1=/*#__PURE__*/Object.freeze({__proto__:null,TButton: script$f,TInput: script$e,TFormSection: script$d,TSelect: script$c,TAccordion: script$b,TToggle: script$a,TAlert: script$9,TDropdown: script$8,TDropdownItem: script$7,TLoop: script$6,TEditor: script$5,TImageInput: script$4,TModal: script$3,TDialogModal: script$2,TConfirmationModal: script$1,TTable: script});var install = function installTailpieces(app) {
+}script$1.render = render$1;var script = vue.defineComponent({
+  props: {
+    modelValue: {
+      type: Array,
+      required: true
+    },
+    options: {
+      required: true,
+      type: Array
+    },
+    title: {
+      type: Function,
+      default: function _default(item) {
+        return item.title;
+      }
+    }
+  },
+  setup: function setup(props, _ref) {
+    var emit = _ref.emit;
+    vue.onMounted(function () {
+      console.log(props.modelValue, props.options);
+    });
+    var show = vue.ref([]);
+    var searchTerm = vue.ref("");
+    var searchTerm2 = vue.ref("");
+    var computedOptions = vue.computed(function () {
+      return props.options.filter(function (item) {
+        return !props.modelValue.map(function (item) {
+          return item.id;
+        }).includes(item.id);
+      }).filter(function (item) {
+        return props.title(item).toLowerCase().includes(searchTerm.value.toLowerCase());
+      });
+    });
+    var selecteds = vue.computed(function () {
+      return props.modelValue.filter(function (item) {
+        return props.title(item).toLowerCase().includes(searchTerm2.value.toLowerCase());
+      });
+    });
+
+    var select = function select(item) {
+      var selected = props.modelValue;
+      selected.push(item);
+      console.log(select);
+      emit("update:modelValue", selected);
+    };
+
+    var unselect = function unselect(item) {
+      var selected = props.modelValue;
+      selected = selected.filter(function (element) {
+        return element.id != item.id;
+      });
+      emit("update:modelValue", selected);
+    };
+
+    return {
+      computedOptions: computedOptions,
+      selecteds: selecteds,
+      show: show,
+      select: select,
+      unselect: unselect,
+      searchTerm: searchTerm,
+      searchTerm2: searchTerm2
+    };
+  }
+});var _hoisted_1 = {
+  class: "flex h-64 space-x-4"
+};
+var _hoisted_2 = {
+  class: "w-1/2 h-full overflow-scroll border rounded bg-gray-100"
+};
+var _hoisted_3 = {
+  class: "bg-gray-200 p-2"
+};
+
+var _hoisted_4 = /*#__PURE__*/vue.createVNode("br", null, null, -1);
+
+var _hoisted_5 = /*#__PURE__*/vue.createTextVNode(">");
+
+var _hoisted_6 = {
+  class: "w-1/2 border h-full overflow-scroll rounded bg-gray-100"
+};
+var _hoisted_7 = {
+  class: "bg-gray-200 p-2"
+};
+
+var _hoisted_8 = /*#__PURE__*/vue.createVNode("br", null, null, -1);
+
+var _hoisted_9 = /*#__PURE__*/vue.createTextVNode("<");
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_t_input = vue.resolveComponent("t-input");
+
+  var _component_t_button = vue.resolveComponent("t-button");
+
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1, [vue.createVNode("div", _hoisted_2, [vue.createVNode("div", _hoisted_3, [vue.createTextVNode(" Itens Disponíveis (" + vue.toDisplayString(_ctx.computedOptions.length) + ") ", 1), _hoisted_4, vue.createVNode(_component_t_input, {
+    onKeydown: _cache[1] || (_cache[1] = vue.withKeys(function ($event) {
+      return _ctx.searchTerm = '';
+    }, ["esc"])),
+    modelValue: _ctx.searchTerm,
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.searchTerm = $event;
+    })
+  }, null, 8, ["modelValue"])]), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.computedOptions, function (item) {
+    return vue.openBlock(), vue.createBlock("div", {
+      class: "border-b p-2",
+      onMouseover: function onMouseover($event) {
+        return _ctx.show[item.id] = 1;
+      },
+      onMouseout: function onMouseout($event) {
+        return _ctx.show[item.id] = 0;
+      },
+      key: item.id
+    }, [vue.createTextVNode(vue.toDisplayString(_ctx.title(item)) + " ", 1), vue.withDirectives(vue.createVNode(_component_t_button, {
+      onClick: function onClick($event) {
+        return _ctx.select(item);
+      },
+      size: "sm"
+    }, {
+      default: vue.withCtx(function () {
+        return [_hoisted_5];
+      }),
+      _: 2
+    }, 1032, ["onClick"]), [[vue.vShow, _ctx.show[item.id]]])], 40, ["onMouseover", "onMouseout"]);
+  }), 128))]), vue.createVNode("div", _hoisted_6, [vue.createVNode("div", _hoisted_7, [vue.createTextVNode(" Itens Selecionados (" + vue.toDisplayString(_ctx.modelValue.length) + ") ", 1), _hoisted_8, vue.createVNode(_component_t_input, {
+    onKeydown: _cache[3] || (_cache[3] = vue.withKeys(function ($event) {
+      return _ctx.searchTerm2 = '';
+    }, ["esc"])),
+    modelValue: _ctx.searchTerm2,
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return _ctx.searchTerm2 = $event;
+    })
+  }, null, 8, ["modelValue"])]), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.selecteds, function (item) {
+    return vue.openBlock(), vue.createBlock("div", {
+      class: "border-b p-2",
+      onMouseover: function onMouseover($event) {
+        return _ctx.show[item.id] = 1;
+      },
+      onMouseout: function onMouseout($event) {
+        return _ctx.show[item.id] = 0;
+      },
+      key: item.id
+    }, [vue.withDirectives(vue.createVNode(_component_t_button, {
+      onClick: function onClick($event) {
+        return _ctx.unselect(item);
+      },
+      size: "sm"
+    }, {
+      default: vue.withCtx(function () {
+        return [_hoisted_9];
+      }),
+      _: 2
+    }, 1032, ["onClick"]), [[vue.vShow, _ctx.show[item.id]]]), vue.createTextVNode(" " + vue.toDisplayString(_ctx.title(item)), 1)], 40, ["onMouseover", "onMouseout"]);
+  }), 128))])]);
+}script.render = render;var components$1=/*#__PURE__*/Object.freeze({__proto__:null,TButton: script$g,TInput: script$f,TFormSection: script$e,TSelect: script$d,TAccordion: script$c,TToggle: script$b,TAlert: script$a,TDropdown: script$9,TDropdownItem: script$8,TLoop: script$7,TEditor: script$6,TImageInput: script$5,TModal: script$4,TDialogModal: script$3,TConfirmationModal: script$2,TTable: script$1,TTransferList: script});var install = function installTailpieces(app) {
   Object.entries(components$1).forEach(function (_ref) {
     var _ref2 = _slicedToArray(_ref, 2),
         componentName = _ref2[0],
@@ -14322,7 +14476,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     app.component(componentName, component);
   });
 }; // Create module definition for Vue.use()
-var components=/*#__PURE__*/Object.freeze({__proto__:null,'default': install,TButton: script$f,TInput: script$e,TFormSection: script$d,TSelect: script$c,TAccordion: script$b,TToggle: script$a,TAlert: script$9,TDropdown: script$8,TDropdownItem: script$7,TLoop: script$6,TEditor: script$5,TImageInput: script$4,TModal: script$3,TDialogModal: script$2,TConfirmationModal: script$1,TTable: script,Form: Form,Validator: Validator});// only expose one global var, with component exports exposed as properties of
+var components=/*#__PURE__*/Object.freeze({__proto__:null,'default': install,TButton: script$g,TInput: script$f,TFormSection: script$e,TSelect: script$d,TAccordion: script$c,TToggle: script$b,TAlert: script$a,TDropdown: script$9,TDropdownItem: script$8,TLoop: script$7,TEditor: script$6,TImageInput: script$5,TModal: script$4,TDialogModal: script$3,TConfirmationModal: script$2,TTable: script$1,TTransferList: script,Form: Form,Validator: Validator});// only expose one global var, with component exports exposed as properties of
 // that global var (eg. plugin.component)
 
 Object.entries(components).forEach(function (_ref) {
