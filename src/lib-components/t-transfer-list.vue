@@ -8,13 +8,13 @@
       </div>
       <div
         class="border-b p-2"
-        @mouseover="show[item.id] = 1"
-        @mouseout="show[item.id] = 0"
+        @mouseover="show[item[key_name]] = 1"
+        @mouseout="show[item[key_name]] = 0"
         v-for="item in computedOptions"
-        :key="item.id"
+        :key="item[key_name]"
       >
         {{ title(item) }}
-        <t-button v-show="show[item.id]" @click="select(item)" size="sm"
+        <t-button v-show="show[item[key_name]]" @click="select(item)" size="sm"
           >&gt;</t-button
         >
       </div>
@@ -27,12 +27,15 @@
       </div>
       <div
         class="border-b p-2"
-        @mouseover="show[item.id] = 1"
-        @mouseout="show[item.id] = 0"
+        @mouseover="show[item[key_name]] = 1"
+        @mouseout="show[item[key_name]] = 0"
         v-for="item in selecteds"
-        :key="item.id"
+        :key="item[key_name]"
       >
-        <t-button v-show="show[item.id]" @click="unselect(item)" size="sm"
+        <t-button
+          v-show="show[item[key_name]]"
+          @click="unselect(item)"
+          size="sm"
           >&lt;</t-button
         >
         {{ title(item) }}
@@ -46,21 +49,26 @@ import { defineComponent, onMounted, ref, PropType, computed } from "vue";
 export default defineComponent({
   props: {
     modelValue: {
-      type: Array as PropType<{ name: string; id: number }[]>,
+      type: Array as PropType<{ [key: string]: any }[]>,
       required: true,
     },
     options: {
       required: true,
-      type: Array as PropType<{ name: string; id: number }[]>,
+      type: Array as PropType<{ [key: string]: any }[]>,
     },
     title: {
       type: Function,
       default: (item: any) => item.title,
     },
+    key_name: {
+      type: String,
+      default: "id",
+    },
   },
   setup(props, { emit }) {
     onMounted(() => {
       console.log(props.modelValue, props.options);
+      console.log(props.key_name);
     });
 
     const show = ref([] as number[]);
@@ -70,7 +78,10 @@ export default defineComponent({
     const computedOptions = computed(() =>
       props.options
         .filter(
-          item => !props.modelValue.map(item => item.id).includes(item.id),
+          item =>
+            !props.modelValue
+              .map(item => item[props.key_name])
+              .includes(item[props.key_name]),
         )
         .filter(item =>
           props
@@ -89,15 +100,17 @@ export default defineComponent({
       ),
     );
 
-    const select = (item: { id: number; name: string }) => {
+    const select = (item: { [key: string]: any }) => {
       let selected = props.modelValue;
       selected.push(item);
       console.log(select);
       emit("update:modelValue", selected);
     };
-    const unselect = (item: { id: number; name: string }) => {
+    const unselect = (item: { [key: string]: any }) => {
       let selected = props.modelValue;
-      selected = selected.filter(element => element.id != item.id);
+      selected = selected.filter(
+        element => element[props.key_name] != item[props.key_name],
+      );
       emit("update:modelValue", selected);
     };
 

@@ -5,6 +5,7 @@
     <t-alert :info="success" />
     <t-transfer-list
       :title="item => item.name"
+      key_name="ukey"
       :options="options"
       v-model="selecteds"
     />
@@ -191,15 +192,15 @@ export default defineComponent({
     const options = [
       {
         name: "Alan",
-        id: 3,
+        ukey: "asd12",
       },
       {
         name: "Mari",
-        id: 4,
+        ukey: "asd13",
       },
       {
         name: "John",
-        id: 6,
+        ukey: "asd14",
       },
     ];
 
