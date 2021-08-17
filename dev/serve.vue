@@ -54,8 +54,8 @@
         <t-button color="green" @click="debug">Debug</t-button>
       </div>
     </t-form-section>
-    <t-form-section label="Seção Teste">
       <t-input label="Nome" :maxlength="100" v-model="user.data.name" />
+    <t-form-section class="-m-3" label="Seção Teste">
       <t-input
         label="Número"
         min="30"

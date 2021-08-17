@@ -2,7 +2,10 @@
   <div class="text-lg text-blue-900 mb-2">
     {{ label }}
   </div>
-  <div class="bg-white shadow-sm p-3 rounded mb-4 flex flex-wrap">
+  <div
+    v-bind="$attrs"
+    class="bg-white shadow-sm p-3 rounded mb-4 flex flex-wrap"
+  >
     <slot></slot>
   </div>
 </template>
