@@ -56,6 +56,15 @@
     </t-form-section>
       <t-input label="Nome" :maxlength="100" v-model="user.data.name" />
     <t-form-section class="-m-3" label="Seção Teste">
+      <t-select
+        class="md:w-1/2"
+        label="Ativo"
+        :items="[
+          { name: 'Sim', value: true },
+          { name: 'Não', value: false },
+        ]"
+        v-model="user.data.active.value"
+      ></t-select>
       <t-input
         label="Número"
         min="30"
