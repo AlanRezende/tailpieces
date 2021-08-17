@@ -415,12 +415,12 @@ const _hoisted_2$b = {
   key: 2,
   class: "absolute right-0 text-xs -top-4 text-gray-500"
 };
-const _hoisted_3$8 = {
+const _hoisted_3$9 = {
   class: "text-red-800 text-sm ml-0.5"
 };
 function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("div", {
-    class: ["flex flex-col mb-4 relative w-full", _ctx.tclass]
+    class: ["flex flex-col py-2 px-3 relative w-full", _ctx.tclass]
   }, [createVNode("label", null, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_1$f, [_ctx.type == 'textarea' ? withDirectives((openBlock(), createBlock("textarea", mergeProps({
     key: 0,
     class: ["p-2 border rounded", {
@@ -444,7 +444,7 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[4] || (_cache[4] = (...args) => _ctx.validate && _ctx.validate(...args)),
     onKeydown: _cache[5] || (_cache[5] = $event => _ctx.formItem.validationError = ''),
     "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => _ctx.formItem.value = $event)
-  }, _ctx.$attrs), null, 16, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2$b, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true)]), createVNode("span", _hoisted_3$8, toDisplayString(_ctx.formItem.validationError), 1)], 2);
+  }, _ctx.$attrs), null, 16, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2$b, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true)]), createVNode("span", _hoisted_3$9, toDisplayString(_ctx.formItem.validationError), 1)], 2);
 }
 
 script$f.render = render$f;
@@ -462,11 +462,10 @@ var script$e = defineComponent({
 const _hoisted_1$e = {
   class: "text-lg text-blue-900 mb-2"
 };
-const _hoisted_2$a = {
-  class: "bg-white shadow-sm p-3 rounded mb-4 flex flex-wrap"
-};
 function render$e(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(Fragment, null, [createVNode("div", _hoisted_1$e, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$a, [renderSlot(_ctx.$slots, "default")])], 64);
+  return openBlock(), createBlock(Fragment, null, [createVNode("div", _hoisted_1$e, toDisplayString(_ctx.label), 1), createVNode("div", mergeProps(_ctx.$attrs, {
+    class: "bg-white shadow-sm p-3 rounded mb-4 flex flex-wrap"
+  }), [renderSlot(_ctx.$slots, "default")], 16)], 64);
 }
 
 script$e.render = render$e;
@@ -551,12 +550,26 @@ var script$d = defineComponent({
 });
 
 const _hoisted_1$d = {
-  class: "flex flex-col mb-4 w-full"
+  class: "flex flex-col px-3 py-2 w-full"
 };
+const _hoisted_2$a = {
+  class: "relative"
+};
+
+const _hoisted_3$8 = /*#__PURE__*/createVNode("div", {
+  class: "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+}, [/*#__PURE__*/createVNode("svg", {
+  class: "fill-current h-5 w-5",
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 20 20"
+}, [/*#__PURE__*/createVNode("path", {
+  d: "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+})])], -1);
+
 function render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$d, [createVNode("label", null, toDisplayString(_ctx.label), 1), withDirectives(createVNode("select", {
+  return openBlock(), createBlock("div", _hoisted_1$d, [createVNode("label", null, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$a, [withDirectives(createVNode("select", {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => _ctx.formItem.value = $event),
-    class: "p-2 border rounded",
+    class: "p-2 w-full border rounded appearance-none",
     name: "",
     id: ""
   }, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.items, item => {
@@ -564,7 +577,7 @@ function render$d(_ctx, _cache, $props, $setup, $data, $options) {
       value: item.value,
       key: item.value
     }, toDisplayString(item.name), 9, ["value"]);
-  }), 128))], 512), [[vModelSelect, _ctx.formItem.value]])]);
+  }), 128))], 512), [[vModelSelect, _ctx.formItem.value]]), _hoisted_3$8])]);
 }
 
 script$d.render = render$d;
