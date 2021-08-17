@@ -14349,9 +14349,7 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   },
   setup: function setup(props, _ref) {
     var emit = _ref.emit;
-    vue.onMounted(function () {
-      console.log(props.modelValue, props.options);
-      console.log(props.key_name);
+    vue.onMounted(function () {//
     });
     var show = vue.ref([]);
     var searchTerm = vue.ref("");
@@ -14405,8 +14403,9 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   class: "bg-gray-200 p-2"
 };
-
-var _hoisted_4 = /*#__PURE__*/vue.createVNode("br", null, null, -1);
+var _hoisted_4 = {
+  class: "-m-3"
+};
 
 var _hoisted_5 = /*#__PURE__*/vue.createTextVNode(">");
 
@@ -14416,8 +14415,9 @@ var _hoisted_6 = {
 var _hoisted_7 = {
   class: "bg-gray-200 p-2"
 };
-
-var _hoisted_8 = /*#__PURE__*/vue.createVNode("br", null, null, -1);
+var _hoisted_8 = {
+  class: "-m-3"
+};
 
 var _hoisted_9 = /*#__PURE__*/vue.createTextVNode("<");
 
@@ -14426,7 +14426,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_t_button = vue.resolveComponent("t-button");
 
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1, [vue.createVNode("div", _hoisted_2, [vue.createVNode("div", _hoisted_3, [vue.createTextVNode(" Itens Disponíveis (" + vue.toDisplayString(_ctx.computedOptions.length) + ") ", 1), _hoisted_4, vue.createVNode(_component_t_input, {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1, [vue.createVNode("div", _hoisted_2, [vue.createVNode("div", _hoisted_3, [vue.createVNode("div", _hoisted_4, [vue.createVNode(_component_t_input, {
+    label: "Itens Dispon\xEDveis (".concat(_ctx.computedOptions.length, ")"),
     onKeydown: _cache[1] || (_cache[1] = vue.withKeys(function ($event) {
       return _ctx.searchTerm = '';
     }, ["esc"])),
@@ -14434,7 +14435,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return _ctx.searchTerm = $event;
     })
-  }, null, 8, ["modelValue"])]), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.computedOptions, function (item) {
+  }, null, 8, ["label", "modelValue"])])]), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.computedOptions, function (item) {
     return vue.openBlock(), vue.createBlock("div", {
       class: "border-b p-2",
       onMouseover: function onMouseover($event) {
@@ -14455,7 +14456,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }),
       _: 2
     }, 1032, ["onClick"]), [[vue.vShow, _ctx.show[item[_ctx.key_name]]]])], 40, ["onMouseover", "onMouseout"]);
-  }), 128))]), vue.createVNode("div", _hoisted_6, [vue.createVNode("div", _hoisted_7, [vue.createTextVNode(" Itens Selecionados (" + vue.toDisplayString(_ctx.modelValue.length) + ") ", 1), _hoisted_8, vue.createVNode(_component_t_input, {
+  }), 128))]), vue.createVNode("div", _hoisted_6, [vue.createVNode("div", _hoisted_7, [vue.createVNode("div", _hoisted_8, [vue.createVNode(_component_t_input, {
+    label: "Itens Selecionados (".concat(_ctx.modelValue.length, ")"),
     onKeydown: _cache[3] || (_cache[3] = vue.withKeys(function ($event) {
       return _ctx.searchTerm2 = '';
     }, ["esc"])),
@@ -14463,7 +14465,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return _ctx.searchTerm2 = $event;
     })
-  }, null, 8, ["modelValue"])]), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.selecteds, function (item) {
+  }, null, 8, ["label", "modelValue"])])]), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.selecteds, function (item) {
     return vue.openBlock(), vue.createBlock("div", {
       class: "border-b p-2",
       onMouseover: function onMouseover($event) {

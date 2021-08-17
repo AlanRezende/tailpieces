@@ -14229,9 +14229,7 @@ var script = defineComponent({
   setup(props, {
     emit
   }) {
-    onMounted(() => {
-      console.log(props.modelValue, props.options);
-      console.log(props.key_name);
+    onMounted(() => {//
     });
     const show = ref([]);
     const searchTerm = ref("");
@@ -14274,8 +14272,9 @@ const _hoisted_2 = {
 const _hoisted_3 = {
   class: "bg-gray-200 p-2"
 };
-
-const _hoisted_4 = /*#__PURE__*/createVNode("br", null, null, -1);
+const _hoisted_4 = {
+  class: "-m-3"
+};
 
 const _hoisted_5 = /*#__PURE__*/createTextVNode(">");
 
@@ -14285,8 +14284,9 @@ const _hoisted_6 = {
 const _hoisted_7 = {
   class: "bg-gray-200 p-2"
 };
-
-const _hoisted_8 = /*#__PURE__*/createVNode("br", null, null, -1);
+const _hoisted_8 = {
+  class: "-m-3"
+};
 
 const _hoisted_9 = /*#__PURE__*/createTextVNode("<");
 
@@ -14295,11 +14295,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   const _component_t_button = resolveComponent("t-button");
 
-  return openBlock(), createBlock("div", _hoisted_1, [createVNode("div", _hoisted_2, [createVNode("div", _hoisted_3, [createTextVNode(" Itens Disponíveis (" + toDisplayString(_ctx.computedOptions.length) + ") ", 1), _hoisted_4, createVNode(_component_t_input, {
+  return openBlock(), createBlock("div", _hoisted_1, [createVNode("div", _hoisted_2, [createVNode("div", _hoisted_3, [createVNode("div", _hoisted_4, [createVNode(_component_t_input, {
+    label: `Itens Disponíveis (${_ctx.computedOptions.length})`,
     onKeydown: _cache[1] || (_cache[1] = withKeys($event => _ctx.searchTerm = '', ["esc"])),
     modelValue: _ctx.searchTerm,
     "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => _ctx.searchTerm = $event)
-  }, null, 8, ["modelValue"])]), (openBlock(true), createBlock(Fragment, null, renderList(_ctx.computedOptions, item => {
+  }, null, 8, ["label", "modelValue"])])]), (openBlock(true), createBlock(Fragment, null, renderList(_ctx.computedOptions, item => {
     return openBlock(), createBlock("div", {
       class: "border-b p-2",
       onMouseover: $event => _ctx.show[item[_ctx.key_name]] = 1,
@@ -14312,11 +14313,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       default: withCtx(() => [_hoisted_5]),
       _: 2
     }, 1032, ["onClick"]), [[vShow, _ctx.show[item[_ctx.key_name]]]])], 40, ["onMouseover", "onMouseout"]);
-  }), 128))]), createVNode("div", _hoisted_6, [createVNode("div", _hoisted_7, [createTextVNode(" Itens Selecionados (" + toDisplayString(_ctx.modelValue.length) + ") ", 1), _hoisted_8, createVNode(_component_t_input, {
+  }), 128))]), createVNode("div", _hoisted_6, [createVNode("div", _hoisted_7, [createVNode("div", _hoisted_8, [createVNode(_component_t_input, {
+    label: `Itens Selecionados (${_ctx.modelValue.length})`,
     onKeydown: _cache[3] || (_cache[3] = withKeys($event => _ctx.searchTerm2 = '', ["esc"])),
     modelValue: _ctx.searchTerm2,
     "onUpdate:modelValue": _cache[4] || (_cache[4] = $event => _ctx.searchTerm2 = $event)
-  }, null, 8, ["modelValue"])]), (openBlock(true), createBlock(Fragment, null, renderList(_ctx.selecteds, item => {
+  }, null, 8, ["label", "modelValue"])])]), (openBlock(true), createBlock(Fragment, null, renderList(_ctx.selecteds, item => {
     return openBlock(), createBlock("div", {
       class: "border-b p-2",
       onMouseover: $event => _ctx.show[item[_ctx.key_name]] = 1,

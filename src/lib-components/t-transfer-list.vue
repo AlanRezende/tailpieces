@@ -2,9 +2,13 @@
   <div class="flex h-64 space-x-4">
     <div class="w-1/2 h-full overflow-scroll border rounded bg-gray-100">
       <div class="bg-gray-200 p-2">
-        Itens Disponíveis ({{ computedOptions.length }})
-        <br />
-        <t-input @keydown.esc="searchTerm = ''" v-model="searchTerm" />
+        <div class="-m-3">
+          <t-input
+            :label="`Itens Disponíveis (${computedOptions.length})`"
+            @keydown.esc="searchTerm = ''"
+            v-model="searchTerm"
+          />
+        </div>
       </div>
       <div
         class="border-b p-2"
@@ -21,9 +25,13 @@
     </div>
     <div class="w-1/2 border h-full overflow-scroll rounded bg-gray-100">
       <div class="bg-gray-200 p-2">
-        Itens Selecionados ({{ modelValue.length }})
-        <br />
-        <t-input @keydown.esc="searchTerm2 = ''" v-model="searchTerm2" />
+        <div class="-m-3">
+          <t-input
+            :label="`Itens Selecionados (${modelValue.length})`"
+            @keydown.esc="searchTerm2 = ''"
+            v-model="searchTerm2"
+          />
+        </div>
       </div>
       <div
         class="border-b p-2"
@@ -67,8 +75,7 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     onMounted(() => {
-      console.log(props.modelValue, props.options);
-      console.log(props.key_name);
+      //
     });
 
     const show = ref([] as number[]);
