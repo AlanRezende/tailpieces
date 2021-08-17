@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mb-4 relative w-full" :class="tclass">
+  <div class="flex flex-col py-2 px-3 relative w-full" :class="tclass">
     <label>{{ label }}</label>
     <div class="relative w-full flex flex-col">
       <textarea

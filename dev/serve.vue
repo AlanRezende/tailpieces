@@ -54,8 +54,25 @@
         <t-button color="green" @click="debug">Debug</t-button>
       </div>
     </t-form-section>
-      <t-input label="Nome" :maxlength="100" v-model="user.data.name" />
     <t-form-section class="-m-3" label="Seção Teste">
+      <t-input
+        tclass="md:w-2/4"
+        label="Nome"
+        :maxlength="100"
+        v-model="user.data.name"
+      />
+      <t-input
+        tclass="md:w-2/4"
+        label="Nome"
+        :maxlength="100"
+        v-model="user.data.name"
+      />
+      <t-input
+        tclass="md:w-2/4"
+        label="Nome"
+        :maxlength="100"
+        v-model="user.data.name"
+      />
       <t-select
         class="md:w-1/2"
         label="Ativo"
@@ -66,9 +83,15 @@
         v-model="user.data.active.value"
       ></t-select>
       <t-input
+        tclass="md:w-2/4"
+        label="Nome"
+        :maxlength="100"
+        v-model="user.data.name"
+      />
+      <t-input
         label="Número"
         min="30"
-        tclass="sm:w-1/2"
+        tclass="md:w-1/4"
         type="number"
         v-model="user.data.age"
       />
