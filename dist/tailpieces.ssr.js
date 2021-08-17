@@ -14328,12 +14328,17 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
       default: function _default(item) {
         return item.title;
       }
+    },
+    key_name: {
+      type: String,
+      default: "id"
     }
   },
   setup: function setup(props, _ref) {
     var emit = _ref.emit;
     vue.onMounted(function () {
       console.log(props.modelValue, props.options);
+      console.log(props.key_name);
     });
     var show = vue.ref([]);
     var searchTerm = vue.ref("");
@@ -14341,8 +14346,8 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
     var computedOptions = vue.computed(function () {
       return props.options.filter(function (item) {
         return !props.modelValue.map(function (item) {
-          return item.id;
-        }).includes(item.id);
+          return item[props.key_name];
+        }).includes(item[props.key_name]);
       }).filter(function (item) {
         return props.title(item).toLowerCase().includes(searchTerm.value.toLowerCase());
       });
@@ -14363,7 +14368,7 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
     var unselect = function unselect(item) {
       var selected = props.modelValue;
       selected = selected.filter(function (element) {
-        return element.id != item.id;
+        return element[props.key_name] != item[props.key_name];
       });
       emit("update:modelValue", selected);
     };
@@ -14420,12 +14425,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createBlock("div", {
       class: "border-b p-2",
       onMouseover: function onMouseover($event) {
-        return _ctx.show[item.id] = 1;
+        return _ctx.show[item[_ctx.key_name]] = 1;
       },
       onMouseout: function onMouseout($event) {
-        return _ctx.show[item.id] = 0;
+        return _ctx.show[item[_ctx.key_name]] = 0;
       },
-      key: item.id
+      key: item[_ctx.key_name]
     }, [vue.createTextVNode(vue.toDisplayString(_ctx.title(item)) + " ", 1), vue.withDirectives(vue.createVNode(_component_t_button, {
       onClick: function onClick($event) {
         return _ctx.select(item);
@@ -14436,7 +14441,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_5];
       }),
       _: 2
-    }, 1032, ["onClick"]), [[vue.vShow, _ctx.show[item.id]]])], 40, ["onMouseover", "onMouseout"]);
+    }, 1032, ["onClick"]), [[vue.vShow, _ctx.show[item[_ctx.key_name]]]])], 40, ["onMouseover", "onMouseout"]);
   }), 128))]), vue.createVNode("div", _hoisted_6, [vue.createVNode("div", _hoisted_7, [vue.createTextVNode(" Itens Selecionados (" + vue.toDisplayString(_ctx.modelValue.length) + ") ", 1), _hoisted_8, vue.createVNode(_component_t_input, {
     onKeydown: _cache[3] || (_cache[3] = vue.withKeys(function ($event) {
       return _ctx.searchTerm2 = '';
@@ -14449,12 +14454,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createBlock("div", {
       class: "border-b p-2",
       onMouseover: function onMouseover($event) {
-        return _ctx.show[item.id] = 1;
+        return _ctx.show[item[_ctx.key_name]] = 1;
       },
       onMouseout: function onMouseout($event) {
-        return _ctx.show[item.id] = 0;
+        return _ctx.show[item[_ctx.key_name]] = 0;
       },
-      key: item.id
+      key: item[_ctx.key_name]
     }, [vue.withDirectives(vue.createVNode(_component_t_button, {
       onClick: function onClick($event) {
         return _ctx.unselect(item);
@@ -14465,7 +14470,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_9];
       }),
       _: 2
-    }, 1032, ["onClick"]), [[vue.vShow, _ctx.show[item.id]]]), vue.createTextVNode(" " + vue.toDisplayString(_ctx.title(item)), 1)], 40, ["onMouseover", "onMouseout"]);
+    }, 1032, ["onClick"]), [[vue.vShow, _ctx.show[item[_ctx.key_name]]]]), vue.createTextVNode(" " + vue.toDisplayString(_ctx.title(item)), 1)], 40, ["onMouseover", "onMouseout"]);
   }), 128))])]);
 }script.render = render;var components$1=/*#__PURE__*/Object.freeze({__proto__:null,TButton: script$g,TInput: script$f,TFormSection: script$e,TSelect: script$d,TAccordion: script$c,TToggle: script$b,TAlert: script$a,TDropdown: script$9,TDropdownItem: script$8,TLoop: script$7,TEditor: script$6,TImageInput: script$5,TModal: script$4,TDialogModal: script$3,TConfirmationModal: script$2,TTable: script$1,TTransferList: script});var install = function installTailpieces(app) {
   Object.entries(components$1).forEach(function (_ref) {

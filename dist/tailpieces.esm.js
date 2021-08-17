@@ -14206,6 +14206,10 @@ var script = defineComponent({
     title: {
       type: Function,
       default: item => item.title
+    },
+    key_name: {
+      type: String,
+      default: "id"
     }
   },
 
@@ -14214,11 +14218,12 @@ var script = defineComponent({
   }) {
     onMounted(() => {
       console.log(props.modelValue, props.options);
+      console.log(props.key_name);
     });
     const show = ref([]);
     const searchTerm = ref("");
     const searchTerm2 = ref("");
-    const computedOptions = computed(() => props.options.filter(item => !props.modelValue.map(item => item.id).includes(item.id)).filter(item => props.title(item).toLowerCase().includes(searchTerm.value.toLowerCase())));
+    const computedOptions = computed(() => props.options.filter(item => !props.modelValue.map(item => item[props.key_name]).includes(item[props.key_name])).filter(item => props.title(item).toLowerCase().includes(searchTerm.value.toLowerCase())));
     const selecteds = computed(() => props.modelValue.filter(item => props.title(item).toLowerCase().includes(searchTerm2.value.toLowerCase())));
 
     const select = item => {
@@ -14230,7 +14235,7 @@ var script = defineComponent({
 
     const unselect = item => {
       let selected = props.modelValue;
-      selected = selected.filter(element => element.id != item.id);
+      selected = selected.filter(element => element[props.key_name] != item[props.key_name]);
       emit("update:modelValue", selected);
     };
 
@@ -14284,16 +14289,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8, ["modelValue"])]), (openBlock(true), createBlock(Fragment, null, renderList(_ctx.computedOptions, item => {
     return openBlock(), createBlock("div", {
       class: "border-b p-2",
-      onMouseover: $event => _ctx.show[item.id] = 1,
-      onMouseout: $event => _ctx.show[item.id] = 0,
-      key: item.id
+      onMouseover: $event => _ctx.show[item[_ctx.key_name]] = 1,
+      onMouseout: $event => _ctx.show[item[_ctx.key_name]] = 0,
+      key: item[_ctx.key_name]
     }, [createTextVNode(toDisplayString(_ctx.title(item)) + " ", 1), withDirectives(createVNode(_component_t_button, {
       onClick: $event => _ctx.select(item),
       size: "sm"
     }, {
       default: withCtx(() => [_hoisted_5]),
       _: 2
-    }, 1032, ["onClick"]), [[vShow, _ctx.show[item.id]]])], 40, ["onMouseover", "onMouseout"]);
+    }, 1032, ["onClick"]), [[vShow, _ctx.show[item[_ctx.key_name]]]])], 40, ["onMouseover", "onMouseout"]);
   }), 128))]), createVNode("div", _hoisted_6, [createVNode("div", _hoisted_7, [createTextVNode(" Itens Selecionados (" + toDisplayString(_ctx.modelValue.length) + ") ", 1), _hoisted_8, createVNode(_component_t_input, {
     onKeydown: _cache[3] || (_cache[3] = withKeys($event => _ctx.searchTerm2 = '', ["esc"])),
     modelValue: _ctx.searchTerm2,
@@ -14301,16 +14306,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8, ["modelValue"])]), (openBlock(true), createBlock(Fragment, null, renderList(_ctx.selecteds, item => {
     return openBlock(), createBlock("div", {
       class: "border-b p-2",
-      onMouseover: $event => _ctx.show[item.id] = 1,
-      onMouseout: $event => _ctx.show[item.id] = 0,
-      key: item.id
+      onMouseover: $event => _ctx.show[item[_ctx.key_name]] = 1,
+      onMouseout: $event => _ctx.show[item[_ctx.key_name]] = 0,
+      key: item[_ctx.key_name]
     }, [withDirectives(createVNode(_component_t_button, {
       onClick: $event => _ctx.unselect(item),
       size: "sm"
     }, {
       default: withCtx(() => [_hoisted_9]),
       _: 2
-    }, 1032, ["onClick"]), [[vShow, _ctx.show[item.id]]]), createTextVNode(" " + toDisplayString(_ctx.title(item)), 1)], 40, ["onMouseover", "onMouseout"]);
+    }, 1032, ["onClick"]), [[vShow, _ctx.show[item[_ctx.key_name]]]]), createTextVNode(" " + toDisplayString(_ctx.title(item)), 1)], 40, ["onMouseover", "onMouseout"]);
   }), 128))])]);
 }
 
