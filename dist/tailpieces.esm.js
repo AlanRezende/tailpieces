@@ -614,7 +614,7 @@ const _hoisted_3$7 = {
   key: 0,
   class: "transition-all rounded-b ease-in-out overflow-hidden origin-top"
 };
-const _hoisted_4$4 = {
+const _hoisted_4$3 = {
   class: "p-2"
 };
 
@@ -627,7 +627,7 @@ const render$c = /*#__PURE__*/_withId((_ctx, _cache, $props, $setup, $data, $opt
   }, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$9, [createVNode(Transition, {
     name: "fade"
   }, {
-    default: _withId(() => [_ctx.open ? (openBlock(), createBlock("div", _hoisted_3$7, [createVNode("div", _hoisted_4$4, [renderSlot(_ctx.$slots, "default")])])) : createCommentVNode("", true)]),
+    default: _withId(() => [_ctx.open ? (openBlock(), createBlock("div", _hoisted_3$7, [createVNode("div", _hoisted_4$3, [renderSlot(_ctx.$slots, "default")])])) : createCommentVNode("", true)]),
     _: 3
   })])]);
 });
@@ -820,6 +820,11 @@ var script$9 = defineComponent({
     label: {
       type: String,
       default: "Opções"
+    },
+    align: {
+      type: String,
+      default: "l" // l Left / r Right
+
     }
   },
 
@@ -864,9 +869,6 @@ const _hoisted_3$5 = /*#__PURE__*/createVNode("path", {
   d: "M6 9l6 6 6-6"
 }, null, -1);
 
-const _hoisted_4$3 = {
-  class: "shadow rounded z-30 border bg-white absolute"
-};
 function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("div", _hoisted_1$9, [createVNode("div", {
     onClick: _cache[1] || (_cache[1] = (...args) => _ctx.toggleDropdown && _ctx.toggleDropdown(...args)),
@@ -881,7 +883,11 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
     "stroke-linejoin": "round",
     "stroke-width": "2",
     xmlns: "http://www.w3.org/2000/svg"
-  }, [_hoisted_3$5], 2))])])]), withDirectives(createVNode("ul", _hoisted_4$3, [renderSlot(_ctx.$slots, "default")], 512), [[vShow, _ctx.open]])], 512);
+  }, [_hoisted_3$5], 2))])])]), withDirectives(createVNode("ul", {
+    class: [{
+      'right-0': _ctx.align == 'r'
+    }, "shadow rounded z-30 border bg-white absolute"]
+  }, [renderSlot(_ctx.$slots, "default")], 2), [[vShow, _ctx.open]])], 512);
 }
 
 script$9.render = render$9;

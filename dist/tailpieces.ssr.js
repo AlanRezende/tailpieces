@@ -793,7 +793,7 @@ var _hoisted_3$7 = {
   key: 0,
   class: "transition-all rounded-b ease-in-out overflow-hidden origin-top"
 };
-var _hoisted_4$4 = {
+var _hoisted_4$3 = {
   class: "p-2"
 };
 
@@ -809,7 +809,7 @@ var render$c = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $dat
     name: "fade"
   }, {
     default: _withId(function () {
-      return [_ctx.open ? (vue.openBlock(), vue.createBlock("div", _hoisted_3$7, [vue.createVNode("div", _hoisted_4$4, [vue.renderSlot(_ctx.$slots, "default")])])) : vue.createCommentVNode("", true)];
+      return [_ctx.open ? (vue.openBlock(), vue.createBlock("div", _hoisted_3$7, [vue.createVNode("div", _hoisted_4$3, [vue.renderSlot(_ctx.$slots, "default")])])) : vue.createCommentVNode("", true)];
     }),
     _: 3
   })])]);
@@ -982,6 +982,11 @@ function render$a(_ctx, _cache, $props, $setup, $data, $options) {
     label: {
       type: String,
       default: "Opções"
+    },
+    align: {
+      type: String,
+      default: "l" // l Left / r Right
+
     }
   },
   setup: function setup() {
@@ -1022,9 +1027,6 @@ var _hoisted_3$5 = /*#__PURE__*/vue.createVNode("path", {
   d: "M6 9l6 6 6-6"
 }, null, -1);
 
-var _hoisted_4$3 = {
-  class: "shadow rounded z-30 border bg-white absolute"
-};
 function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock("div", _hoisted_1$9, [vue.createVNode("div", {
     onClick: _cache[1] || (_cache[1] = function () {
@@ -1043,7 +1045,11 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
       "stroke-width": "2",
       xmlns: "http://www.w3.org/2000/svg"
     }, [_hoisted_3$5], 2))])];
-  })]), vue.withDirectives(vue.createVNode("ul", _hoisted_4$3, [vue.renderSlot(_ctx.$slots, "default")], 512), [[vue.vShow, _ctx.open]])], 512);
+  })]), vue.withDirectives(vue.createVNode("ul", {
+    class: [{
+      'right-0': _ctx.align == 'r'
+    }, "shadow rounded z-30 border bg-white absolute"]
+  }, [vue.renderSlot(_ctx.$slots, "default")], 2), [[vue.vShow, _ctx.open]])], 512);
 }script$9.render = render$9;var script$8 = vue.defineComponent({
   props: {
     type: {

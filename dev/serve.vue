@@ -158,7 +158,7 @@
           </template>
         </t-dropdown>
 
-        <t-dropdown label="Mais ações">
+        <t-dropdown align="r" label="Mais ações">
           <template v-slot:default>
             <t-dropdown-item href="#verImagens">Ver Imagens</t-dropdown-item>
             <t-dropdown-item href="#editar">Editar</t-dropdown-item>

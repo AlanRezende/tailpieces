@@ -18,7 +18,11 @@
           </svg></button
       ></slot>
     </div>
-    <ul v-show="open" class="shadow rounded z-30 border bg-white absolute">
+    <ul
+      v-show="open"
+      :class="{ 'right-0': align == 'r' }"
+      class="shadow rounded z-30 border bg-white absolute"
+    >
       <slot></slot>
     </ul>
   </div>
@@ -31,6 +35,10 @@ export default defineComponent({
     label: {
       type: String,
       default: "Opções",
+    },
+    align: {
+      type: String,
+      default: "l", // l Left / r Right
     },
   },
 
