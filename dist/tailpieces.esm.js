@@ -13936,7 +13936,7 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
       default: withCtx(() => [withDirectives(createVNode("div", {
         onClick: _cache[2] || (_cache[2] = withModifiers(() => {}, ["stop"])),
-        class: ["absolute my-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full", _ctx.maxWidthClass]
+        class: ["absolute my-6 bg-white rounded-lg overflow-visible shadow-xl transform transition-all sm:w-full", _ctx.maxWidthClass]
       }, [renderSlot(_ctx.$slots, "default")], 2), [[vShow, _ctx.show]])]),
       _: 3
     }, 8, ["onEnter"])])], 512), [[vShow, _ctx.show]])]),

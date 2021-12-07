@@ -14070,7 +14070,7 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
         default: vue.withCtx(function () {
           return [vue.withDirectives(vue.createVNode("div", {
             onClick: _cache[2] || (_cache[2] = vue.withModifiers(function () {}, ["stop"])),
-            class: ["absolute my-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full", _ctx.maxWidthClass]
+            class: ["absolute my-6 bg-white rounded-lg overflow-visible shadow-xl transform transition-all sm:w-full", _ctx.maxWidthClass]
           }, [vue.renderSlot(_ctx.$slots, "default")], 2), [[vue.vShow, _ctx.show]])];
         }),
         _: 3

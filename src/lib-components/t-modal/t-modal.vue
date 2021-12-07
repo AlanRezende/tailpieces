@@ -37,7 +37,7 @@
             <div
               v-show="show"
               @click.stop
-              class="absolute my-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full"
+              class="absolute my-6 bg-white rounded-lg overflow-visible shadow-xl transform transition-all sm:w-full"
               :class="maxWidthClass"
             >
               <slot></slot>
