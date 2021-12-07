@@ -36,7 +36,8 @@ export default class Form {
       if (
         typeof value.value == "object" &&
         value.value != null &&
-        !(value.value instanceof Blob)
+        !(value.value instanceof Blob) &&
+        !(value.value instanceof Date)
       ) {
         if (typeof value == "object") {
           value.value.forEach(item => {
@@ -60,7 +61,8 @@ export default class Form {
       if (
         typeof value.value == "object" &&
         value.value != null &&
-        !(value.value instanceof Blob)
+        !(value.value instanceof Blob) &&
+        !(value.value instanceof Date)
       ) {
         value.value.forEach(item => {
           totalErrors += this.errors(item);
@@ -80,7 +82,8 @@ export default class Form {
       if (
         typeof value.value == "object" &&
         value.value != null &&
-        !(value.value instanceof Blob)
+        !(value.value instanceof Blob) &&
+        !(value.value instanceof Date)
       ) {
         value.value.forEach(item => {
           this.validate(item);
@@ -96,7 +99,7 @@ export default class Form {
 
   get(
     key: string,
-  ): string | number | boolean | null | Blob | FormInterface[] | undefined {
+  ): string | number | boolean | null | Blob | Date | FormInterface[] | undefined {
     if (this.data[key]) {
       return this.data[key].value;
     }
@@ -122,7 +125,8 @@ export default class Form {
           typeof value == "object" &&
           typeof temp.value == "object" &&
           temp.value != null &&
-          !(temp.value instanceof Blob)
+          !(temp.value instanceof Blob) &&
+          !(temp.value instanceof Date)
         ) {
           temp.value.forEach(item => {
             this.setRules(value, item);
@@ -143,7 +147,8 @@ export default class Form {
       if (
         typeof value.value == "object" &&
         value.value != null &&
-        !(value.value instanceof Blob)
+        !(value.value instanceof Blob) &&
+        !(value.value instanceof Date)
       ) {
         const nested: DefaultObjectInterface[] = [];
         value.value.forEach(item => {
@@ -175,7 +180,8 @@ export default class Form {
       if (
         typeof value == "object" &&
         value != null &&
-        !(value instanceof Blob)
+        !(value instanceof Blob) &&
+        !(value instanceof Date)
       ) {
         const nested: FormInterface[] = [];
         value.forEach(item => {

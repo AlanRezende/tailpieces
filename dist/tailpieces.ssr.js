@@ -226,7 +226,7 @@ function _nonIterableRest() {
             key = _ref2[0],
             value = _ref2[1];
 
-        if (_typeof(value.value) == "object" && value.value != null && !(value.value instanceof Blob)) {
+        if (_typeof(value.value) == "object" && value.value != null && !(value.value instanceof Blob) && !(value.value instanceof Date)) {
           if (_typeof(value) == "object") {
             value.value.forEach(function (item) {
               _this.clearErrors(item);
@@ -251,7 +251,7 @@ function _nonIterableRest() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.data;
       var totalErrors = 0;
       Object.values(data).forEach(function (value) {
-        if (_typeof(value.value) == "object" && value.value != null && !(value.value instanceof Blob)) {
+        if (_typeof(value.value) == "object" && value.value != null && !(value.value instanceof Blob) && !(value.value instanceof Date)) {
           value.value.forEach(function (item) {
             totalErrors += _this2.errors(item);
           });
@@ -271,7 +271,7 @@ function _nonIterableRest() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.data;
       var validator = new Validator();
       Object.values(data).forEach(function (value) {
-        if (_typeof(value.value) == "object" && value.value != null && !(value.value instanceof Blob)) {
+        if (_typeof(value.value) == "object" && value.value != null && !(value.value instanceof Blob) && !(value.value instanceof Date)) {
           value.value.forEach(function (item) {
             _this3.validate(item);
           });
@@ -315,7 +315,7 @@ function _nonIterableRest() {
         } else {
           var temp = data[key.substr(1)];
 
-          if (temp && _typeof(value) == "object" && _typeof(temp.value) == "object" && temp.value != null && !(temp.value instanceof Blob)) {
+          if (temp && _typeof(value) == "object" && _typeof(temp.value) == "object" && temp.value != null && !(temp.value instanceof Blob) && !(temp.value instanceof Date)) {
             temp.value.forEach(function (item) {
               _this4.setRules(value, item);
             });
@@ -340,7 +340,7 @@ function _nonIterableRest() {
             key = _ref6[0],
             value = _ref6[1];
 
-        if (_typeof(value.value) == "object" && value.value != null && !(value.value instanceof Blob)) {
+        if (_typeof(value.value) == "object" && value.value != null && !(value.value instanceof Blob) && !(value.value instanceof Date)) {
           var nested = [];
           value.value.forEach(function (item) {
             nested.push(_this5.removeProperties(item));
@@ -373,7 +373,7 @@ function _nonIterableRest() {
             key = _ref8[0],
             value = _ref8[1];
 
-        if (_typeof(value) == "object" && value != null && !(value instanceof Blob)) {
+        if (_typeof(value) == "object" && value != null && !(value instanceof Blob) && !(value instanceof Date)) {
           var nested = [];
           value.forEach(function (item) {
             nested.push(_this6.addProperties(item));

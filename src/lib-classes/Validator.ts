@@ -1,6 +1,6 @@
 export default class Validator {
   validate(
-    value: string | number | boolean | null | undefined | Blob,
+    value: string | number | boolean | null | undefined | Blob | Date,
     rules: string,
   ): string {
     if (typeof value == "string") {
