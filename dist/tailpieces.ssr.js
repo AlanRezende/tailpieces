@@ -14232,7 +14232,8 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   },
   setup: function setup(props, _ref) {
     var emit = _ref.emit,
-        slots = _ref.slots;
+        slots = _ref.slots,
+        attrs = _ref.attrs;
 
     var checkItem = function checkItem(item) {
       if (!item) {
@@ -14277,12 +14278,32 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
         });
       });
     });
+    var selectedItems = vue.ref([]);
+    var isCheckboxTable = vue.ref(false);
+
+    var updateSelected = function updateSelected(item) {
+      if (item.checkbox === true) {
+        selectedItems.value.push(item);
+      } else {
+        selectedItems.value.splice(selectedItems.value.indexOf(item), 1);
+      }
+
+      emit("checkbox", selectedItems.value);
+    };
+
+    vue.onMounted(function () {
+      if (attrs.onCheckbox) {
+        isCheckboxTable.value = true;
+      }
+    });
     return {
       colunas: colunas,
       itemScopedClass: itemScopedClass,
       checkItem: checkItem,
       emit: emit,
-      slots: slots
+      slots: slots,
+      updateSelected: updateSelected,
+      isCheckboxTable: isCheckboxTable
     };
   }
 });var _hoisted_1$1 = {
@@ -14298,7 +14319,14 @@ var _hoisted_4$1 = {
   class: "inline-block"
 };
 function render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("table", _hoisted_1$1, [vue.createVNode("thead", null, [vue.createVNode("tr", _hoisted_2$1, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
+  return vue.openBlock(), vue.createBlock("table", _hoisted_1$1, [vue.createVNode("thead", null, [vue.createVNode("tr", _hoisted_2$1, [_ctx.isCheckboxTable ? (vue.openBlock(), vue.createBlock("th", {
+    key: 0,
+    class: ["font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5", [{
+      'p-1 text-xs': _ctx.size == 'sm'
+    }, {
+      'p-3 text-sm': _ctx.size == 'base'
+    }]]
+  }, null, 2)) : vue.createCommentVNode("", true), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
     return vue.openBlock(), vue.createBlock("th", {
       key: "coluna-".concat(coluna.key),
       class: ["font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell", [{
@@ -14317,7 +14345,24 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
       },
       key: item.ukey,
       class: ["bg-white dark:bg-black lg:dark:hover:bg-gray-800 cursor-pointer lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0", _ctx.itemScopedClass(item)]
-    }, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
+    }, [_ctx.isCheckboxTable ? (vue.openBlock(), vue.createBlock("td", {
+      key: 0,
+      class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-5", [{
+        'p-1': _ctx.size == 'sm'
+      }, {
+        'p-3': _ctx.size == 'base'
+      }]],
+      onClick: _cache[1] || (_cache[1] = vue.withModifiers(function () {}, ["stop"]))
+    }, [vue.withDirectives(vue.createVNode("input", {
+      onChange: function onChange($event) {
+        return _ctx.updateSelected(item);
+      },
+      type: "checkbox",
+      class: "h-5 w-5 text-gray-600",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return item.checkbox = $event;
+      }
+    }, null, 40, ["onChange", "onUpdate:modelValue"]), [[vue.vModelCheckbox, item.checkbox]])], 2)) : vue.createCommentVNode("", true), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
       return vue.openBlock(), vue.createBlock("td", {
         key: "coluna-".concat(coluna.key),
         class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static", [{
