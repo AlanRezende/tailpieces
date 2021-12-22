@@ -18,7 +18,12 @@
             'bg-red-100 lg:hover:bg-red-300': 'item.postID == \'277\'',
           }"
           :value="dataTable"
-          :header="{ postID: 'ID do Post', nome: 'Nome', link: 'Link' }"
+          :header="{
+            postID: 'ID do Post',
+            nome: 'Nome',
+            link: 'Link',
+          }"
+          @checkbox="showSelected"
         ></t-table>
         <t-table
           size="sm"
@@ -238,6 +243,9 @@ export default defineComponent({
 
     const selecteds = ref([]);
 
+    const showSelected = (i: any) => {
+      console.log(i);
+    };
     const dataTable = [
       {
         postID: "277",
@@ -341,6 +349,7 @@ export default defineComponent({
       dataTable,
       options,
       selecteds,
+      showSelected,
     };
   },
 });
