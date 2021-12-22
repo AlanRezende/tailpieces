@@ -3,6 +3,14 @@
     <thead>
       <tr class="sm:rounded-lg">
         <th
+          v-if="isCheckboxTable"
+          class="font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5"
+          :class="[
+            { 'p-1 text-xs': size == 'sm' },
+            { 'p-3 text-sm': size == 'base' },
+          ]"
+        ></th>
+        <th
           v-for="coluna in colunas"
           :key="`coluna-${coluna.key}`"
           class="font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell"
@@ -23,6 +31,19 @@
         class="bg-white dark:bg-black lg:dark:hover:bg-gray-800 cursor-pointer lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
         :class="itemScopedClass(item)"
       >
+        <td
+          v-if="isCheckboxTable"
+          class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-5"
+          :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]"
+          @click.stop=""
+        >
+          <input
+            @change="updateSelected(item)"
+            type="checkbox"
+            class="h-5 w-5 text-gray-600"
+            v-model="item.checkbox"
+          />
+        </td>
         <td
           v-for="coluna in colunas"
           :key="`coluna-${coluna.key}`"
@@ -45,7 +66,7 @@
   </table>
 </template>
 <script lang="ts">
-import { computed, defineComponent, PropType } from "vue";
+import { computed, defineComponent, PropType, ref, onMounted } from "vue";
 import { DefaultObjectInterface, FormItemInterface } from "@/types";
 
 interface coluna {
@@ -74,7 +95,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, attrs }) {
     const checkItem = (item: FormItemInterface | string) => {
       if (!item) {
         return "";
@@ -111,12 +132,31 @@ export default defineComponent({
       },
     );
 
+    const selectedItems: any = ref([]);
+    const isCheckboxTable: any = ref(false);
+    const updateSelected = (item: any) => {
+      if (item.checkbox === true) {
+        selectedItems.value.push(item);
+      } else {
+        selectedItems.value.splice(selectedItems.value.indexOf(item), 1);
+      }
+      emit("checkbox", selectedItems.value);
+    };
+
+    onMounted(() => {
+      if (attrs.onCheckbox) {
+        isCheckboxTable.value = true;
+      }
+    });
+
     return {
       colunas,
       itemScopedClass,
       checkItem,
       emit,
       slots,
+      updateSelected,
+      isCheckboxTable,
     };
   },
 });
