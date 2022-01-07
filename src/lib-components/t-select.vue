@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col px-3 py-2 w-full">
+  <div class="flex flex-col px-3 py-2 w-full" :class="tclass">
     <label>{{ label }}</label>
     <div class="relative">
       <select
@@ -51,6 +51,9 @@ export default defineComponent({
     items: {
       type: Array as PropType<{ name: string; value: string | number }[]>,
       required: true,
+    },
+    tclass: {
+      type: String,
     },
   },
   setup(props, { emit }) {
