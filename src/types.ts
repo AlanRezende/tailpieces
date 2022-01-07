@@ -5,6 +5,7 @@ export interface DefaultObjectInterface {
     | boolean
     | null
     | Blob
+    | Date
     | DefaultObjectInterface[];
 }
 export interface FormRule {
@@ -14,7 +15,15 @@ export interface FormInterface {
   [index: string]: FormItemInterface;
 }
 export interface FormItemInterface {
-  value: string | number | boolean | undefined | null | Blob | Date | FormInterface[];
+  value:
+    | string
+    | number
+    | boolean
+    | undefined
+    | null
+    | Blob
+    | Date
+    | FormInterface[];
   validationRules: string;
   validationError: string;
   status: string;

@@ -99,7 +99,15 @@ export default class Form {
 
   get(
     key: string,
-  ): string | number | boolean | null | Blob | Date | FormInterface[] | undefined {
+  ):
+    | string
+    | number
+    | boolean
+    | null
+    | Blob
+    | Date
+    | FormInterface[]
+    | undefined {
     if (this.data[key]) {
       return this.data[key].value;
     }

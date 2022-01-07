@@ -567,17 +567,17 @@ const _hoisted_3$8 = /*#__PURE__*/createVNode("div", {
 })])], -1);
 
 function render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$d, [createVNode("label", null, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$a, [withDirectives(createVNode("select", {
+  return openBlock(), createBlock("div", _hoisted_1$d, [createVNode("label", null, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$a, [withDirectives(createVNode("select", mergeProps({
     "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => _ctx.formItem.value = $event),
     class: "p-2 w-full border rounded appearance-none",
     name: "",
     id: ""
-  }, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.items, item => {
+  }, _ctx.$attrs), [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.items, item => {
     return openBlock(), createBlock("option", {
       value: item.value,
       key: item.value
     }, toDisplayString(item.name), 9, ["value"]);
-  }), 128))], 512), [[vModelSelect, _ctx.formItem.value]]), _hoisted_3$8])]);
+  }), 128))], 16), [[vModelSelect, _ctx.formItem.value]]), _hoisted_3$8])]);
 }
 
 script$d.render = render$d;

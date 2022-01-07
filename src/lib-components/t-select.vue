@@ -7,6 +7,7 @@
         class="p-2 w-full border rounded appearance-none"
         name=""
         id=""
+        v-bind="$attrs"
       >
         <option :value="item.value" v-for="item in items" :key="item.value">
           {{ item.name }}

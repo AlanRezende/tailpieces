@@ -81,6 +81,7 @@
       <t-select
         class="md:w-1/2"
         label="Ativo"
+        disabled
         :items="[
           { name: 'Sim', value: true },
           { name: 'Não', value: false },

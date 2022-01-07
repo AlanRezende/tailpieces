@@ -752,19 +752,19 @@ var _hoisted_3$8 = /*#__PURE__*/vue.createVNode("div", {
 })])], -1);
 
 function render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1$d, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_2$a, [vue.withDirectives(vue.createVNode("select", {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1$d, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_2$a, [vue.withDirectives(vue.createVNode("select", vue.mergeProps({
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return _ctx.formItem.value = $event;
     }),
     class: "p-2 w-full border rounded appearance-none",
     name: "",
     id: ""
-  }, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.items, function (item) {
+  }, _ctx.$attrs), [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.items, function (item) {
     return vue.openBlock(), vue.createBlock("option", {
       value: item.value,
       key: item.value
     }, vue.toDisplayString(item.name), 9, ["value"]);
-  }), 128))], 512), [[vue.vModelSelect, _ctx.formItem.value]]), _hoisted_3$8])]);
+  }), 128))], 16), [[vue.vModelSelect, _ctx.formItem.value]]), _hoisted_3$8])]);
 }script$d.render = render$d;var script$c = vue.defineComponent({
   name: "TAccordion",
   props: {
