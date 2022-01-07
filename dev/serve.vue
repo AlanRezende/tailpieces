@@ -79,7 +79,7 @@
         v-model="user.data.name"
       />
       <t-select
-        class="md:w-1/2"
+        tclass="md:w-1/4"
         label="Ativo"
         disabled
         :items="[
@@ -106,8 +106,8 @@
       <t-button @click="debug">Debug</t-button>
       <t-button @click="show = true">Modal</t-button>
       <t-select
-        class="md:w-1/2"
-        label="Ativo"
+        tclass="md:w-1/2"
+        label="Ativo Teste"
         :items="[
           { name: 'Sim', value: true },
           { name: 'Não', value: false },

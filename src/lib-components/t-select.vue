@@ -40,6 +40,7 @@ interface formItem {
 }
 export default defineComponent({
   name: "BaseSelect",
+  inheritAttrs: false,
   props: {
     label: {
       type: String,

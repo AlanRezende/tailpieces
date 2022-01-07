@@ -472,6 +472,7 @@ script$e.render = render$e;
 
 var script$d = defineComponent({
   name: "BaseSelect",
+  inheritAttrs: false,
   props: {
     label: {
       type: String,

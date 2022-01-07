@@ -659,6 +659,7 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
   }), [vue.renderSlot(_ctx.$slots, "default")], 16)], 64);
 }script$e.render = render$e;var script$d = vue.defineComponent({
   name: "BaseSelect",
+  inheritAttrs: false,
   props: {
     label: {
       type: String,
