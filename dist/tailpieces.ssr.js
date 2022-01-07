@@ -600,7 +600,7 @@ var _hoisted_2$b = {
   key: 2,
   class: "absolute right-0 text-xs -top-4 text-gray-500"
 };
-var _hoisted_3$9 = {
+var _hoisted_3$8 = {
   class: "text-red-800 text-sm ml-0.5"
 };
 function render$f(_ctx, _cache, $props, $setup, $data, $options) {
@@ -641,7 +641,7 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return _ctx.formItem.value = $event;
     })
-  }, _ctx.$attrs), null, 16, ["type", "maxlength", "placeholder"])), [[vue.vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (vue.openBlock(), vue.createBlock("span", _hoisted_2$b, " Restam " + vue.toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : vue.createCommentVNode("", true)]), vue.createVNode("span", _hoisted_3$9, vue.toDisplayString(_ctx.formItem.validationError), 1)], 2);
+  }, _ctx.$attrs), null, 16, ["type", "maxlength", "placeholder"])), [[vue.vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (vue.openBlock(), vue.createBlock("span", _hoisted_2$b, " Restam " + vue.toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : vue.createCommentVNode("", true)]), vue.createVNode("span", _hoisted_3$8, vue.toDisplayString(_ctx.formItem.validationError), 1)], 2);
 }script$f.render = render$f;var script$e = vue.defineComponent({
   name: "FormSection",
   props: {
@@ -670,6 +670,9 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
     items: {
       type: Array,
       required: true
+    },
+    tclass: {
+      type: String
     }
   },
   setup: function setup(props, _ref) {
@@ -735,13 +738,10 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
     };
   }
 });var _hoisted_1$d = {
-  class: "flex flex-col px-3 py-2 w-full"
-};
-var _hoisted_2$a = {
   class: "relative"
 };
 
-var _hoisted_3$8 = /*#__PURE__*/vue.createVNode("div", {
+var _hoisted_2$a = /*#__PURE__*/vue.createVNode("div", {
   class: "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
 }, [/*#__PURE__*/vue.createVNode("svg", {
   class: "fill-current h-5 w-5",
@@ -752,7 +752,9 @@ var _hoisted_3$8 = /*#__PURE__*/vue.createVNode("div", {
 })])], -1);
 
 function render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("div", _hoisted_1$d, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_2$a, [vue.withDirectives(vue.createVNode("select", vue.mergeProps({
+  return vue.openBlock(), vue.createBlock("div", {
+    class: ["flex flex-col px-3 py-2 w-full", _ctx.tclass]
+  }, [vue.createVNode("label", null, vue.toDisplayString(_ctx.label), 1), vue.createVNode("div", _hoisted_1$d, [vue.withDirectives(vue.createVNode("select", vue.mergeProps({
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return _ctx.formItem.value = $event;
     }),
@@ -764,7 +766,7 @@ function render$d(_ctx, _cache, $props, $setup, $data, $options) {
       value: item.value,
       key: item.value
     }, vue.toDisplayString(item.name), 9, ["value"]);
-  }), 128))], 16), [[vue.vModelSelect, _ctx.formItem.value]]), _hoisted_3$8])]);
+  }), 128))], 16), [[vue.vModelSelect, _ctx.formItem.value]]), _hoisted_2$a])], 2);
 }script$d.render = render$d;var script$c = vue.defineComponent({
   name: "TAccordion",
   props: {

@@ -415,7 +415,7 @@ const _hoisted_2$b = {
   key: 2,
   class: "absolute right-0 text-xs -top-4 text-gray-500"
 };
-const _hoisted_3$9 = {
+const _hoisted_3$8 = {
   class: "text-red-800 text-sm ml-0.5"
 };
 function render$f(_ctx, _cache, $props, $setup, $data, $options) {
@@ -444,7 +444,7 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[4] || (_cache[4] = (...args) => _ctx.validate && _ctx.validate(...args)),
     onKeydown: _cache[5] || (_cache[5] = $event => _ctx.formItem.validationError = ''),
     "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => _ctx.formItem.value = $event)
-  }, _ctx.$attrs), null, 16, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2$b, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true)]), createVNode("span", _hoisted_3$9, toDisplayString(_ctx.formItem.validationError), 1)], 2);
+  }, _ctx.$attrs), null, 16, ["type", "maxlength", "placeholder"])), [[vModelDynamic, _ctx.formItem.value]]), _ctx.maxlengthLeft != null && _ctx.maxlengthLeft >= 0 ? (openBlock(), createBlock("span", _hoisted_2$b, " Restam " + toDisplayString(_ctx.maxlengthLeft) + " caracteres ", 1)) : createCommentVNode("", true)]), createVNode("span", _hoisted_3$8, toDisplayString(_ctx.formItem.validationError), 1)], 2);
 }
 
 script$f.render = render$f;
@@ -483,6 +483,9 @@ var script$d = defineComponent({
     items: {
       type: Array,
       required: true
+    },
+    tclass: {
+      type: String
     }
   },
 
@@ -550,13 +553,10 @@ var script$d = defineComponent({
 });
 
 const _hoisted_1$d = {
-  class: "flex flex-col px-3 py-2 w-full"
-};
-const _hoisted_2$a = {
   class: "relative"
 };
 
-const _hoisted_3$8 = /*#__PURE__*/createVNode("div", {
+const _hoisted_2$a = /*#__PURE__*/createVNode("div", {
   class: "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
 }, [/*#__PURE__*/createVNode("svg", {
   class: "fill-current h-5 w-5",
@@ -567,7 +567,9 @@ const _hoisted_3$8 = /*#__PURE__*/createVNode("div", {
 })])], -1);
 
 function render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$d, [createVNode("label", null, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_2$a, [withDirectives(createVNode("select", mergeProps({
+  return openBlock(), createBlock("div", {
+    class: ["flex flex-col px-3 py-2 w-full", _ctx.tclass]
+  }, [createVNode("label", null, toDisplayString(_ctx.label), 1), createVNode("div", _hoisted_1$d, [withDirectives(createVNode("select", mergeProps({
     "onUpdate:modelValue": _cache[1] || (_cache[1] = $event => _ctx.formItem.value = $event),
     class: "p-2 w-full border rounded appearance-none",
     name: "",
@@ -577,7 +579,7 @@ function render$d(_ctx, _cache, $props, $setup, $data, $options) {
       value: item.value,
       key: item.value
     }, toDisplayString(item.name), 9, ["value"]);
-  }), 128))], 16), [[vModelSelect, _ctx.formItem.value]]), _hoisted_3$8])]);
+  }), 128))], 16), [[vModelSelect, _ctx.formItem.value]]), _hoisted_2$a])], 2);
 }
 
 script$d.render = render$d;
