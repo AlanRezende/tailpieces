@@ -3,6 +3,7 @@
     <label>{{ label }}</label>
     <div class="relative">
       <select
+        :disabled="disabled"
         v-model="formItem.value"
         class="p-2 w-full border rounded appearance-none"
         name=""
@@ -50,6 +51,11 @@ export default defineComponent({
     items: {
       type: Array as PropType<{ name: string; value: string | number }[]>,
       required: true,
+    },
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   setup(props, { emit }) {
