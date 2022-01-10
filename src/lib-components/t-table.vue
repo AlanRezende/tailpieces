@@ -66,7 +66,14 @@
   </table>
 </template>
 <script lang="ts">
-import { computed, defineComponent, PropType, ref, onMounted } from "vue";
+import {
+  computed,
+  defineComponent,
+  PropType,
+  ref,
+  onMounted,
+  watch,
+} from "vue";
 import { DefaultObjectInterface, FormItemInterface } from "@/types";
 
 interface coluna {
@@ -94,6 +101,10 @@ export default defineComponent({
       type: Object as PropType<{ [index: string]: string | coluna }>,
       required: true,
     },
+    clearCheckboxSelected: {
+      type: Boolean,
+      required: false,
+    },
   },
   setup(props, { emit, slots, attrs }) {
     const checkItem = (item: FormItemInterface | string) => {
@@ -105,6 +116,22 @@ export default defineComponent({
       }
       return item.value;
     };
+
+    const clearCheckboxSelected = computed(() => props.clearCheckboxSelected);
+
+    watch(
+      clearCheckboxSelected,
+      val => {
+        if (val == true) {
+          props.value.forEach((item: any) => {
+            item.checkbox = false;
+          });
+          selectedItems.value = [];
+          emit("checkbox", selectedItems.value);
+        }
+      },
+      { deep: true },
+    );
 
     const itemScopedClass = (item: DefaultObjectInterface) => {
       let newClass: { [index: string]: string } = {};

@@ -23,8 +23,12 @@
             nome: 'Nome',
             link: 'Link',
           }"
+          :clearCheckboxSelected="clearCheckboxSelected"
           @checkbox="showSelected"
         ></t-table>
+        <button @click="clearCheckboxSelected = !clearCheckboxSelected">
+          Clear Checkbox
+        </button>
         <t-table
           size="sm"
           :itemClass="{
@@ -206,6 +210,8 @@ export default defineComponent({
       }),
     );
 
+    const clearCheckboxSelected = ref(false);
+
     const success = {
       title: "Sucesso!",
       messages: ["Salvo com sucesso no banco de dados"],
@@ -351,6 +357,7 @@ export default defineComponent({
       options,
       selecteds,
       showSelected,
+      clearCheckboxSelected,
     };
   },
 });
