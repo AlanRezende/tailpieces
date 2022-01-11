@@ -89,8 +89,20 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
 }
 
 function _iterableToArrayLimit(arr, i) {
@@ -135,6 +147,10 @@ function _arrayLikeToArray(arr, len) {
   for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
 
   return arr2;
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
 function _nonIterableRest() {
@@ -14218,8 +14234,12 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
 }script$2.render = render$2;var script$1 = vue.defineComponent({
   props: {
     value: {
-      type: Object,
+      type: Array,
       required: true
+    },
+    modelValue: {
+      default: false,
+      required: false
     },
     itemClass: {
       type: Object
@@ -14235,8 +14255,7 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   },
   setup: function setup(props, _ref) {
     var emit = _ref.emit,
-        slots = _ref.slots,
-        attrs = _ref.attrs;
+        slots = _ref.slots;
 
     var checkItem = function checkItem(item) {
       if (!item) {
@@ -14285,17 +14304,40 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
     var isCheckboxTable = vue.ref(false);
 
     var updateSelected = function updateSelected(item) {
-      if (item.checkbox === true) {
+      if (!checkSelected(item)) {
         selectedItems.value.push(item);
       } else {
         selectedItems.value.splice(selectedItems.value.indexOf(item), 1);
       }
 
-      emit("checkbox", selectedItems.value);
+      emit("update:modelValue", selectedItems.value);
     };
 
+    var selectAll = function selectAll() {
+      if (selectedItems.value.length == props.value.length) {
+        selectedItems.value = [];
+      } else {
+        selectedItems.value = _toConsumableArray(props.value);
+      }
+
+      emit("update:modelValue", selectedItems.value);
+    };
+
+    var checkSelected = function checkSelected(item) {
+      return selectedItems.value.some(function (e) {
+        return JSON.stringify(item) == JSON.stringify(e);
+      });
+    };
+
+    vue.watch(function () {
+      return props.modelValue;
+    }, function (newVal) {
+      selectedItems.value = newVal;
+    });
     vue.onMounted(function () {
-      if (attrs.onCheckbox) {
+      selectedItems.value = props.modelValue;
+
+      if (props.modelValue) {
         isCheckboxTable.value = true;
       }
     });
@@ -14306,7 +14348,10 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
       emit: emit,
       slots: slots,
       updateSelected: updateSelected,
-      isCheckboxTable: isCheckboxTable
+      isCheckboxTable: isCheckboxTable,
+      checkSelected: checkSelected,
+      selectAll: selectAll,
+      selectedItems: selectedItems
     };
   }
 });var _hoisted_1$1 = {
@@ -14324,12 +14369,23 @@ var _hoisted_4$1 = {
 function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock("table", _hoisted_1$1, [vue.createVNode("thead", null, [vue.createVNode("tr", _hoisted_2$1, [_ctx.isCheckboxTable ? (vue.openBlock(), vue.createBlock("th", {
     key: 0,
-    class: ["font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5", [{
+    class: ["font-bold leading-none uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5", [{
       'p-1 text-xs': _ctx.size == 'sm'
     }, {
       'p-3 text-sm': _ctx.size == 'base'
     }]]
-  }, null, 2)) : vue.createCommentVNode("", true), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
+  }, [vue.createVNode("input", {
+    onChange: _cache[1] || (_cache[1] = function () {
+      return _ctx.selectAll && _ctx.selectAll.apply(_ctx, arguments);
+    }),
+    type: "checkbox",
+    class: ["text-gray-600", [{
+      'h-4 w-4': _ctx.size == 'sm'
+    }, {
+      'h-5 w-5': _ctx.size == 'base'
+    }]],
+    checked: _ctx.selectedItems.length == _ctx.value.length
+  }, null, 42, ["checked"])], 2)) : vue.createCommentVNode("", true), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
     return vue.openBlock(), vue.createBlock("th", {
       key: "coluna-".concat(coluna.key),
       class: ["font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell", [{
@@ -14350,22 +14406,24 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
       class: ["bg-white dark:bg-black lg:dark:hover:bg-gray-800 cursor-pointer lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0", _ctx.itemScopedClass(item)]
     }, [_ctx.isCheckboxTable ? (vue.openBlock(), vue.createBlock("td", {
       key: 0,
-      class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-5", [{
+      class: ["leading-none lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-5", [{
         'p-1': _ctx.size == 'sm'
       }, {
         'p-3': _ctx.size == 'base'
       }]],
-      onClick: _cache[1] || (_cache[1] = vue.withModifiers(function () {}, ["stop"]))
-    }, [vue.withDirectives(vue.createVNode("input", {
+      onClick: _cache[2] || (_cache[2] = vue.withModifiers(function () {}, ["stop"]))
+    }, [vue.createVNode("input", {
       onChange: function onChange($event) {
         return _ctx.updateSelected(item);
       },
       type: "checkbox",
-      class: "h-5 w-5 text-gray-600",
-      "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return item.checkbox = $event;
-      }
-    }, null, 40, ["onChange", "onUpdate:modelValue"]), [[vue.vModelCheckbox, item.checkbox]])], 2)) : vue.createCommentVNode("", true), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
+      class: ["text-gray-600", [{
+        'h-4 w-4': _ctx.size == 'sm'
+      }, {
+        'h-5 w-5': _ctx.size == 'base'
+      }]],
+      checked: _ctx.checkSelected(item)
+    }, null, 42, ["onChange", "checked"])], 2)) : vue.createCommentVNode("", true), (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.colunas, function (coluna) {
       return vue.openBlock(), vue.createBlock("td", {
         key: "coluna-".concat(coluna.key),
         class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static", [{

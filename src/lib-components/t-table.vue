@@ -4,12 +4,23 @@
       <tr class="sm:rounded-lg">
         <th
           v-if="isCheckboxTable"
-          class="font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5"
+          class="font-bold leading-none uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5"
           :class="[
             { 'p-1 text-xs': size == 'sm' },
             { 'p-3 text-sm': size == 'base' },
           ]"
-        ></th>
+        >
+          <input
+            @change="selectAll"
+            type="checkbox"
+            class="text-gray-600"
+            :class="[
+              { 'h-4 w-4': size == 'sm' },
+              { 'h-5 w-5': size == 'base' },
+            ]"
+            :checked="selectedItems.length == value.length"
+          />
+        </th>
         <th
           v-for="coluna in colunas"
           :key="`coluna-${coluna.key}`"
@@ -33,15 +44,19 @@
       >
         <td
           v-if="isCheckboxTable"
-          class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-5"
+          class="leading-none lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-5"
           :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]"
           @click.stop=""
         >
           <input
             @change="updateSelected(item)"
             type="checkbox"
-            class="h-5 w-5 text-gray-600"
-            v-model="item.checkbox"
+            class="text-gray-600"
+            :class="[
+              { 'h-4 w-4': size == 'sm' },
+              { 'h-5 w-5': size == 'base' },
+            ]"
+            :checked="checkSelected(item)"
           />
         </td>
         <td
@@ -66,7 +81,14 @@
   </table>
 </template>
 <script lang="ts">
-import { computed, defineComponent, PropType, ref, onMounted } from "vue";
+import {
+  computed,
+  defineComponent,
+  PropType,
+  ref,
+  onMounted,
+  watch,
+} from "vue";
 import { DefaultObjectInterface, FormItemInterface } from "@/types";
 
 interface coluna {
@@ -80,8 +102,12 @@ interface coluna {
 export default defineComponent({
   props: {
     value: {
-      type: Object,
+      type: Array,
       required: true,
+    },
+    modelValue: {
+      default: false,
+      required: false,
     },
     itemClass: {
       type: Object as PropType<{ [index: string]: string }>,
@@ -95,7 +121,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props, { emit, slots, attrs }) {
+  setup(props, { emit, slots }) {
     const checkItem = (item: FormItemInterface | string) => {
       if (!item) {
         return "";
@@ -135,16 +161,38 @@ export default defineComponent({
     const selectedItems: any = ref([]);
     const isCheckboxTable: any = ref(false);
     const updateSelected = (item: any) => {
-      if (item.checkbox === true) {
+      if (!checkSelected(item)) {
         selectedItems.value.push(item);
       } else {
         selectedItems.value.splice(selectedItems.value.indexOf(item), 1);
       }
-      emit("checkbox", selectedItems.value);
+      emit("update:modelValue", selectedItems.value);
     };
 
+    const selectAll = () => {
+      if (selectedItems.value.length == props.value.length) {
+        selectedItems.value = [];
+      } else {
+        selectedItems.value = [...props.value];
+      }
+      emit("update:modelValue", selectedItems.value);
+    };
+
+    const checkSelected = (item: any) =>
+      selectedItems.value.some(
+        (e: any) => JSON.stringify(item) == JSON.stringify(e),
+      );
+
+    watch(
+      () => props.modelValue,
+      newVal => {
+        selectedItems.value = newVal;
+      },
+    );
+
     onMounted(() => {
-      if (attrs.onCheckbox) {
+      selectedItems.value = props.modelValue;
+      if (props.modelValue) {
         isCheckboxTable.value = true;
       }
     });
@@ -157,6 +205,9 @@ export default defineComponent({
       slots,
       updateSelected,
       isCheckboxTable,
+      checkSelected,
+      selectAll,
+      selectedItems,
     };
   },
 });

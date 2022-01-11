@@ -23,8 +23,13 @@
             nome: 'Nome',
             link: 'Link',
           }"
-          @checkbox="showSelected"
+          v-model="tableSelecteds"
         ></t-table>
+        <div class="my-4">
+          <t-button @click="debugTable('')">Debug</t-button>
+          <t-button @click="debugTable('clear')">Limpar</t-button>
+        </div>
+
         <t-table
           size="sm"
           :itemClass="{
@@ -244,10 +249,16 @@ export default defineComponent({
 
     const selecteds = ref([]);
 
+    const debugTable = (action: string) => {
+      if (action == "clear") {
+        tableSelecteds.value = [];
+      }
+    };
+
     const showSelected = (i: any) => {
       console.log(i);
     };
-    const dataTable = [
+    const dataTable = ref([
       {
         postID: "277",
         nome: "asdasdasddddd",
@@ -313,7 +324,9 @@ export default defineComponent({
         imagem_pequena_path: "/public//imagens-posts/273_p.jpg?1618612470",
         imagem_grande_path: "/public//imagens-posts/273_g.jpg?1618612470",
       },
-    ];
+    ]);
+    const tableSelecteds = ref([] as any);
+    tableSelecteds.value = [dataTable.value[1], dataTable.value[2]];
 
     const items: FormItemInterface = {
       value: [
@@ -350,7 +363,9 @@ export default defineComponent({
       dataTable,
       options,
       selecteds,
+      tableSelecteds,
       showSelected,
+      debugTable,
     };
   },
 });

@@ -1,4 +1,4 @@
-import { defineComponent, computed, openBlock, createBlock, renderSlot, ref, watch, onMounted, createVNode, toDisplayString, withDirectives, mergeProps, vModelText, vModelDynamic, createCommentVNode, Fragment, renderList, vModelSelect, pushScopeId, popScopeId, Transition, withScopeId, createTextVNode, vShow, onBeforeUnmount, h, nextTick, resolveComponent, onUnmounted, Teleport, withCtx, withModifiers, vModelCheckbox, withKeys } from 'vue';
+import { defineComponent, computed, openBlock, createBlock, renderSlot, ref, watch, onMounted, createVNode, toDisplayString, withDirectives, mergeProps, vModelText, vModelDynamic, createCommentVNode, Fragment, renderList, vModelSelect, pushScopeId, popScopeId, Transition, withScopeId, createTextVNode, vShow, onBeforeUnmount, h, nextTick, resolveComponent, onUnmounted, Teleport, withCtx, withModifiers, withKeys } from 'vue';
 
 var script$g = defineComponent({
   name: "TButton",
@@ -14098,8 +14098,12 @@ script$2.render = render$2;
 var script$1 = defineComponent({
   props: {
     value: {
-      type: Object,
+      type: Array,
       required: true
+    },
+    modelValue: {
+      default: false,
+      required: false
     },
     itemClass: {
       type: Object
@@ -14116,8 +14120,7 @@ var script$1 = defineComponent({
 
   setup(props, {
     emit,
-    slots,
-    attrs
+    slots
   }) {
     const checkItem = item => {
       if (!item) {
@@ -14162,17 +14165,34 @@ var script$1 = defineComponent({
     const isCheckboxTable = ref(false);
 
     const updateSelected = item => {
-      if (item.checkbox === true) {
+      if (!checkSelected(item)) {
         selectedItems.value.push(item);
       } else {
         selectedItems.value.splice(selectedItems.value.indexOf(item), 1);
       }
 
-      emit("checkbox", selectedItems.value);
+      emit("update:modelValue", selectedItems.value);
     };
 
+    const selectAll = () => {
+      if (selectedItems.value.length == props.value.length) {
+        selectedItems.value = [];
+      } else {
+        selectedItems.value = [...props.value];
+      }
+
+      emit("update:modelValue", selectedItems.value);
+    };
+
+    const checkSelected = item => selectedItems.value.some(e => JSON.stringify(item) == JSON.stringify(e));
+
+    watch(() => props.modelValue, newVal => {
+      selectedItems.value = newVal;
+    });
     onMounted(() => {
-      if (attrs.onCheckbox) {
+      selectedItems.value = props.modelValue;
+
+      if (props.modelValue) {
         isCheckboxTable.value = true;
       }
     });
@@ -14183,7 +14203,10 @@ var script$1 = defineComponent({
       emit,
       slots,
       updateSelected,
-      isCheckboxTable
+      isCheckboxTable,
+      checkSelected,
+      selectAll,
+      selectedItems
     };
   }
 
@@ -14204,12 +14227,21 @@ const _hoisted_4$1 = {
 function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("table", _hoisted_1$1, [createVNode("thead", null, [createVNode("tr", _hoisted_2$1, [_ctx.isCheckboxTable ? (openBlock(), createBlock("th", {
     key: 0,
-    class: ["font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5", [{
+    class: ["font-bold leading-none uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5", [{
       'p-1 text-xs': _ctx.size == 'sm'
     }, {
       'p-3 text-sm': _ctx.size == 'base'
     }]]
-  }, null, 2)) : createCommentVNode("", true), (openBlock(true), createBlock(Fragment, null, renderList(_ctx.colunas, coluna => {
+  }, [createVNode("input", {
+    onChange: _cache[1] || (_cache[1] = (...args) => _ctx.selectAll && _ctx.selectAll(...args)),
+    type: "checkbox",
+    class: ["text-gray-600", [{
+      'h-4 w-4': _ctx.size == 'sm'
+    }, {
+      'h-5 w-5': _ctx.size == 'base'
+    }]],
+    checked: _ctx.selectedItems.length == _ctx.value.length
+  }, null, 42, ["checked"])], 2)) : createCommentVNode("", true), (openBlock(true), createBlock(Fragment, null, renderList(_ctx.colunas, coluna => {
     return openBlock(), createBlock("th", {
       key: `coluna-${coluna.key}`,
       class: ["font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell", [{
@@ -14228,18 +14260,22 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
       class: ["bg-white dark:bg-black lg:dark:hover:bg-gray-800 cursor-pointer lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0", _ctx.itemScopedClass(item)]
     }, [_ctx.isCheckboxTable ? (openBlock(), createBlock("td", {
       key: 0,
-      class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-5", [{
+      class: ["leading-none lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-5", [{
         'p-1': _ctx.size == 'sm'
       }, {
         'p-3': _ctx.size == 'base'
       }]],
-      onClick: _cache[1] || (_cache[1] = withModifiers(() => {}, ["stop"]))
-    }, [withDirectives(createVNode("input", {
+      onClick: _cache[2] || (_cache[2] = withModifiers(() => {}, ["stop"]))
+    }, [createVNode("input", {
       onChange: $event => _ctx.updateSelected(item),
       type: "checkbox",
-      class: "h-5 w-5 text-gray-600",
-      "onUpdate:modelValue": $event => item.checkbox = $event
-    }, null, 40, ["onChange", "onUpdate:modelValue"]), [[vModelCheckbox, item.checkbox]])], 2)) : createCommentVNode("", true), (openBlock(true), createBlock(Fragment, null, renderList(_ctx.colunas, coluna => {
+      class: ["text-gray-600", [{
+        'h-4 w-4': _ctx.size == 'sm'
+      }, {
+        'h-5 w-5': _ctx.size == 'base'
+      }]],
+      checked: _ctx.checkSelected(item)
+    }, null, 42, ["onChange", "checked"])], 2)) : createCommentVNode("", true), (openBlock(true), createBlock(Fragment, null, renderList(_ctx.colunas, coluna => {
       return openBlock(), createBlock("td", {
         key: `coluna-${coluna.key}`,
         class: ["w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static", [{
