@@ -327,7 +327,9 @@ function _nonIterableRest() {
             value = _ref4[1];
 
         if (data[key] && typeof value == "string") {
-          data[key]["validationRules"] = value;
+          if (data[key]["validationRules"] !== undefined) {
+            data[key]["validationRules"] = value;
+          }
         } else {
           var temp = data[key.substr(1)];
 

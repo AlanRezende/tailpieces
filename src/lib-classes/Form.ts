@@ -125,7 +125,9 @@ export default class Form {
 
     Object.entries(rules).forEach(([key, value]) => {
       if (data[key] && typeof value == "string") {
-        data[key]["validationRules"] = value;
+        if (data[key]["validationRules"] !== undefined) {
+          data[key]["validationRules"] = value;
+        }
       } else {
         const temp = data[key.substr(1)];
         if (

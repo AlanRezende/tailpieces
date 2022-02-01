@@ -195,20 +195,36 @@
 </template>
 <script lang="ts">
 import { FormItemInterface } from "tailpieces";
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, watch } from "vue";
 import { Form } from "@/entry.esm";
 import { DefaultObjectInterface } from "@/types";
 export default defineComponent({
   name: "ServeDev",
   setup() {
     let user = ref(
-      new Form({
-        name: "Alan Rezende",
-        age: 32,
-        image: null,
-        active: true,
-        new: false,
-      }),
+      new Form(
+        {
+          name: "Alan Rezende",
+          age: 32,
+          image: null,
+          active: true,
+          new: false,
+        },
+        {
+          name: "required",
+        },
+      ),
+    );
+
+    watch(
+      user,
+      () => {
+        console.log(user.value);
+
+        // (user.value as any).data.name = "Alan";
+        user.value.syncRules();
+      },
+      { deep: true },
     );
 
     const success = {
