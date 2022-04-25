@@ -135,7 +135,7 @@ export default defineComponent({
     const itemScopedClass = (item: DefaultObjectInterface) => {
       let newClass: { [index: string]: string } = {};
       if (typeof props.itemClass == "object") {
-        Object.entries(props.itemClass).forEach(element => {
+        Object.entries(props.itemClass).forEach((element) => {
           if (item) {
             newClass[element[0]] = eval(element[1]);
           }
@@ -144,19 +144,17 @@ export default defineComponent({
       }
     };
 
-    const colunas = computed(
-      (): Array<coluna> => {
-        return Object.entries(props.header).map(([key, value]) => {
-          if (typeof value == "string") {
-            return {
-              key: key,
-              label: value,
-            };
-          }
-          return { ...value, key };
-        });
-      },
-    );
+    const colunas = computed((): Array<coluna> => {
+      return Object.entries(props.header).map(([key, value]) => {
+        if (typeof value == "string") {
+          return {
+            key: key,
+            label: value,
+          };
+        }
+        return { ...value, key };
+      });
+    });
 
     const selectedItems: any = ref([]);
     const isCheckboxTable: any = ref(false);
@@ -180,14 +178,14 @@ export default defineComponent({
 
     const checkSelected = (item: any) =>
       selectedItems.value.some(
-        (e: any) => JSON.stringify(item) == JSON.stringify(e),
+        (e: any) => JSON.stringify(item) == JSON.stringify(e)
       );
 
     watch(
       () => props.modelValue,
-      newVal => {
+      (newVal) => {
         selectedItems.value = newVal;
-      },
+      }
     );
 
     onMounted(() => {

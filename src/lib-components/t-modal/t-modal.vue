@@ -103,7 +103,7 @@ export default defineComponent({
 
     watch(
       () => props.show,
-      newVal => {
+      (newVal) => {
         if (newVal) {
           document.body.style.overflow = "hidden";
         } else {
@@ -112,7 +112,7 @@ export default defineComponent({
       },
       {
         immediate: true,
-      },
+      }
     );
     return {
       maxWidthClass,

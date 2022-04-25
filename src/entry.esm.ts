@@ -4,14 +4,12 @@ import { App, Plugin } from "vue";
 import * as components from "@/lib-components/index";
 
 // install function executed by Vue.use()
-const install: Exclude<
-  Plugin["install"],
-  undefined
-> = function installTailpieces(app: App) {
-  Object.entries(components).forEach(([componentName, component]) => {
-    app.component(componentName, component);
-  });
-};
+const install: Exclude<Plugin["install"], undefined> =
+  function installTailpieces(app: App) {
+    Object.entries(components).forEach(([componentName, component]) => {
+      app.component(componentName, component);
+    });
+  };
 
 // Create module definition for Vue.use()
 export default install;

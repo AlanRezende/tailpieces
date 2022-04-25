@@ -74,7 +74,7 @@ export default defineComponent({
      */
     watch(
       formItem,
-      newVal => {
+      (newVal) => {
         if (
           typeof props.modelValue == "string" ||
           typeof props.modelValue == "number"
@@ -84,7 +84,7 @@ export default defineComponent({
           emit("update:modelValue", newVal);
         }
       },
-      { deep: true },
+      { deep: true }
     );
 
     /**
@@ -92,19 +92,19 @@ export default defineComponent({
      */
     watch(
       () => props.modelValue,
-      newVal => {
+      (newVal) => {
         adjustProps(newVal as string | formItem);
       },
       {
         deep: true,
-      },
+      }
     );
 
     /**
      * Ajusta as props nos casos de string / number / object
      */
     const adjustProps = (
-      value: string | formItem | number | boolean | undefined,
+      value: string | formItem | number | boolean | undefined
     ) => {
       if (
         typeof value == "string" ||

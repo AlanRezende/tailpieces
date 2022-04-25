@@ -53,10 +53,10 @@ export default defineComponent({
 
     watch(
       image,
-      newVal => {
+      (newVal) => {
         emit("update:modelValue", newVal);
       },
-      { deep: true },
+      { deep: true }
     );
 
     const open = () => {
@@ -130,11 +130,11 @@ export default defineComponent({
 
           //Salva a imagem como arquivo
           resizeArea.toBlob(
-            blob => {
+            (blob) => {
               image.value = blob;
             },
             "image/jpeg",
-            0.95,
+            0.95
           );
         };
       };

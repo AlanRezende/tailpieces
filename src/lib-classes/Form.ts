@@ -40,7 +40,7 @@ export default class Form {
         !(value.value instanceof Date)
       ) {
         if (typeof value == "object") {
-          value.value.forEach(item => {
+          value.value.forEach((item) => {
             this.clearErrors(item);
           });
         }
@@ -57,14 +57,14 @@ export default class Form {
 
   errors(data: FormInterface = this.data): number {
     let totalErrors = 0;
-    Object.values(data).forEach(value => {
+    Object.values(data).forEach((value) => {
       if (
         typeof value.value == "object" &&
         value.value != null &&
         !(value.value instanceof Blob) &&
         !(value.value instanceof Date)
       ) {
-        value.value.forEach(item => {
+        value.value.forEach((item) => {
           totalErrors += this.errors(item);
         });
       } else {
@@ -78,27 +78,27 @@ export default class Form {
 
   validate(data: FormInterface = this.data): void {
     const validator = new Validator();
-    Object.values(data).forEach(value => {
+    Object.values(data).forEach((value) => {
       if (
         typeof value.value == "object" &&
         value.value != null &&
         !(value.value instanceof Blob) &&
         !(value.value instanceof Date)
       ) {
-        value.value.forEach(item => {
+        value.value.forEach((item) => {
           this.validate(item);
         });
       } else {
         value.validationError = validator.validate(
           value.value,
-          value.validationRules,
+          value.validationRules
         );
       }
     });
   }
 
   get(
-    key: string,
+    key: string
   ):
     | string
     | number
@@ -138,7 +138,7 @@ export default class Form {
           !(temp.value instanceof Blob) &&
           !(temp.value instanceof Date)
         ) {
-          temp.value.forEach(item => {
+          temp.value.forEach((item) => {
             this.setRules(value, item);
           });
         }
@@ -161,7 +161,7 @@ export default class Form {
         !(value.value instanceof Date)
       ) {
         const nested: DefaultObjectInterface[] = [];
-        value.value.forEach(item => {
+        value.value.forEach((item) => {
           nested.push(this.removeProperties(item) as DefaultObjectInterface);
         });
         newObj[key] = nested;
@@ -178,7 +178,7 @@ export default class Form {
    * Adiciona as propriedades extras do objeto
    */
   private addProperties(
-    data: DefaultObjectInterface,
+    data: DefaultObjectInterface
   ): FormInterface | undefined {
     if (data == null) {
       return;
@@ -194,7 +194,7 @@ export default class Form {
         !(value instanceof Date)
       ) {
         const nested: FormInterface[] = [];
-        value.forEach(item => {
+        value.forEach((item) => {
           nested.push(this.addProperties(item) as FormInterface);
         });
         newObj[key] = {

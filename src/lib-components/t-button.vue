@@ -35,16 +35,13 @@ export default defineComponent({
       // 5 cores blue, green, yellow, red, gray
       // ou bg-indigo-400
       let options: { [key: string]: string } = {
-        blue:
-          "bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700",
+        blue: "bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700",
         yellow:
           "bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-700",
         green:
           "bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-800",
-        red:
-          "bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800",
-        gray:
-          "bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-700",
+        red: "bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-800",
+        gray: "bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-700",
       };
       if (props.color.split("-").length > 1) {
         return props.color;

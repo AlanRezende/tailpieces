@@ -1,7 +1,7 @@
 export default class Validator {
   validate(
     value: string | number | boolean | null | undefined | Blob | Date,
-    rules: string,
+    rules: string
   ): string {
     if (typeof value == "string") {
       return this.validateString(value, rules);
@@ -12,7 +12,7 @@ export default class Validator {
   validateString(value: string, rules: string): string {
     const rulesArray = rules.split("|");
     let message = "";
-    rulesArray.some(rule => {
+    rulesArray.some((rule) => {
       /**
        * Required
        */

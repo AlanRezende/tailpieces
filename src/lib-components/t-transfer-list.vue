@@ -85,26 +85,26 @@ export default defineComponent({
     const computedOptions = computed(() =>
       props.options
         .filter(
-          item =>
+          (item) =>
             !props.modelValue
-              .map(item => item[props.key_name])
-              .includes(item[props.key_name]),
+              .map((item) => item[props.key_name])
+              .includes(item[props.key_name])
         )
-        .filter(item =>
+        .filter((item) =>
           props
             .title(item)
             .toLowerCase()
-            .includes(searchTerm.value.toLowerCase()),
-        ),
+            .includes(searchTerm.value.toLowerCase())
+        )
     );
 
     const selecteds = computed(() =>
-      props.modelValue.filter(item =>
+      props.modelValue.filter((item) =>
         props
           .title(item)
           .toLowerCase()
-          .includes(searchTerm2.value.toLowerCase()),
-      ),
+          .includes(searchTerm2.value.toLowerCase())
+      )
     );
 
     const select = (item: { [key: string]: any }) => {
@@ -116,7 +116,7 @@ export default defineComponent({
     const unselect = (item: { [key: string]: any }) => {
       let selected = props.modelValue;
       selected = selected.filter(
-        element => element[props.key_name] != item[props.key_name],
+        (element) => element[props.key_name] != item[props.key_name]
       );
       emit("update:modelValue", selected);
     };
