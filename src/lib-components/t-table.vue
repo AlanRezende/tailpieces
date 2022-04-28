@@ -137,10 +137,12 @@ export default defineComponent({
       let newClass: { [index: string]: string } = {};
       if (typeof props.itemClass == "object") {
         Object.entries(props.itemClass).forEach((element) => {
-          const isSelected = selectedItems.value.findIndex(item) >= 0;
+          //const isSelected = selectedItems.value.findIndex(item) >= 0;
           if (item) {
+            console.log("element", element);
             if (typeof element[1] === "function") {
-              newClass[element[0]] = element[1](item, isSelected);
+              const cfn = element[1] as (item: any) => string;
+              newClass[element[0]] = cfn(item);
             } else {
               newClass[element[0]] = eval(element[1]);
             }

@@ -4,7 +4,7 @@
     <t-alert :info="success" color="green" />
     <t-alert :info="success" />
     <t-transfer-list
-      :title="item => item.name"
+      :title="(item) => item.name"
       key_name="ukey"
       :options="options"
       v-model="selecteds"
@@ -16,6 +16,7 @@
           @itemClick="debug($event.item)"
           :itemClass="{
             'bg-red-100 lg:hover:bg-red-300': 'item.postID == \'277\'',
+            'bg-yellow-100': isSelected,
           }"
           :value="dataTable"
           :header="{
@@ -212,8 +213,8 @@ export default defineComponent({
         },
         {
           name: "required",
-        },
-      ),
+        }
+      )
     );
 
     watch(
@@ -224,7 +225,7 @@ export default defineComponent({
         // (user.value as any).data.name = "Alan";
         user.value.syncRules();
       },
-      { deep: true },
+      { deep: true }
     );
 
     const success = {
@@ -236,13 +237,13 @@ export default defineComponent({
       new Form({
         content:
           "Nunc lobortis in nisi eget volutpat. In nec diam id purus ultrices sagittis a in ante. Pellentesque accumsan, lacus vel molestie interdum, justo nibh malesuada ante, at varius lectus erat vehicula quam. Suspendisse molestie mauris erat, id porttitor ex cursus quis. Aliquam quis diam vel nisl maximus egestas in a sapien. Etiam vel lobortis nibh, a gravida ante. Fusce vehicula neque a blandit lacinia. Sed tincidunt tellus quis elit vulputate pharetra. Phasellus porttitor felis eget dignissim iaculis. Sed ac iaculis diam, ac mollis leo. Pellentesque finibus augue elit. Maecenas facilisis, tellus sed porttitor convallis, orci lorem venenatis justo, in volutpat ipsum nisi consectetur ante. Nam quis hendrerit orci, non fringilla metus. Cras at enim fringilla, semper ligula ut, pretium turpis.",
-      }),
+      })
     );
     const logChange = () => {
       console.log(user.value.data.new.value);
     };
     const paragraph2 = ref(
-      "Nunc lobortis in nisi eget volutpat. In nec diam id purus ultrices sagittis a in ante. Pellentesque accumsan, lacus vel molestie interdum, justo nibh malesuada ante, at varius lectus erat vehicula quam. Suspendisse molestie mauris erat, id porttitor ex cursus quis. Aliquam quis diam vel nisl maximus egestas in a sapien. Etiam vel lobortis nibh, a gravida ante. Fusce vehicula neque a blandit lacinia. Sed tincidunt tellus quis elit vulputate pharetra. Phasellus porttitor felis eget dignissim iaculis. Sed ac iaculis diam, ac mollis leo. Pellentesque finibus augue elit. Maecenas facilisis, tellus sed porttitor convallis, orci lorem venenatis justo, in volutpat ipsum nisi consectetur ante. Nam quis hendrerit orci, non fringilla metus. Cras at enim fringilla, semper ligula ut, pretium turpis.",
+      "Nunc lobortis in nisi eget volutpat. In nec diam id purus ultrices sagittis a in ante. Pellentesque accumsan, lacus vel molestie interdum, justo nibh malesuada ante, at varius lectus erat vehicula quam. Suspendisse molestie mauris erat, id porttitor ex cursus quis. Aliquam quis diam vel nisl maximus egestas in a sapien. Etiam vel lobortis nibh, a gravida ante. Fusce vehicula neque a blandit lacinia. Sed tincidunt tellus quis elit vulputate pharetra. Phasellus porttitor felis eget dignissim iaculis. Sed ac iaculis diam, ac mollis leo. Pellentesque finibus augue elit. Maecenas facilisis, tellus sed porttitor convallis, orci lorem venenatis justo, in volutpat ipsum nisi consectetur ante. Nam quis hendrerit orci, non fringilla metus. Cras at enim fringilla, semper ligula ut, pretium turpis."
     );
     const debug = (data: DefaultObjectInterface) => {
       console.log(data);
@@ -382,6 +383,7 @@ export default defineComponent({
       tableSelecteds,
       showSelected,
       debugTable,
+      isSelected: (_item: any, _isSelected: boolean) => true,
     };
   },
 });
