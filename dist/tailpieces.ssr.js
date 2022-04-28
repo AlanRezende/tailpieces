@@ -14280,8 +14280,6 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
         Object.entries(props.itemClass).forEach(function (element) {
           //const isSelected = selectedItems.value.findIndex(item) >= 0;
           if (item) {
-            console.log("element", element);
-
             if (typeof element[1] === "function") {
               var cfn = element[1];
               newClass[element[0]] = cfn(item);
