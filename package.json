@@ -1,6 +1,6 @@
 {
   "name": "tailpieces",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Vue 3 + TypeScript + TailwindCss Components Library UI",
   "scripts": {
     "serve": "vue-cli-service serve dev/serve.ts",

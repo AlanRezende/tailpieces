@@ -132,12 +132,18 @@ export default defineComponent({
       return item.value;
     };
 
+    const selectedItems: any = ref([]);
     const itemScopedClass = (item: DefaultObjectInterface) => {
       let newClass: { [index: string]: string } = {};
       if (typeof props.itemClass == "object") {
         Object.entries(props.itemClass).forEach((element) => {
+          const isSelected = selectedItems.value.findIndex(item) >= 0;
           if (item) {
-            newClass[element[0]] = eval(element[1]);
+            if (typeof element[1] === "function") {
+              newClass[element[0]] = element[1](item, isSelected);
+            } else {
+              newClass[element[0]] = eval(element[1]);
+            }
           }
         });
         return newClass;
@@ -156,7 +162,6 @@ export default defineComponent({
       });
     });
 
-    const selectedItems: any = ref([]);
     const isCheckboxTable: any = ref(false);
     const updateSelected = (item: any) => {
       if (!checkSelected(item)) {
