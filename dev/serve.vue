@@ -14,6 +14,7 @@
         <t-table
           size="sm"
           @itemClick="debug($event.item)"
+          headerClass="sticky top-0"
           :itemClass="{
             'bg-red-100 lg:hover:bg-red-300': 'item.postID == \'277\'',
             'bg-yellow-100': isSelected,

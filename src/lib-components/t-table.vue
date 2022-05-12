@@ -1,6 +1,6 @@
 <template>
   <table class="border-collapse w-full">
-    <thead>
+    <thead :class="headerClass">
       <tr class="sm:rounded-lg">
         <th
           v-if="isCheckboxTable"
@@ -111,6 +111,10 @@ export default defineComponent({
     },
     itemClass: {
       type: Object as PropType<{ [index: string]: string }>,
+    },
+    headerClass: {
+      type: String,
+      required: false,
     },
     size: {
       type: String,
