@@ -14110,6 +14110,10 @@ var script$1 = defineComponent({
     itemClass: {
       type: Object
     },
+    headerClass: {
+      type: String,
+      required: false
+    },
     size: {
       type: String,
       default: "base"
@@ -14234,7 +14238,9 @@ const _hoisted_4$1 = {
   class: "inline-block"
 };
 function render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("table", _hoisted_1$1, [createVNode("thead", null, [createVNode("tr", _hoisted_2$1, [_ctx.isCheckboxTable ? (openBlock(), createBlock("th", {
+  return openBlock(), createBlock("table", _hoisted_1$1, [createVNode("thead", {
+    class: _ctx.headerClass
+  }, [createVNode("tr", _hoisted_2$1, [_ctx.isCheckboxTable ? (openBlock(), createBlock("th", {
     key: 0,
     class: ["font-bold leading-none uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5", [{
       'p-1 text-xs': _ctx.size == 'sm'
@@ -14259,7 +14265,7 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
         'p-3 text-sm': _ctx.size == 'base'
       }]]
     }, toDisplayString(coluna.label), 3);
-  }), 128))])]), createVNode("tbody", null, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.value, (item, index) => {
+  }), 128))])], 2), createVNode("tbody", null, [(openBlock(true), createBlock(Fragment, null, renderList(_ctx.value, (item, index) => {
     return openBlock(), createBlock("tr", {
       onClick: $event => _ctx.emit('itemClick', {
         item,

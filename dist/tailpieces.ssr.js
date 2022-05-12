@@ -14246,6 +14246,10 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
     itemClass: {
       type: Object
     },
+    headerClass: {
+      type: String,
+      required: false
+    },
     size: {
       type: String,
       default: "base"
@@ -14376,7 +14380,9 @@ var _hoisted_4$1 = {
   class: "inline-block"
 };
 function render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createBlock("table", _hoisted_1$1, [vue.createVNode("thead", null, [vue.createVNode("tr", _hoisted_2$1, [_ctx.isCheckboxTable ? (vue.openBlock(), vue.createBlock("th", {
+  return vue.openBlock(), vue.createBlock("table", _hoisted_1$1, [vue.createVNode("thead", {
+    class: _ctx.headerClass
+  }, [vue.createVNode("tr", _hoisted_2$1, [_ctx.isCheckboxTable ? (vue.openBlock(), vue.createBlock("th", {
     key: 0,
     class: ["font-bold leading-none uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5", [{
       'p-1 text-xs': _ctx.size == 'sm'
@@ -14403,7 +14409,7 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
         'p-3 text-sm': _ctx.size == 'base'
       }]]
     }, vue.toDisplayString(coluna.label), 3);
-  }), 128))])]), vue.createVNode("tbody", null, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.value, function (item, index) {
+  }), 128))])], 2), vue.createVNode("tbody", null, [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.value, function (item, index) {
     return vue.openBlock(), vue.createBlock("tr", {
       onClick: function onClick($event) {
         return _ctx.emit('itemClick', {
