@@ -22,7 +22,7 @@
           />
         </th>
         <th
-          v-for="coluna in colunas"
+          v-for="coluna in colunas.filter((col) => !col.abaixo)"
           :key="`coluna-${coluna.key}`"
           class="font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell"
           :class="[
@@ -34,11 +34,9 @@
         </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody v-for="(item, index) in value" :key="item.ukey">
       <tr
         @click="emit('itemClick', { item, index })"
-        v-for="(item, index) in value"
-        :key="item.ukey"
         class="bg-white dark:bg-black lg:dark:hover:bg-gray-800 cursor-pointer lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
         :class="itemScopedClass(item)"
       >
@@ -60,13 +58,38 @@
           />
         </td>
         <td
-          v-for="coluna in colunas"
+          v-for="coluna in colunas.filter((col) => !col.abaixo)"
           :key="`coluna-${coluna.key}`"
           class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static"
           :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]"
         >
           <span
             class="lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
+          >
+            {{ coluna.label }}
+          </span>
+          <div class="inline-block">
+            <slot :name="coluna.key" :$item="item">
+              {{ checkItem(item[coluna.key]) }}
+            </slot>
+          </div>
+        </td>
+      </tr>
+      <tr v-if="colunas.filter((col) => !!col.abaixo).length > 0">
+        <td
+          v-for="coluna in colunas.filter(
+            (col) =>
+              !!col.abaixo &&
+              (typeof col.showCallback === 'function'
+                ? col.showCallback(item)
+                : true)
+          )"
+          :key="`coluna-${coluna.key}`"
+          class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static"
+          :class="`${size == 'sm' && 'p-1'} ${size == 'base' && 'p-3'} `"
+        >
+          <span
+            class="inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
           >
             {{ coluna.label }}
           </span>
@@ -97,6 +120,8 @@ interface coluna {
   sortable?: boolean;
   sortable_default?: boolean;
   searchable?: boolean;
+  abaixo?: boolean;
+  showCallback?: (item: any) => boolean;
 }
 
 export default defineComponent({

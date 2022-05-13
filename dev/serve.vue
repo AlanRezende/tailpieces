@@ -45,10 +45,16 @@
             imagem_grande: 'Imagem',
             link: 'Link',
             actions: 'Ações',
+            justificativa: {
+              label: 'Justificativa',
+              abaixo: true,
+              showCallback: clsCallbackJustificativa,
+            },
           }"
         >
           <template #link="{ $item }">Link é {{ $item.link }} </template>
           <template #imagem_grande>Texto Qualquer</template>
+          <template #justificativa>Justificativa</template>
           <template #actions="{ $item }"
             ><t-button
               size="sm"
@@ -385,6 +391,10 @@ export default defineComponent({
       showSelected,
       debugTable,
       isSelected: (_item: any, _isSelected: boolean) => true,
+      clsCallbackJustificativa: (item: any) => {
+        console.log("called callback", item.postID == "277");
+        return item.postID == "277";
+      },
     };
   },
 });
