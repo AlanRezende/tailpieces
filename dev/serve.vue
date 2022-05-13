@@ -49,6 +49,7 @@
               label: 'Justificativa',
               abaixo: true,
               showCallback: clsCallbackJustificativa,
+              colspan: '10',
             },
           }"
         >

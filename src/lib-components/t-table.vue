@@ -87,6 +87,7 @@
           :key="`coluna-${coluna.key}`"
           class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static"
           :class="`${size == 'sm' && 'p-1'} ${size == 'base' && 'p-3'} `"
+          :colspan="coluna.colspan || 1"
         >
           <span
             class="inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
@@ -122,6 +123,7 @@ interface coluna {
   searchable?: boolean;
   abaixo?: boolean;
   showCallback?: (item: any) => boolean;
+  colspan?: string;
 }
 
 export default defineComponent({
