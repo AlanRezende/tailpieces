@@ -20,7 +20,7 @@
     </div>
     <ul
       v-show="open"
-      :class="{ 'right-0': align == 'r', 'bottom-8': position == 't' }"
+      :class="[{ 'right-0': align == 'r', 'bottom-8': position == 't' }, listClass]"
       class="shadow rounded z-30 border bg-white absolute"
     >
       <slot></slot>
@@ -39,6 +39,9 @@ export default defineComponent({
     position: {
       type: String,
       default: "b", // b Bottom / t Top
+    },
+    listClass: {
+        type: String,
     },
     align: {
       type: String,

@@ -151,7 +151,7 @@
 
     <t-form-section label="DropDown">
       <div class="flex items-center">
-        <t-dropdown position='t'>
+        <t-dropdown listClass="bg-red-100 md:bottom-8 right-0 md:right-auto ">
           <template v-slot:trigger>
             <t-button size="sm" color="gray">Mais Opções 1</t-button>
           </template>
