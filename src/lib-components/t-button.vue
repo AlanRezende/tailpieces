@@ -1,6 +1,6 @@
 <template>
   <button
-    class="mr-2 inline-block rounded text-white"
+    class="mr-2 inline-block rounded text-white mt-2"
     :class="[sizeClass, colorClass]"
     type="button"
   >
