@@ -42,10 +42,11 @@
       >
         <td
           v-if="isCheckboxTable"
-          class="leading-none lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-5"
+          class="leading-none lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-full"
           :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]"
           @click.stop=""
         >
+        <div class="inline-block">
           <input
             @change="updateSelected(item)"
             type="checkbox"
@@ -56,6 +57,7 @@
             ]"
             :checked="checkSelected(item)"
           />
+          </div>
         </td>
         <td
           v-for="coluna in colunas.filter((col) => !col.abaixo)"

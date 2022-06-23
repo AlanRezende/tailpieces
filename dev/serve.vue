@@ -12,7 +12,6 @@
     <t-form-section label="Seção Tabela">
       <div class="bg-gray-200 w-full p-4">
         <t-table
-          size="sm"
           @itemClick="debug($event.item)"
           headerClass="sticky top-0"
           :itemClass="{
