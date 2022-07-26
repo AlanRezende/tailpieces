@@ -70,6 +70,11 @@
         <t-button color="red" @click="debug">Debug</t-button>
         <t-button color="gray" @click="debug">Debug</t-button>
         <t-button color="green" @click="debug">Debug</t-button>
+        <t-button @click="debug" disabled>Debug</t-button>
+        <t-button color="yellow" @click="debug" disabled>Debug</t-button>
+        <t-button color="red" @click="debug" disabled>Debug</t-button>
+        <t-button color="gray" @click="debug" disabled>Debug</t-button>
+        <t-button color="green" @click="debug" disabled>Debug</t-button>
       </div>
     </t-form-section>
     <t-form-section class="-m-3" label="Seção Teste">
