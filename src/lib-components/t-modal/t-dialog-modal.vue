@@ -11,12 +11,12 @@
         <slot name="title"> </slot>
       </div>
 
-      <div>
+      <div style="max-height: calc(100vh - 200px);overflow-y: scroll;">
         <slot> </slot>
       </div>
     </div>
 
-    <div v-if="slots.footer" class="px-6 py-4 bg-gray-100 text-right">
+    <div v-if="slots.footer" class="px-6 py-4 bg-gray-100 text-right rounded-b-lg">
       <slot name="footer"> </slot>
     </div>
   </t-modal>
