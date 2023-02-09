@@ -9,6 +9,16 @@
       :options="options"
       v-model="selecteds"
     />
+    <t-button @click="modalTTransferListShow = true">TTransferList</t-button>
+    <t-dialog-modal max-width="4xl" :show="modalTTransferListShow">
+      <t-transfer-list
+        :title="(item) => item.name"
+        key_name="ukey"
+        :options="options"
+        v-model="selecteds"
+      />
+      <t-button class="mt-4" @click="modalTTransferListShow = false">Fechar</t-button>
+    </t-dialog-modal>
     <t-form-section label="Seção Tabela">
       <div class="bg-gray-200 w-full p-4">
         <t-table
@@ -387,6 +397,9 @@ export default defineComponent({
       validationError: "",
       validationRules: "",
     };
+
+    const modalTTransferListShow = ref(false);
+
     return {
       user,
       success,
@@ -407,6 +420,7 @@ export default defineComponent({
         console.log("called callback", item.postID == "277");
         return item.postID == "277";
       },
+      modalTTransferListShow,
     };
   },
 });
