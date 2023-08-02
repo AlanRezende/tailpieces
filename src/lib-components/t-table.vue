@@ -18,7 +18,7 @@
               { 'h-4 w-4': size == 'sm' },
               { 'h-5 w-5': size == 'base' },
             ]"
-            :checked="selectedItems.length == value.length"
+            :checked="selectedItems.length == totalCanSelect"
           />
         </th>
         <th
@@ -50,6 +50,7 @@
           <input
             @change="updateSelected(item)"
             type="checkbox"
+            :disabled="!canSelect(item)"
             class="text-gray-600"
             :class="[
               { 'h-4 w-4': size == 'sm' },
@@ -138,7 +139,14 @@ export default defineComponent({
     },
     modelValue: {
       default: false,
+      type: [Boolean, Array],
       required: false,
+    },
+    canSelect: {
+      type: Function,
+      default: () => {
+        return true
+      },
     },
     itemClass: {
       type: Object as PropType<{ [index: string]: string }>,
@@ -209,10 +217,10 @@ export default defineComponent({
     };
 
     const selectAll = () => {
-      if (selectedItems.value.length == props.value.length) {
+      if (selectedItems.value.length == totalCanSelect.value) {
         selectedItems.value = [];
       } else {
-        selectedItems.value = [...props.value];
+        selectedItems.value = [...props.value.filter(i => props.canSelect(i))];
       }
       emit("update:modelValue", selectedItems.value);
     };
@@ -224,16 +232,28 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      (newVal) => {
-        selectedItems.value = newVal;
+      (newVal: any) => {
+        selectedItems.value = processSelected(newVal);
       }
     );
 
+    const processSelected = (val: any) => {
+      if (typeof val == 'boolean') {
+        return val;
+      }
+      return val.filter((i:any) => props.canSelect(i));
+    }
+
     onMounted(() => {
-      selectedItems.value = props.modelValue;
+      selectedItems.value = processSelected(props.modelValue);
       if (props.modelValue) {
         isCheckboxTable.value = true;
       }
+    });
+
+    const totalCanSelect = computed((): number => {
+      if (!props.modelValue) return 0;
+      return props.value.filter(i => props.canSelect(i)).length;
     });
 
     return {
@@ -247,6 +267,7 @@ export default defineComponent({
       checkSelected,
       selectAll,
       selectedItems,
+      totalCanSelect,
     };
   },
 });

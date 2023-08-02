@@ -29,6 +29,7 @@
             'bg-yellow-100': isSelected,
           }"
           :value="dataTable"
+          :canSelect="canSelect"
           :header="{
             postID: 'ID do Post',
             nome: 'Nome',
@@ -400,6 +401,8 @@ export default defineComponent({
 
     const modalTTransferListShow = ref(false);
 
+    const canSelect = (item: any) => item.postID > 274;
+
     return {
       user,
       success,
@@ -415,6 +418,7 @@ export default defineComponent({
       tableSelecteds,
       showSelected,
       debugTable,
+      canSelect,
       isSelected: (_item: any, _isSelected: boolean) => true,
       clsCallbackJustificativa: (item: any) => {
         console.log("called callback", item.postID == "277");
