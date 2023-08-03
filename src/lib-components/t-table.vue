@@ -18,7 +18,8 @@
               { 'h-4 w-4': size == 'sm' },
               { 'h-5 w-5': size == 'base' },
             ]"
-            :checked="selectedItems.length == totalCanSelect"
+            :disabled="totalCanSelect == 0"
+            :checked="selectedItems.length > 0 && selectedItems.length == totalCanSelect"
           />
         </th>
         <th
