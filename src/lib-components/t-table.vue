@@ -108,6 +108,31 @@
         </td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr
+        v-if="Object.keys(footerValue ?? {}).length"
+        class="bg-gray-300 dark:bg-black flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
+      >
+        <td v-if="isCheckboxTable"></td>
+        <td
+          v-for="coluna in colunas.filter((col) => !col.abaixo)"
+          :key="`coluna-${coluna.key}${coluna.label}`"
+          class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static"
+          :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]"
+        >
+          <span
+            class="lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
+          >
+            {{ coluna.label }}
+          </span>
+          <div class="inline-block" v-if="footerValue">
+            <slot :name="coluna.key" :$item="footerValue">
+              {{ checkItem(footerValue[coluna.key]) }}
+            </slot>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </template>
 <script lang="ts">
@@ -137,6 +162,10 @@ export default defineComponent({
     value: {
       type: Array,
       required: true,
+    },
+    footerValue: {
+      type: Object,
+      required: false,
     },
     modelValue: {
       default: false,

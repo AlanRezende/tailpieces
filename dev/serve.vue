@@ -49,6 +49,7 @@
           }"
           @itemClick="debug($event.item)"
           :value="dataTable"
+          :footerValue="dataTable[0]"
           :header="{
             postID: 'ID do Post',
             nome: 'Nome',
