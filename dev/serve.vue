@@ -298,6 +298,7 @@ export default defineComponent({
     const selecteds = ref([]);
 
     const debugTable = (action: string) => {
+      console.log("selecteds", tableSelecteds.value) 
       if (action == "clear") {
         tableSelecteds.value = [];
       }
@@ -373,6 +374,27 @@ export default defineComponent({
         imagem_grande_path: "/public//imagens-posts/273_g.jpg?1618612470",
       },
     ]);
+    for (let i = 0; i < 100; i++) {
+      dataTable.value.push(
+      {
+        postID: `${i}`.padStart(3,'0'),
+        nome: "asdasdasddddd",
+        conteudo:
+          '<p><em>asdasdsad</em></p><p><br></p><p><br></p><p><br></p><p><a href="asdad" rel="noopener noreferrer" target="_blank"><u>asdasdad</u></a></p>',
+        chamada: null,
+        link: "",
+        tipo: "noticia",
+        dataCriado: "2021-04-14 19:43:15",
+        pai: null,
+        destaque: "0",
+        codigo: "",
+        status: null,
+        slug: null,
+        imagem_pequena_path: "/public//imagens-posts/277_p.jpg?1618612470",
+        imagem_grande_path: "/public//imagens-posts/277_g.jpg?1618612470",
+      },
+      )
+    }
     const tableSelecteds = ref([] as any);
     tableSelecteds.value = [dataTable.value[1], dataTable.value[2]];
 
@@ -402,7 +424,9 @@ export default defineComponent({
 
     const modalTTransferListShow = ref(false);
 
-    const canSelect = (item: any) => item.postID > 274;
+    const canSelect = (item: any) => {
+     return item.postID < 274;
+     }
 
     return {
       user,

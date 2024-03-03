@@ -49,7 +49,7 @@
         >
         <div class="inline-block">
           <input
-            @change="updateSelected(item)"
+            @change="updateSelected(index)"
             type="checkbox"
             :disabled="!canSelect(item)"
             class="text-gray-600"
@@ -57,7 +57,7 @@
               { 'h-4 w-4': size == 'sm' },
               { 'h-5 w-5': size == 'base' },
             ]"
-            :checked="checkSelected(item)"
+            :checked="selectedItems?.indexOf(index) !== -1"
           />
           </div>
         </td>
@@ -73,7 +73,7 @@
             {{ coluna.label }}
           </span>
           <div class="inline-block">
-            <slot :name="coluna.key" :$item="item">
+            <slot :name="coluna.key" :$item="item" :$idx="index">
               {{ checkItem(item[coluna.key]) }}
             </slot>
           </div>
@@ -175,6 +175,7 @@ export default defineComponent({
     canSelect: {
       type: Function,
       default: () => {
+        console.debug("Called default canSelect")
         return true
       },
     },
@@ -236,29 +237,35 @@ export default defineComponent({
       });
     });
 
-    const isCheckboxTable: any = ref(false);
-    const updateSelected = (item: any) => {
-      if (!checkSelected(item)) {
-        selectedItems.value.push(item);
+    const isCheckboxTable = computed(() => !!props.modelValue);
+
+    const getSelected = () => {
+    
+      return selectedItems.value.map((idx: number) => props.value[idx])
+    }
+
+    const updateSelected = (idx: number) => {
+      if (selectedItems.value.indexOf(idx) === -1) {
+        selectedItems.value.push(idx);
       } else {
-        selectedItems.value.splice(selectedItems.value.indexOf(item), 1);
+        selectedItems.value.splice(selectedItems.value.indexOf(idx), 1);
       }
-      emit("update:modelValue", selectedItems.value);
+      emit("update:modelValue", getSelected());
     };
 
     const selectAll = () => {
       if (selectedItems.value.length == totalCanSelect.value) {
         selectedItems.value = [];
       } else {
-        selectedItems.value = [...props.value.filter(i => props.canSelect(i))];
+        selectedItems.value = []
+        for(const idx in props.value) {
+          if (props.canSelect(props.value[idx])) {
+            selectedItems.value.push(idx)
+          }
+        }
       }
-      emit("update:modelValue", selectedItems.value);
+      emit("update:modelValue", getSelected());
     };
-
-    const checkSelected = (item: any) =>
-      selectedItems.value.some(
-        (e: any) => JSON.stringify(item) == JSON.stringify(e)
-      );
 
     watch(
       () => props.modelValue,
@@ -271,14 +278,18 @@ export default defineComponent({
       if (typeof val == 'boolean') {
         return val;
       }
-      return val.filter((i:any) => props.canSelect(i));
+      const selected = []
+      for (const idx in val) {
+        const lidx = props.value.indexOf(val[idx])
+        if (lidx !== -1 && props.canSelect(val[idx])) {
+          selected.push(lidx)
+        }
+      }
+      return selected;
     }
 
     onMounted(() => {
       selectedItems.value = processSelected(props.modelValue);
-      if (props.modelValue) {
-        isCheckboxTable.value = true;
-      }
     });
 
     const totalCanSelect = computed((): number => {
@@ -294,7 +305,6 @@ export default defineComponent({
       slots,
       updateSelected,
       isCheckboxTable,
-      checkSelected,
       selectAll,
       selectedItems,
       totalCanSelect,
