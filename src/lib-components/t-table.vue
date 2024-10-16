@@ -19,7 +19,6 @@
           :class="[
             { 'p-1 text-xs': size == 'sm' },
             { 'p-3 text-sm': size == 'base' },
-            { 'w-full text-right': coluna.align == 'right' },
           ]">
           {{ coluna.label }}
         </th>
@@ -47,7 +46,7 @@
             class="lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase">
             {{ coluna.label }}
           </span>
-          <div class="inline-block">
+          <div class="inline-block" :class="[{ 'w-full text-right': coluna.align == 'right' }]">
             <slot :name="coluna.key" :$item="item">
               {{ checkItem(item[coluna.key]) }}
             </slot>
