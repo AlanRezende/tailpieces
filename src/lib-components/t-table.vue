@@ -2,74 +2,49 @@
   <table class="border-collapse w-full">
     <thead :class="headerClass">
       <tr class="sm:rounded-lg">
-        <th
-          v-if="isCheckboxTable"
+        <th v-if="isCheckboxTable"
           class="font-bold leading-none uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell w-5"
           :class="[
             { 'p-1 text-xs': size == 'sm' },
             { 'p-3 text-sm': size == 'base' },
-          ]"
-        >
-          <input
-            @change="selectAll"
-            type="checkbox"
-            class="text-gray-600"
-            :class="[
-              { 'h-4 w-4': size == 'sm' },
-              { 'h-5 w-5': size == 'base' },
-            ]"
-            :disabled="totalCanSelect == 0"
-            :checked="selectedItems.length > 0 && selectedItems.length == totalCanSelect"
-          />
+          ]">
+          <input @change="selectAll" type="checkbox" class="text-gray-600" :class="[
+            { 'h-4 w-4': size == 'sm' },
+            { 'h-5 w-5': size == 'base' },
+          ]" :disabled="totalCanSelect == 0" :checked="selectedItems.length > 0 && selectedItems.length == totalCanSelect
+              " />
         </th>
-        <th
-          v-for="coluna in colunas.filter((col) => !col.abaixo)"
-          :key="`coluna-${coluna.key}`"
+        <th v-for="coluna in colunas.filter((col) => !col.abaixo)" :key="`coluna-${coluna.key}`"
           class="font-bold uppercase bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-300 hidden lg:table-cell"
           :class="[
             { 'p-1 text-xs': size == 'sm' },
             { 'p-3 text-sm': size == 'base' },
-          ]"
-        >
+            { 'w-full text-right': coluna.align == 'right' },
+          ]">
           {{ coluna.label }}
         </th>
       </tr>
     </thead>
     <tbody v-for="(item, index) in value" :key="item.ukey">
-      <tr
-        @click="emit('itemClick', { item, index })"
+      <tr @click="emit('itemClick', { item, index })"
         class="bg-white dark:bg-black lg:dark:hover:bg-gray-800 cursor-pointer lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
-        :class="itemScopedClass(item)"
-      >
-        <td
-          v-if="isCheckboxTable"
+        :class="itemScopedClass(item)">
+        <td v-if="isCheckboxTable"
           class="leading-none lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static w-full"
-          :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]"
-          @click.stop=""
-        >
-        <div class="inline-block">
-          <input
-            @change="updateSelected(item)"
-            type="checkbox"
-            :disabled="!canSelect(item)"
-            class="text-gray-600"
-            :class="[
-              { 'h-4 w-4': size == 'sm' },
-              { 'h-5 w-5': size == 'base' },
-            ]"
-            :checked="checkSelected(item)"
-          />
+          :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]" @click.stop="">
+          <div class="inline-block">
+            <input @change="updateSelected(item)" type="checkbox" :disabled="!canSelect(item)" class="text-gray-600"
+              :class="[
+                { 'h-4 w-4': size == 'sm' },
+                { 'h-5 w-5': size == 'base' },
+              ]" :checked="checkSelected(item)" />
           </div>
         </td>
-        <td
-          v-for="coluna in colunas.filter((col) => !col.abaixo)"
-          :key="`coluna-${coluna.key}`"
+        <td v-for="coluna in colunas.filter((col) => !col.abaixo)" :key="`coluna-${coluna.key}`"
           class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static"
-          :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]"
-        >
+          :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]">
           <span
-            class="lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
-          >
+            class="lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase">
             {{ coluna.label }}
           </span>
           <div class="inline-block">
@@ -80,23 +55,18 @@
         </td>
       </tr>
       <tr v-if="colunas.filter((col) => !!col.abaixo).length > 0">
-        <td
-          v-for="coluna in colunas.filter(
-            (col) =>
-              !!col.abaixo &&
-              (typeof col.showCallback === 'function'
-                ? col.showCallback(item)
-                : true)
-          )"
-          :key="`coluna-${coluna.key}`"
+        <td v-for="coluna in colunas.filter(
+          (col) =>
+            !!col.abaixo &&
+            (typeof col.showCallback === 'function'
+              ? col.showCallback(item)
+              : true),
+        )" :key="`coluna-${coluna.key}`"
           class="w-full text-gray-800 dark:text-gray-200 border border-b items-center relative"
-          :class="`${size == 'sm' && 'p-1'} ${size == 'base' && 'p-3'} `"
-          :colspan="coluna.colspan || 1"
-        >
+          :class="`${size == 'sm' && 'p-1'} ${size == 'base' && 'p-3'} `" :colspan="coluna.colspan || 1">
           <div class="flex">
             <span
-              class="inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
-            >
+              class="inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase">
               {{ coluna.label }}
             </span>
             <div class="inline-block grow">
@@ -109,20 +79,14 @@
       </tr>
     </tbody>
     <tfoot>
-      <tr
-        v-if="Object.keys(footerValue ?? {}).length"
-        class="bg-gray-300 dark:bg-black flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
-      >
+      <tr v-if="Object.keys(footerValue ?? {}).length"
+        class="bg-gray-300 dark:bg-black flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
         <td v-if="isCheckboxTable"></td>
-        <td
-          v-for="coluna in colunas.filter((col) => !col.abaixo)"
-          :key="`coluna-${coluna.key}${coluna.label}`"
+        <td v-for="coluna in colunas.filter((col) => !col.abaixo)" :key="`coluna-${coluna.key}${coluna.label}`"
           class="w-full lg:w-auto text-gray-800 dark:text-gray-200 border border-b flex items-center lg:table-cell relative lg:static"
-          :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]"
-        >
+          :class="[{ 'p-1': size == 'sm' }, { 'p-3': size == 'base' }]">
           <span
-            class="lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase"
-          >
+            class="lg:hidden inline-block mr-2 text-center top-0 left-0 w-1/4 bg-gray-100 px-2 py-1 text-xs font-bold uppercase">
             {{ coluna.label }}
           </span>
           <div class="inline-block" v-if="footerValue">
@@ -175,7 +139,7 @@ export default defineComponent({
     canSelect: {
       type: Function,
       default: () => {
-        return true
+        return true;
       },
     },
     itemClass: {
@@ -250,29 +214,31 @@ export default defineComponent({
       if (selectedItems.value.length == totalCanSelect.value) {
         selectedItems.value = [];
       } else {
-        selectedItems.value = [...props.value.filter(i => props.canSelect(i))];
+        selectedItems.value = [
+          ...props.value.filter((i) => props.canSelect(i)),
+        ];
       }
       emit("update:modelValue", selectedItems.value);
     };
 
     const checkSelected = (item: any) =>
       selectedItems.value.some(
-        (e: any) => JSON.stringify(item) == JSON.stringify(e)
+        (e: any) => JSON.stringify(item) == JSON.stringify(e),
       );
 
     watch(
       () => props.modelValue,
       (newVal: any) => {
         selectedItems.value = processSelected(newVal);
-      }
+      },
     );
 
     const processSelected = (val: any) => {
-      if (typeof val == 'boolean') {
+      if (typeof val == "boolean") {
         return val;
       }
-      return val.filter((i:any) => props.canSelect(i));
-    }
+      return val.filter((i: any) => props.canSelect(i));
+    };
 
     onMounted(() => {
       selectedItems.value = processSelected(props.modelValue);
@@ -283,7 +249,7 @@ export default defineComponent({
 
     const totalCanSelect = computed((): number => {
       if (!props.modelValue) return 0;
-      return props.value.filter(i => props.canSelect(i)).length;
+      return props.value.filter((i) => props.canSelect(i)).length;
     });
 
     return {
