@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full overflow-scroll">
     <table class="border-collapse w-full">
       <thead :class="headerClass">
         <tr class="sm:rounded-lg">
