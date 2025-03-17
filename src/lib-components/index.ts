@@ -14,4 +14,5 @@ export { default as TModal } from "./t-modal/t-modal.vue";
 export { default as TDialogModal } from "./t-modal/t-dialog-modal.vue";
 export { default as TConfirmationModal } from "./t-modal/t-confirmation-modal.vue";
 export { default as TTable } from "./t-table.vue";
+export { default as TTableHorizontal } from "./t-table-horizontal.vue";
 export { default as TTransferList } from "./t-transfer-list.vue";

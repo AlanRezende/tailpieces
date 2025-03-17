@@ -37,6 +37,23 @@
           }"
           v-model="tableSelecteds"
         ></t-table>
+        <t-table-horizontal
+          @itemClick="debug($event.item)"
+          headerClass="sticky top-0"
+          :itemClass="{
+            'bg-red-100 lg:hover:bg-red-300': 'item.postID == \'277\'',
+            'bg-yellow-100': isSelected,
+          }"
+          :value="dataTable"
+          :canSelect="canSelect"
+          :header="{
+            postID: 'ID do Post',
+            nome: 'Nome',
+            link: 'Link',
+            tipo: 'Tipo',
+          }"
+          v-model="tableSelecteds"
+        ></t-table-horizontal>
         <div class="my-4">
           <t-button @click="debugTable('')">Debug</t-button>
           <t-button @click="debugTable('clear')">Limpar</t-button>
